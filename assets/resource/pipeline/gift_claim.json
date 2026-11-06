@@ -1,0 +1,125 @@
+{
+    "GiftClaimStart": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/nav_shop.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1800,
+        "next": ["GiftClaimInShop", "GiftClaimAlreadyInShop", "GiftClaimNoShop"]
+    },
+    "GiftClaimAlreadyInShop": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/shop_sidebar.png",
+        "roi": [300, 80, 190, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["GiftClaimDailyTab"]
+    },
+    "GiftClaimInShop": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/shop_sidebar.png",
+        "roi": [300, 80, 190, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["GiftClaimDailyTab"]
+    },
+    "GiftClaimDailyTab": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/tab_daily.png",
+        "roi": [20, 390, 190, 80],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["GiftClaimDailyCheck", "GiftClaimWeeklyTab"],
+        "max_hit": 1
+    },
+    "GiftClaimDailyCheck": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/free_tag.png",
+        "roi": [250, 560, 230, 90],
+        "threshold": 0.8,
+        "action": "Click",
+        "post_delay": 2000,
+        "next": ["GiftClaimDailyConfirm", "GiftClaimWeeklyTab"],
+        "max_hit": 1
+    },
+    "GiftClaimDailyConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/btn_free_buy.png",
+        "roi": [790, 440, 240, 115],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2200,
+        "next": ["GiftClaimCloseReward", "GiftClaimWeeklyTab"],
+        "max_hit": 1
+    },
+    "GiftClaimWeeklyTab": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/tab_weekly.png",
+        "roi": [20, 475, 190, 80],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["GiftClaimWeeklyCheck", "GiftClaimFinish"],
+        "max_hit": 1
+    },
+    "GiftClaimWeeklyCheck": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/free_tag.png",
+        "roi": [250, 560, 230, 90],
+        "threshold": 0.8,
+        "action": "Click",
+        "post_delay": 2000,
+        "next": ["GiftClaimWeeklyConfirm", "GiftClaimFinish"],
+        "max_hit": 1
+    },
+    "GiftClaimWeeklyConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/btn_free_buy.png",
+        "roi": [790, 440, 240, 115],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2200,
+        "next": ["GiftClaimCloseReward", "GiftClaimFinish"],
+        "max_hit": 1
+    },
+    "GiftClaimCloseReward": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/gift_reward_popup.png",
+        "roi": [400, 100, 500, 160],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [640, 600],
+        "post_delay": 1400,
+        "next": ["GiftClaimWeeklyTab", "GiftClaimFinish"],
+        "max_hit": 2
+    },
+    "GiftClaimFinish": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["GiftClaimBackHome"],
+        "focus": {
+            "success": "免费礼包领取流程结束"
+        }
+    },
+    "GiftClaimNoShop": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["GiftClaimBackHome"],
+        "focus": {
+            "success": "未找到商店入口，请先回到主界面"
+        }
+    },
+    "GiftClaimBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1600,
+        "focus": {
+            "success": "已返回主界面"
+        }
+    }
+}
