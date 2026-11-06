@@ -1,0 +1,75 @@
+{
+    "TaskClaimStart": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/nav_task.png",
+        "roi": [780, 650, 120, 65],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1200,
+        "next": ["TaskClaimInTaskPage", "TaskClaimAlreadyInTaskPage"]
+    },
+    "TaskClaimAlreadyInTaskPage": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/task_tab_all.png",
+        "roi": [30, 105, 225, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["TaskClaimClickAll"]
+    },
+    "TaskClaimInTaskPage": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/task_tab_all.png",
+        "roi": [30, 105, 225, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["TaskClaimClickAll", "TaskClaimNoReward"]
+    },
+    "TaskClaimClickAll": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/btn_claim_all.png",
+        "roi": [1020, 615, 220, 65],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 1800,
+        "max_hit": 1,
+        "next": ["TaskClaimCloseReward", "TaskClaimFinish"]
+    },
+    "TaskClaimCloseReward": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/reward_popup.png",
+        "roi": [420, 120, 460, 120],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [640, 595],
+        "post_delay": 1000,
+        "next": ["TaskClaimCloseReward", "TaskClaimFinish"],
+        "max_hit": 3
+    },
+    "TaskClaimFinish": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["TaskClaimBackHome"],
+        "focus": {
+            "success": "任务奖励已领取"
+        }
+    },
+    "TaskClaimNoReward": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["TaskClaimBackHome"],
+        "focus": {
+            "success": "当前没有可领取的任务奖励"
+        }
+    },
+    "TaskClaimBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [190, 15, 100, 55],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1500,
+        "focus": {
+            "success": "已返回主界面"
+        }
+    }
+}
