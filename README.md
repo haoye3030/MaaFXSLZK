@@ -5,39 +5,119 @@
 
 <div align="center">
 
-# MaaPracticeBoilerplate
+# MaaFXSLZK
+
+**《拂晓：胜利之刻》自动化助手**
 
 </div>
 
-本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
+<p align="center">
+  <a href="https://github.com/haoye3030/MaaFXSLZK/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/haoye3030/MaaFXSLZK?style=flat-square" /></a>
+  <a href="https://github.com/haoye3030/MaaFXSLZK/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/haoye3030/MaaFXSLZK?style=flat-square" /></a>
+  <img alt="Platform" src="https://img.shields.io/badge/platform-Android-blueviolet?style=flat-square" />
+</p>
 
-> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
-> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
+---
 
-## 即刻开始
+## 简介
 
-**请不要直接克隆本仓库！你应该通过模板创建自己的项目！**  
+基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 开发的《拂晓：胜利之刻》日常自动化助手。
 
-请阅读 [如何开发](./docs/zh_cn/develop/how_to_develop.md)。
+通过图像识别与模拟控制，帮助玩家完成重复的日常操作。
 
-向本模板仓库提交改动前，请阅读 [PR 规范](./docs/zh_cn/develop/pull_request_guidelines.md)。
+> ⚠️ **本项目处于早期开发阶段（v0.1.0），功能尚未完善，欢迎issue 反馈问题。**
+
+## 特性
+
+- 🚧 **开发中** —— 项目骨架已搭建，具体功能待实现
+
+## 环境要求
+
+| 项目 | 要求 |
+| :--- | :--- |
+| 分辨率 | **1280 × 720（横屏）**，短边须为 720 |
+| 设备 | Android 模拟器或真机（需开启 ADB 调试） |
+| 控制方式 | ADB |
+| 运行环境 | Windows / macOS / Linux（需 MaaFramework 运行环境） |
+
+**推荐的模拟器**：MuMu 模拟器、雷电模拟器等，测试环境为 MuMu 模拟器。
+
+## 使用方法
+
+### 方式一：使用 MaaPiCli（命令行）
+
+```bash
+# 首次使用需先登录并配置设备
+maapicli device -a 127.0.0.1:16384
+
+# 运行任务
+maapicli run --task <任务名>
+```
+
+### 方式二：使用 GUI 客户端
+
+社区提供了多个基于 MaaFramework 的 GUI 客户端（如 [MFAAvalonia](https://github.com/MaaAssistantArknights/MFAAvalonia)），可直接图形化操作。
+
+## 开发
+
+### 从模板创建
+
+本项目基于 [MaaPracticeBoilerplate](https://github.com/MaaXYZ/MaaPracticeBoilerplate) 创建。
+
+```bash
+gh repo create MaaFXSLZK --template MaaXYZ/MaaPracticeBoilerplate --public --clone
+cd MaaFXSLZK
+git submodule update --init --recursive
+```
+
+### 目录结构
+
+```
+MaaFXSLZK/
+├── assets/                    # 资源层
+│   ├── interface.json         #   应用入口：UI 显示与任务列表
+│   └── resource/
+│       ├── pipeline/          #   流程定义：识别 → 动作 → 跳转
+│       └── image/             #   图像素材（模板匹配用）
+├── agent/                     # 扩展层：Python 自定义识别与动作
+├── docs/                      # 文档
+└── tools/                     # 官方脚本（校验、打包）
+```
+
+### 本地校验
+
+提交前请运行：
+
+```bash
+# 资源检查（需 Node.js）
+npm ci
+npx @nekosu/maa-tools check
+
+# JSON Schema 校验（需 Python）
+python -m pip install jsonschema==4.26.0 referencing==0.37.0
+python tools/validate_schema.py \
+  --schema-dir deps/tools \
+  --resource-dirs assets/resource \
+  --exclude-dirs assets/resource/announcement \
+  --interface-files assets/interface.json
+```
 
 ## 生态共建
 
 MAA 正计划建设为一类项目，而非舟的单一软件。
 
-若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX、MXA、MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法。
 
-同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
-
-## 常见问题
-
-请阅读 [常见问题](./docs/zh_cn/develop/faq.md)。
+欢迎向 [MaaFramework 社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 提交 PR 添加您的项目！
 
 ## 鸣谢
 
 本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
 
-感谢以下开发者对本项目作出的贡献（下面链接改成你自己的项目地址）:
+感谢以下开发者对本项目所作的贡献：
 
-[![Contributors](https://contrib.rocks/image?repo=MaaXYZ/MaaFramework&max=1000)](https://github.com/MaaXYZ/MaaFramework/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=haoye3030/MaaFXSLZK&max=1000)](https://github.com/haoye3030/MaaFXSLZK/graphs/contributors)
+
+## 许可证
+
+本项目采用 [MIT 许可证](./LICENSE) 开源。
