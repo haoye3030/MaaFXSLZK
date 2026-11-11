@@ -1,0 +1,215 @@
+{
+    "ExerciseStart": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/nav_shop.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["ExerciseClickAttack"],
+        "focus": {
+            "success": "开始参与演习"
+        }
+    },
+    "ExerciseClickAttack": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_attack.png",
+        "roi": [1020, 510, 260, 110],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "next": ["ExerciseClickTab"],
+        "max_hit": 1
+    },
+    "ExerciseClickTab": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/txt_exercise_en.png",
+        "roi": [95, 365, 60, 26],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "next": ["ExerciseChallengeLoop"],
+        "max_hit": 1
+    },
+    "ExerciseChallengeLoop": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_challenge_on.png",
+        "roi": [420, 455, 170, 50],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 30000,
+        "next": ["ExerciseCheckSelectAll", "ExerciseClickSelectAll", "ExerciseTrust"]
+    },
+    "ExerciseCheckSelectAll": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/chk_on.png",
+        "roi": [1180, 682, 32, 26],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["ExerciseTrust"]
+    },
+    "ExerciseClickSelectAll": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [1196, 695],
+        "post_delay": 800,
+        "next": ["ExerciseTrust"]
+    },
+    "ExerciseTrust": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_trust.png",
+        "roi": [820, 665, 170, 55],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3000,
+        "timeout": 300000,
+        "next": ["ExerciseWaitEnd"]
+    },
+    "ExerciseWaitEnd": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_end_title.png",
+        "roi": [550, 323, 178, 32],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 300000,
+        "next": ["ExercisePopupOk"]
+    },
+    "ExercisePopupOk": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_ok.png",
+        "roi": [735, 432, 195, 46],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "next": ["ExerciseRefreshLeft1", "ExerciseRefreshLeft2", "ExerciseNoRefreshLeft"]
+    },
+    "ExerciseRefreshLeft1": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/num_1.png",
+        "roi": [258, 462, 34, 50],
+        "threshold": 0.75,
+        "action": "DoNothing",
+        "timeout": 30000,
+        "next": ["ExerciseChangeOpponent"]
+    },
+    "ExerciseRefreshLeft2": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/num_2.png",
+        "roi": [258, 462, 34, 50],
+        "threshold": 0.75,
+        "action": "DoNothing",
+        "timeout": 30000,
+        "next": ["ExerciseChangeOpponent"]
+    },
+    "ExerciseNoRefreshLeft": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["ExerciseLastRound"],
+        "focus": {
+            "success": "刷新次数已耗尽（读到 0），再打一轮后结束"
+        }
+    },
+    "ExerciseChangeOpponent": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_change_ready.png",
+        "roi": [605, 458, 162, 47],
+        "threshold": 0.72,
+        "action": "Click",
+        "target": [684, 481],
+        "post_delay": 2500,
+        "timeout": 30000,
+        "next": ["ExerciseConfirmPopup"]
+    },
+    "ExerciseConfirmPopup": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_confirm_title.png",
+        "roi": [535, 322, 210, 35],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 30000,
+        "next": ["ExerciseConfirmOk"]
+    },
+    "ExerciseConfirmOk": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_ok.png",
+        "roi": [735, 432, 195, 46],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3000,
+        "next": ["ExerciseChallengeLoop"]
+    },
+    "ExerciseLastRound": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_challenge_on.png",
+        "roi": [420, 455, 170, 50],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 15000,
+        "next": ["ExerciseLastTrust", "ExerciseEndNow"]
+    },
+    "ExerciseLastCheckSelectAll": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/chk_on.png",
+        "roi": [1180, 682, 32, 26],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["ExerciseLastTrust"]
+    },
+    "ExerciseLastClickSelectAll": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [1196, 695],
+        "post_delay": 800,
+        "next": ["ExerciseLastTrust"]
+    },
+    "ExerciseLastTrust": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_trust.png",
+        "roi": [820, 665, 170, 55],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3000,
+        "timeout": 15000,
+        "next": ["ExerciseLastWaitEnd"]
+    },
+    "ExerciseLastWaitEnd": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_end_title.png",
+        "roi": [550, 323, 178, 32],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 60000,
+        "next": ["ExerciseLastPopupOk"]
+    },
+    "ExerciseLastPopupOk": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/popup_ok.png",
+        "roi": [735, 432, 195, 46],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "next": ["ExerciseBackHome"]
+    },
+    "ExerciseEndNow": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["ExerciseBackHome"],
+        "focus": {
+            "success": "对手已全部打完，演习结束"
+        }
+    },
+    "ExerciseBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1800,
+        "focus": {
+            "success": "演习流程结束，已返回主界面"
+        }
+    }
+}
