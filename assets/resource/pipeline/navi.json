@@ -1,0 +1,35 @@
+{
+    "NaviCommon": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "next": ["NaviOnMain", "NaviSubpage", "NaviWait"]
+    },
+    "NaviOnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [{ "name": "Resume", "anchor": true }]
+    },
+    "NaviSubpage": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 2000,
+        "max_hit": 8,
+        "next": ["NaviCommon"]
+    },
+    "NaviWait": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 2000,
+        "timeout": 2000,
+        "next": ["NaviCommon"]
+    }
+}

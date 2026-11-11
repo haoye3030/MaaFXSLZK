@@ -78,6 +78,7 @@ maapicli run --task <任务名>
 ### 开发文档
 
 - [素材制作规范](docs/zh_cn/develop/asset_guideline.md) —— 模板截取范围如何选择、截完如何校验、Pipeline 配置要点与已知坑清单
+- [待完成功能清单](docs/zh_cn/develop/todo.md) —— 计划实现的 17 项功能，含风险分级与建议实施顺序
 
 ### 从模板创建
 

@@ -1,14 +1,15 @@
 {
     "NavalStart": {
-        "recognition": "TemplateMatch",
-        "template": "gift_claim/nav_shop.png",
-        "roi": [10, 650, 90, 60],
-        "threshold": 0.7,
+        "recognition": "DirectHit",
         "action": "DoNothing",
-        "next": ["NavalOpenQuickClaim"],
-        "focus": {
-            "success": "开始收取港区资源并换班"
-        }
+        "timeout": 120000,
+        "anchor": { "Resume": "NavalResume" },
+        "next": ["NaviCommon"]
+    },
+    "NavalResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["NavalOpenQuickClaim"]
     },
     "NavalOpenQuickClaim": {
         "recognition": "TemplateMatch",

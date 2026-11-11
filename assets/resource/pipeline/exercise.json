@@ -1,14 +1,24 @@
 {
     "ExerciseStart": {
-        "recognition": "TemplateMatch",
-        "template": "gift_claim/nav_shop.png",
-        "roi": [10, 650, 90, 60],
-        "threshold": 0.7,
+        "recognition": "DirectHit",
         "action": "DoNothing",
-        "next": ["ExerciseClickAttack"],
-        "focus": {
-            "success": "开始参与演习"
-        }
+        "timeout": 120000,
+        "anchor": { "Resume": "ExerciseResume" },
+        "next": ["ExerciseNaviTarget", "NaviCommon"]
+    },
+    "ExerciseNaviTarget": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_challenge_on.png",
+        "roi": [420, 455, 170, 50],
+        "threshold": 0.75,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": ["ExerciseChallengeLoop"]
+    },
+    "ExerciseResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["ExerciseClickAttack"]
     },
     "ExerciseClickAttack": {
         "recognition": "TemplateMatch",

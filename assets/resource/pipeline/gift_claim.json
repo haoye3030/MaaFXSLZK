@@ -1,5 +1,26 @@
 {
     "GiftClaimStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "anchor": { "Resume": "GiftClaimResume" },
+        "next": ["GiftClaimNaviTarget", "NaviCommon"]
+    },
+    "GiftClaimNaviTarget": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/shop_sidebar.png",
+        "roi": [300, 80, 190, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": ["GiftClaimDailyTab"]
+    },
+    "GiftClaimResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["GiftClaimClickShop"]
+    },
+    "GiftClaimClickShop": {
         "recognition": "TemplateMatch",
         "template": "gift_claim/nav_shop.png",
         "roi": [10, 650, 90, 60],

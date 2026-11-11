@@ -115,19 +115,129 @@ Tasker.set_save_draw(True)     # ← 正确的开启方式
 
 ## 六、Pipeline 配置要点
 
-### roi 要精确
+### next 列表的执行规则（实测，务必理解）
 
-ROI 尽量只覆盖目标，不要包含大块无关区域 —— 无关区域会稀释匹配分数。
+**`next` 列表只在当前节点「识别成功」后才会被遍历。**
+
+- 识别成功 → 依次尝试 next 列表，命中第一个识别成功的节点
+- 识别失败（超时）→ **不会遍历 next**，直接走 `on_error`；若没有 `on_error` 则任务失败
+
+这带来两个推论：
+
+1. 想用 `next` 做「多分支」，当前节点必须**保证能识别成功**（用 `DirectHit`），把判断下沉到 next 列表里的具体节点
+2. 想在「识别失败时做别的事」，用 `on_error`，而不是指望 next 列表
+
+### 公共前置 + 跳回调用方
+
+多个功能共享「自动归位到主界面」这类前置逻辑时，用 `anchor` 实现，避免每个功能复制一遍：
+
+```json
+// navi.json —— 公共归位（全局节点空间，各 pipeline 共用）
+{
+    "NaviCommon": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "next": ["NaviOnMain", "NaviSubpage", "NaviWait"]
+    },
+    "NaviOnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [{ "name": "Resume", "anchor": true }]
+    },
+    "NaviSubpage": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 2000,
+        "max_hit": 8,
+        "next": ["NaviCommon"]
+    },
+    "NaviWait": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 2000,
+        "timeout": 2000,
+        "next": ["NaviCommon"]
+    }
+}
+```
+
+```json
+// 各功能自己的 pipeline
+{
+    "TaskClaimStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "anchor": { "Resume": "TaskClaimResume" },     ← 设置锚点，指向续跑节点
+        "next": ["TaskClaimNaviTarget", "NaviCommon"]
+    },
+    "TaskClaimNaviTarget": {                          ← 已在本功能的目标页 → 直接执行
+        "recognition": "TemplateMatch",
+        "template": "task_claim/task_tab_all.png",
+        "roi": [30, 105, 225, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": ["TaskClaimClickAll"]
+    },
+    "TaskClaimResume": {                             ← 归位完成后从这里续跑
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["TaskClaimClickTask"]
+    }
+}
+```
+
+`anchor` 相关语法：
+
+| 写法 | 含义 |
+|---|---|
+| `"anchor": "MyAnchor"` | 把锚点 `MyAnchor` 设为当前节点 |
+| `"anchor": { "Go": "TargetNode" }` | 把锚点 `Go` 设为指定节点 `TargetNode` |
+| `{ "name": "Resume", "anchor": true }` | 引用锚点 `Resume`（在 `next` / `on_error` 中） |
+
+### inverse：把「识别到」当成「没识别到」
+
+适合「不在某状态时」的判断，配合 `on_error` 使用：
+
+```json
+{
+    "NaviCheck": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "inverse": true,                  ← 在主界面时视为"未识别"
+        "timeout": 6000,
+        "on_error": ["SomeNode"],         ← 匹配成功（即在主界面）→ 走这里
+        "next": ["OtherNode"]             ← 匹配失败（即不在主界面）→ 走这里
+    }
+}
+```
+
+⚠️ 用 `inverse` + `on_error` 时注意：节点必须**等自己的 timeout 耗尽**才会触发 `on_error`，
+所以这个节点的 timeout 就是等待时长，别设太大。
+
+### jump_back：执行完跳回父节点的 next 列表
+
+`next` 里的 `{ "name": "X", "jump_back": true }` 表示：X 执行完成后，跳回**父节点**的
+next 列表，从 X 之后的那一项继续。
 
 ### timeout 要沿链传递
 
-MaaFramework 的 `timeout` 默认 20000ms，且 **超时预算会沿 next 链传递**。
-上游节点 timeout 太短会导致下游等不到目标。
+`timeout` 默认 20000ms，且**上游节点 timeout 太短会先耗尽，导致下游的 `on_error` 来不及触发**。
 
 ```json
-"ExerciseTrust": {
-    "timeout": 300000,          // ← 5 分钟，够打完多场战斗
-    "next": ["ExerciseWaitEnd"]
+"ExerciseStart": {
+    "timeout": 120000,          ← 入口给足预算，否则归位流程会被提前掐断
+    "next": ["ExerciseNaviTarget", "NaviCommon"]
 }
 ```
 
@@ -165,3 +275,6 @@ npx @nekosu/maa-tools check
 | 弹窗遮罩 | 截图时弹窗未完全弹出，标题被遮罩吞掉 | 等弹窗完全稳定再截 |
 | 坐标估算 | 看图估算点击位置，偏差 60+ 像素 | 用 MAA 扩展「复制」拿精确 ROI |
 | 脚本硬编码探查 | 在非主界面时点击，误判为账号差异 | 探查前先确认当前页面状态 |
+| **DirectHit 不生成调试图** | 误以为节点没执行 | 查 `maafw.log` 的 `node done` 而非调试图 |
+| **next 列表只在识别成功时遍历** | 识别失败时 next 里的节点全都没跑 | 当前节点用 `DirectHit` 保证成功，把判断下沉 |
+| **inverse 触发 on_error 需等 timeout** | 等待时间不可控 | 调小该节点 timeout |

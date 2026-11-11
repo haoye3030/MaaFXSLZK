@@ -1,5 +1,26 @@
 {
     "TaskClaimStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "anchor": { "Resume": "TaskClaimResume" },
+        "next": ["TaskClaimNaviTarget", "NaviCommon"]
+    },
+    "TaskClaimNaviTarget": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/task_tab_all.png",
+        "roi": [30, 105, 225, 85],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": ["TaskClaimClickAll"]
+    },
+    "TaskClaimResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["TaskClaimClickTask"]
+    },
+    "TaskClaimClickTask": {
         "recognition": "TemplateMatch",
         "template": "task_claim/nav_task.png",
         "roi": [780, 650, 120, 65],
