@@ -1,0 +1,277 @@
+{
+    "NavalStart": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/nav_shop.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "next": ["NavalOpenQuickClaim"],
+        "focus": {
+            "success": "开始收取港区资源并换班"
+        }
+    },
+    "NavalOpenQuickClaim": {
+        "recognition": "TemplateMatch",
+        "template": "common/btn_quick_claim.png",
+        "roi": [1150, 175, 130, 50],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 20000,
+        "next": ["NavalClaimRefinery", "NavalClaimStore"]
+    },
+    "NavalClaimRefinery": {
+        "recognition": "TemplateMatch",
+        "template": "naval/claim_all_refinery.png",
+        "roi": [1100, 60, 130, 80],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 15000,
+        "next": ["NavalClaimStore", "NavalEnterRefinery"]
+    },
+    "NavalClaimStore": {
+        "recognition": "TemplateMatch",
+        "template": "naval/claim_all_store.png",
+        "roi": [1100, 148, 130, 80],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 15000,
+        "next": ["NavalEnterRefinery"]
+    },
+    "NavalEnterRefinery": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [755, 95],
+        "post_delay": 4000,
+        "next": ["NavalShiftBtn"]
+    },
+    "NavalShiftBtn": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_shift.png",
+        "roi": [266, 596, 60, 78],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 20000,
+        "next": ["NavalEnsureChkSpa"]
+    },
+    "NavalEnsureChkSpa": {
+        "recognition": "TemplateMatch",
+        "template": "naval/chk_spa.png",
+        "roi": [700, 560, 26, 22],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["NavalEnsureChkAutoSort"]
+    },
+    "NavalEnsureChkAutoSort": {
+        "recognition": "TemplateMatch",
+        "template": "naval/chk_auto_sort.png",
+        "roi": [951, 559, 26, 22],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["NavalClickEdit"]
+    },
+    "NavalClickEdit": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_edit.png",
+        "roi": [780, 592, 232, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 20000,
+        "next": ["NavalStopShiftPopup"]
+    },
+    "NavalStopShiftPopup": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_stop_shift.png",
+        "roi": [520, 320, 240, 40],
+        "threshold": 0.75,
+        "action": "DoNothing",
+        "timeout": 15000,
+        "next": ["NavalStopShiftOk"]
+    },
+    "NavalStopShiftOk": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_ok.png",
+        "roi": [730, 428, 205, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 15000,
+        "next": ["NavalClickStartShift"]
+    },
+    "NavalClickStartShift": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_start_shift.png",
+        "roi": [780, 592, 232, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 20000,
+        "next": ["NavalShiftSuccessPopup"]
+    },
+    "NavalShiftSuccessPopup": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_shift_success.png",
+        "roi": [380, 305, 525, 68],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 20000,
+        "next": ["NavalShiftSuccessOk"]
+    },
+    "NavalShiftSuccessOk": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_ok2.png",
+        "roi": [730, 428, 205, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 15000,
+        "next": ["NavalBackHome"]
+    },
+    "NavalBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 20000,
+        "next": ["NavalStartSecond"]
+    },
+    "NavalStartSecond": {
+        "recognition": "TemplateMatch",
+        "template": "gift_claim/nav_shop.png",
+        "roi": [10, 650, 90, 60],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 30000,
+        "next": ["NavalOpenQuickClaim2"]
+    },
+    "NavalOpenQuickClaim2": {
+        "recognition": "TemplateMatch",
+        "template": "common/btn_quick_claim.png",
+        "roi": [1150, 175, 130, 50],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 20000,
+        "next": ["NavalEnterStore"]
+    },
+    "NavalEnterStore": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [755, 182],
+        "post_delay": 4000,
+        "next": ["NavalShiftBtn2"]
+    },
+    "NavalShiftBtn2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_shift.png",
+        "roi": [266, 596, 60, 78],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 20000,
+        "next": ["NavalEnsureChkSpa2"]
+    },
+    "NavalEnsureChkSpa2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/chk_spa.png",
+        "roi": [700, 560, 26, 22],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["NavalEnsureChkAutoSort2"]
+    },
+    "NavalEnsureChkAutoSort2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/chk_auto_sort.png",
+        "roi": [951, 559, 26, 22],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": ["NavalClickEdit2"]
+    },
+    "NavalClickEdit2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_edit.png",
+        "roi": [780, 592, 232, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 20000,
+        "next": ["NavalStopShiftPopup2"]
+    },
+    "NavalStopShiftPopup2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_stop_shift.png",
+        "roi": [520, 320, 240, 40],
+        "threshold": 0.75,
+        "action": "DoNothing",
+        "timeout": 15000,
+        "next": ["NavalStopShiftOk2"]
+    },
+    "NavalStopShiftOk2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_ok.png",
+        "roi": [730, 428, 205, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 15000,
+        "next": ["NavalClickStartShift2"]
+    },
+    "NavalClickStartShift2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/btn_start_shift.png",
+        "roi": [780, 592, 232, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 20000,
+        "next": ["NavalShiftSuccessPopup2"]
+    },
+    "NavalShiftSuccessPopup2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_shift_success.png",
+        "roi": [380, 305, 525, 68],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 20000,
+        "next": ["NavalShiftSuccessOk2"]
+    },
+    "NavalShiftSuccessOk2": {
+        "recognition": "TemplateMatch",
+        "template": "naval/popup_ok2.png",
+        "roi": [730, 428, 205, 66],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 15000,
+        "next": ["NavalFinish"]
+    },
+    "NavalFinish": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["NavalBackHome2"],
+        "focus": {
+            "success": "港区资源收取与换班完成"
+        }
+    },
+    "NavalBackHome2": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [185, 10, 110, 60],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "focus": {
+            "success": "港区资源收取与换班完成，已返回主界面"
+        }
+    }
+}
