@@ -92,54 +92,21 @@
                                             "name": "food",
                                             "label": "食物（烤鸡 / 甜点 / 海鲜串 / 沙拉等）",
                                             "pipeline_override": {
-                                                            "ShopScan_Food": {
-                                                                            "next": [
-                                                                                            "ShopBuy_Food_r1c1",
-                                                                                            "ShopBuy_Food_r1c2",
-                                                                                            "ShopBuy_Food_r1c3",
-                                                                                            "ShopBuy_Food_r1c4",
-                                                                                            "ShopBuy_Food_r2c1",
-                                                                                            "ShopBuy_Food_r2c2",
-                                                                                            "ShopBuy_Food_r2c3",
-                                                                                            "ShopBuy_Food_r2c4"
-                                                                            ]
-                                                            }
+                                                            "ShopScan_Food1": {"next": ["ShopBuy_Food_r1c1", "ShopBuy_Food_r1c2", "ShopBuy_Food_r1c3", "ShopBuy_Food_r1c4", "ShopBuy_Food_r2c1", "ShopBuy_Food_r2c2", "ShopBuy_Food_r2c3", "ShopBuy_Food_r2c4"]}, "ShopScan_Food2": {"next": ["ShopBuy_Food_r1c1", "ShopBuy_Food_r1c2", "ShopBuy_Food_r1c3", "ShopBuy_Food_r1c4", "ShopBuy_Food_r2c1", "ShopBuy_Food_r2c2", "ShopBuy_Food_r2c3", "ShopBuy_Food_r2c4"]}
                                             }
                             },
                             {
                                             "name": "part",
                                             "label": "部件（鱼雷 / 主炮 / 设备 / 舰载机 / 强化部件 / 部件箱）",
                                             "pipeline_override": {
-                                                            "ShopScan_Part": {
-                                                                            "next": [
-                                                                                            "ShopBuy_Part_r1c1",
-                                                                                            "ShopBuy_Part_r1c2",
-                                                                                            "ShopBuy_Part_r1c3",
-                                                                                            "ShopBuy_Part_r1c4",
-                                                                                            "ShopBuy_Part_r2c1",
-                                                                                            "ShopBuy_Part_r2c2",
-                                                                                            "ShopBuy_Part_r2c3",
-                                                                                            "ShopBuy_Part_r2c4"
-                                                                            ]
-                                                            }
+                                                            "ShopScan_Part1": {"next": ["ShopBuy_Part_r1c1", "ShopBuy_Part_r1c2", "ShopBuy_Part_r1c3", "ShopBuy_Part_r1c4", "ShopBuy_Part_r2c1", "ShopBuy_Part_r2c2", "ShopBuy_Part_r2c3", "ShopBuy_Part_r2c4"]}, "ShopScan_Part2": {"next": ["ShopBuy_Part_r1c1", "ShopBuy_Part_r1c2", "ShopBuy_Part_r1c3", "ShopBuy_Part_r1c4", "ShopBuy_Part_r2c1", "ShopBuy_Part_r2c2", "ShopBuy_Part_r2c3", "ShopBuy_Part_r2c4"]}
                                             }
                             },
                             {
                                             "name": "book",
                                             "label": "技能书（特训 / 指挥理论 / 支援战术）",
                                             "pipeline_override": {
-                                                            "ShopScan_Book": {
-                                                                            "next": [
-                                                                                            "ShopBuy_Book_r1c1",
-                                                                                            "ShopBuy_Book_r1c2",
-                                                                                            "ShopBuy_Book_r1c3",
-                                                                                            "ShopBuy_Book_r1c4",
-                                                                                            "ShopBuy_Book_r2c1",
-                                                                                            "ShopBuy_Book_r2c2",
-                                                                                            "ShopBuy_Book_r2c3",
-                                                                                            "ShopBuy_Book_r2c4"
-                                                                            ]
-                                                            }
+                                                            "ShopScan_Book1": {"next": ["ShopBuy_Book_r1c1", "ShopBuy_Book_r1c2", "ShopBuy_Book_r1c3", "ShopBuy_Book_r1c4", "ShopBuy_Book_r2c1", "ShopBuy_Book_r2c2", "ShopBuy_Book_r2c3", "ShopBuy_Book_r2c4"]}, "ShopScan_Book2": {"next": ["ShopBuy_Book_r1c1", "ShopBuy_Book_r1c2", "ShopBuy_Book_r1c3", "ShopBuy_Book_r1c4", "ShopBuy_Book_r2c1", "ShopBuy_Book_r2c2", "ShopBuy_Book_r2c3", "ShopBuy_Book_r2c4"]}
                                             }
                             }
             ]
