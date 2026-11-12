@@ -278,3 +278,36 @@ npx @nekosu/maa-tools check
 | **DirectHit 不生成调试图** | 误以为节点没执行 | 查 `maafw.log` 的 `node done` 而非调试图 |
 | **next 列表只在识别成功时遍历** | 识别失败时 next 里的节点全都没跑 | 当前节点用 `DirectHit` 保证成功，把判断下沉 |
 | **inverse 触发 on_error 需等 timeout** | 等待时间不可控 | 调小该节点 timeout |
+| **弹窗遮罩导致假成功** | 弹窗挡路 → 任务报 succeeded 但什么都没做 | 归位流程加弹窗关闭节点（见下） |
+| **DirectHit 动作不会失败** | 点击被遮挡时静默通过 | 关键动作后加一个「结果校验」节点 |
+
+### 弹窗遮罩：最容易造成「假成功」的坑
+
+游戏弹窗出现时，**底层界面仍然部分可见**（例如退出确认框弹出后，底部「商店」按钮依然在，只是变暗）。
+于是「识别主界面标志」会**照样命中** → 归位判定通过 → 跳回任务流 → 但弹窗挡住了所有点击 → 
+任务报 `succeeded`，**实际一步都没执行**。
+
+实测案例：主界面按 BACK 弹出「是否离开游戏」，`SecretaryTalkStart` 报 succeeded 5.6s，
+但秘书舰完全没被点到。
+
+**解决办法**：归位流程里加一个「关闭弹窗」节点，放在 next 列表**最优先**：
+
+```json
+"NaviPopupCancel": {
+    "recognition": "TemplateMatch",
+    "template": "common/ui_popup_cancel.png",
+    "roi": [530, 430, 220, 62],
+    "threshold": 0.7,
+    "action": "Click",
+    "post_delay": 1500,
+    "timeout": 2000,
+    "max_hit": 5,
+    "next": ["NaviCommon"]
+}
+```
+
+⚠️ 这只覆盖了已知的「退出确认框」。**每种弹窗的关闭按钮位置都不同**，
+遇到新弹窗需要补对应素材（用取消/关闭按钮，不要用确定 —— 确定可能有付费后果）。
+
+**通用建议**：凡是用 `DirectHit` + 固定坐标点击的动作（不产生识别），
+后面最好跟一个「结果校验」节点（TemplateMatch 目标状态），否则失败会静默。

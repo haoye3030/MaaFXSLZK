@@ -3,7 +3,18 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 120000,
-        "next": ["NaviOnMain", "NaviSubpage", "NaviWait"]
+        "next": ["NaviPopupCancel", "NaviOnMain", "NaviSubpage", "NaviWait"]
+    },
+    "NaviPopupCancel": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_popup_cancel.png",
+        "roi": [530, 430, 220, 62],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 2000,
+        "max_hit": 5,
+        "next": ["NaviCommon"]
     },
     "NaviOnMain": {
         "recognition": "TemplateMatch",
