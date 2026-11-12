@@ -1,0 +1,312 @@
+{
+    "DailySweepStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "anchor": {
+            "Resume": "DailySweepResume",
+            "Next": "DailySweepTryConvoy"
+        },
+        "next": ["DailySweepOnDaily", "NaviCommon"]
+    },
+
+    "DailySweepOnDaily": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/tab_daily_on.png",
+        "roi": [0, 185, 220, 80],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [{ "name": "Next", "anchor": true }],
+        "on_error": ["NaviCommon"]
+    },
+
+    "DailySweepResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": ["DailySweepClickAttack"]
+    },
+
+    "DailySweepClickAttack": {
+        "recognition": "TemplateMatch",
+        "template": "exercise/btn_attack.png",
+        "roi": [1020, 510, 260, 110],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "max_hit": 1,
+        "next": ["DailySweepClickDailyTab"]
+    },
+
+    "DailySweepClickDailyTab": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/tab_daily.png",
+        "roi": [50, 175, 180, 95],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3000,
+        "next": [{ "name": "Next", "anchor": true }],
+        "on_error": ["DailySweepClickDailyTabFallback"]
+    },
+
+    "DailySweepClickDailyTabFallback": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [130, 222],
+        "post_delay": 3000,
+        "next": [{ "name": "Next", "anchor": true }]
+    },
+
+    "DailySweepTryConvoy": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepTryExercise" },
+        "next": ["DailySweepClickConvoy"],
+        "on_error": ["DailySweepTryExercise"]
+    },
+
+    "DailySweepClickConvoy": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_convoy.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickConvoy2"]
+    },
+
+    "DailySweepClickConvoy2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickConvoy",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepTryExercise"]
+    },
+
+    "DailySweepTryExercise": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepTryArms" },
+        "next": ["DailySweepClickExercise"],
+        "on_error": ["DailySweepTryArms"]
+    },
+
+    "DailySweepClickExercise": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_exercise.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickExercise2"]
+    },
+
+    "DailySweepClickExercise2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickExercise",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepTryArms"]
+    },
+
+    "DailySweepTryArms": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepTryTactic" },
+        "next": ["DailySweepClickArms"],
+        "on_error": ["DailySweepTryTactic"]
+    },
+
+    "DailySweepClickArms": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_arms.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickArms2"]
+    },
+
+    "DailySweepClickArms2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickArms",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepTryTactic"]
+    },
+
+    "DailySweepTryTactic": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepSwipeBattle" },
+        "next": ["DailySweepClickTactic"],
+        "on_error": ["DailySweepSwipeBattle"]
+    },
+
+    "DailySweepClickTactic": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_tactic.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickTactic2"]
+    },
+
+    "DailySweepClickTactic2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickTactic",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepSwipeBattle"]
+    },
+
+    "DailySweepSwipeBattle": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [1150, 615],
+        "end": [480, 615],
+        "duration": 400,
+        "post_delay": 1800,
+        "anchor": { "Next": "DailySweepTryBattle" },
+        "next": ["DailySweepTryBattle"]
+    },
+
+    "DailySweepTryBattle": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepEnd" },
+        "next": ["DailySweepClickBattle"],
+        "on_error": ["DailySweepEnd"]
+    },
+
+    "DailySweepClickBattle": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_battle.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickBattle2"],
+        "focus": {
+            "success": "已定位最后一个分类「战场探索」"
+        }
+    },
+
+    "DailySweepClickBattle2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickBattle",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepEnd"]
+    },
+
+    "DailySweepPopupCheck": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/popup_sweep_hint.png",
+        "roi": [300, 330, 700, 80],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "next": ["DailySweepConfirmOk"],
+        "on_error": ["DailySweepDismiss"]
+    },
+
+    "DailySweepConfirmOk": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/popup_ok.png",
+        "roi": [730, 430, 210, 60],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 3000,
+        "next": ["DailySweepRewardCheck"],
+        "on_error": ["DailySweepDismiss"]
+    },
+
+    "DailySweepRewardCheck": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/reward_popup.png",
+        "roi": [380, 110, 560, 140],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 15000,
+        "post_delay": 1200,
+        "next": ["DailySweepDismissReward"],
+        "on_error": ["DailySweepVerifyBack"],
+        "focus": {
+            "success": "扫荡结算完成"
+        }
+    },
+
+    "DailySweepDismissReward": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [1050, 500],
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": ["DailySweepVerifyBack"],
+        "on_error": ["DailySweepDismissReward2"]
+    },
+
+    "DailySweepVerifyBack": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/tab_daily_on.png",
+        "roi": [0, 185, 220, 80],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 8000,
+        "next": [{ "name": "Next", "anchor": true }]
+    },
+
+    "DailySweepDismissReward2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [1050, 500],
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": ["DailySweepVerifyBack2"],
+        "on_error": ["NaviCommon"]
+    },
+
+    "DailySweepVerifyBack2": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/tab_daily_on.png",
+        "roi": [0, 185, 220, 80],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 8000,
+        "next": [{ "name": "Next", "anchor": true }]
+    },
+
+    "DailySweepDismiss": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/popup_ok.png",
+        "roi": [730, 430, 210, 60],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [{ "name": "Next", "anchor": true }]
+    },
+
+    "DailySweepEnd": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "focus": {
+            "success": "日常关卡扫荡完成，已处理全部可扫荡分类"
+        }
+    }
+}
