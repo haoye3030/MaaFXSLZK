@@ -30,6 +30,60 @@
             ]
         }
     ],
+    "option": {
+        "CraftGroups": {
+            "type": "checkbox",
+            "label": "选择要合成的道具类别",
+            "description": "按**类别**勾选，不区分具体是初级 / 中级 / 高级：勾中某类后会把该类里所有素材逐个合到上限，直到合成不出来为止。\n\n合成**没有二次确认、不可撤销**，请确认后再勾。未勾选的类别不会被触碰。部件类（主炮 / 鱼雷 / 舰载机 / 设备的部件 I）刻意不在列表内：各级部件都有用途，暂不合成。",
+            "cases": [
+                            {
+                                            "name": "train",
+                                            "label": "训练材料（特训 / 理论 / 战术，共 8 类）",
+                                            "pipeline_override": {
+                                                            "CraftLoop_Train": {
+                                                                            "next": [
+                                                                                            "CraftPick_t_lei3",
+                                                                                            "CraftPick_t_hangk1",
+                                                                                            "CraftPick_t_hangk3",
+                                                                                            "CraftPick_t_fuzhu3",
+                                                                                            "CraftPick_s_zhihui1",
+                                                                                            "CraftPick_s_zhihui2",
+                                                                                            "CraftPick_s_zhiyuan1",
+                                                                                            "CraftPick_s_zhiyuan2"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "food",
+                                            "label": "食物（甜点 / 烤鸡 / 海鲜串 / 沙拉，共 4 类）",
+                                            "pipeline_override": {
+                                                            "CraftLoop_Food": {
+                                                                            "next": [
+                                                                                            "CraftPick_f_yezi",
+                                                                                            "CraftPick_f_ji",
+                                                                                            "CraftPick_f_chuan",
+                                                                                            "CraftPick_f_shala"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "box",
+                                            "label": "箱子（部件箱 / 装备箱，共 3 类）",
+                                            "pipeline_override": {
+                                                            "CraftLoop_Box": {
+                                                                            "next": [
+                                                                                            "CraftPick_box1",
+                                                                                            "CraftPick_box2",
+                                                                                            "CraftPick_box3"
+                                                                            ]
+                                                            }
+                                            }
+                            }
+            ]
+        }
+    },
     "task": [
         {
             "name": "领取任务奖励",
@@ -62,6 +116,13 @@
             "label": "自动扫荡日常关卡（未测试）",
             "entry": "DailySweepStart",
             "description": "⚠️ **尚未完整测试**，建议先手动确认再使用。\n\n自动进入出击 → 日常，对已开放的关卡分类逐个扫荡。对同一张卡片连点两次即可触发「确定扫荡 N 次?」，确认后一次用尽该分类当日剩余次数；次数已用尽的分类会自动跳过，最后一个分类会自动左滑卡片行后处理。\n\n扫荡不消耗燃料，也不会增加经验与好感度，仅消耗每日扫荡次数，因此不涉及任何资源消耗。\n\n启动前请先回到主界面。"
+        },
+        {
+            "name": "自动合成仓库道具",
+            "label": "自动合成仓库道具（未测试）",
+            "entry": "CraftStart",
+            "option": ["CraftGroups"],
+            "description": "⚠️ **尚未完整测试**，且**合成无法撤销**，首次使用请先手动确认一次。\n\n在「选项」中按类别勾选，自动进入 仓库 → 合成 标签，把所选类别里的素材逐个点开、数量拉满后合成，直到该类合不出东西为止，最后返回主界面。\n\n按类别合成，不区分初级 / 中级 / 高级：同一类别里任何一项被合成都是正向操作，因此不做过细识别。\n\n合成使用的是「信息」面板里默认的最大数量，即把该道具当日可合成的部分一次性合完。未勾选的类别不会被触碰。\n\n启动前请先回到主界面。"
         }
     ]
 }

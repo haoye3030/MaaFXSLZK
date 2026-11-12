@@ -1,0 +1,651 @@
+{
+    "CraftStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 120000,
+        "anchor": {
+            "Resume": "CraftResume"
+        },
+        "next": [
+            "CraftOnCraftPage",
+            "NaviCommon"
+        ]
+    },
+    "CraftOnCraftPage": {
+        "recognition": "TemplateMatch",
+        "template": "craft/tab_craft_on.png",
+        "roi": [
+            0,
+            330,
+            200,
+            90
+        ],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "CraftLoop_Train"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "CraftResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "CraftClickDepot"
+        ]
+    },
+    "CraftClickDepot": {
+        "recognition": "TemplateMatch",
+        "template": "common/nav_depot.png",
+        "roi": [
+            333,
+            651,
+            149,
+            51
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3500,
+        "max_hit": 1,
+        "next": [
+            "CraftClickTab"
+        ]
+    },
+    "CraftClickTab": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            95,
+            370
+        ],
+        "post_delay": 2500,
+        "next": [
+            "CraftTabCheck"
+        ]
+    },
+    "CraftTabCheck": {
+        "recognition": "TemplateMatch",
+        "template": "craft/tab_craft_on.png",
+        "roi": [
+            0,
+            330,
+            200,
+            90
+        ],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "CraftLoop_Train"
+        ],
+        "on_error": [
+            "CraftClickTabRetry"
+        ]
+    },
+    "CraftClickTabRetry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            95,
+            370
+        ],
+        "post_delay": 3000,
+        "next": [
+            "CraftTabCheck2"
+        ]
+    },
+    "CraftTabCheck2": {
+        "recognition": "TemplateMatch",
+        "template": "craft/tab_craft_on.png",
+        "roi": [
+            0,
+            330,
+            200,
+            90
+        ],
+        "threshold": 0.85,
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "CraftLoop_Train"
+        ],
+        "on_error": [
+            "CraftNext_Train"
+        ]
+    },
+    "CraftLoop_Train": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            700,
+            250
+        ],
+        "end": [
+            700,
+            640
+        ],
+        "duration": 300,
+        "repeat": 2,
+        "post_delay": 700,
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "CraftLoop_Train"
+        },
+        "next": [
+            "CraftLoop_Food"
+        ],
+        "on_error": [
+            "CraftNext_Food"
+        ]
+    },
+    "CraftLoop_Food": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            700,
+            250
+        ],
+        "end": [
+            700,
+            640
+        ],
+        "duration": 300,
+        "repeat": 2,
+        "post_delay": 700,
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "CraftLoop_Food"
+        },
+        "next": [
+            "CraftLoop_Box"
+        ],
+        "on_error": [
+            "CraftNext_Box"
+        ]
+    },
+    "CraftLoop_Box": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            700,
+            250
+        ],
+        "end": [
+            700,
+            640
+        ],
+        "duration": 300,
+        "repeat": 2,
+        "post_delay": 700,
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "CraftLoop_Box"
+        },
+        "next": [
+            "CraftBackHome"
+        ],
+        "on_error": [
+            "CraftNext_Home"
+        ]
+    },
+    "CraftNext_Food": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "CraftLoop_Food"
+        ]
+    },
+    "CraftNext_Train": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "CraftLoop_Train"
+        ]
+    },
+    "CraftNext_Box": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "CraftLoop_Box"
+        ]
+    },
+    "CraftNext_Home": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "CraftBackHome"
+        ]
+    },
+    "CraftPick_t_lei3": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_t_lei3.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_t_hangk1": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_t_hangk1.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_t_hangk3": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_t_hangk3.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_t_fuzhu3": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_t_fuzhu3.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_s_zhihui1": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_s_zhihui1.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_s_zhihui2": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_s_zhihui2.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_s_zhiyuan1": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_s_zhiyuan1.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_s_zhiyuan2": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_s_zhiyuan2.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_f_yezi": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_f_yezi.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_f_ji": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_f_ji.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_f_chuan": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_f_chuan.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_f_shala": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_f_shala.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_box1": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_box1.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_box2": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_box2.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPick_box3": {
+        "recognition": "TemplateMatch",
+        "template": "craft/item_box3.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "max_hit": 4,
+        "next": [
+            "CraftPress"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftPress": {
+        "recognition": "TemplateMatch",
+        "template": "craft/btn_craft.png",
+        "roi": [
+            800,
+            555,
+            220,
+            70
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 5000,
+        "next": [
+            "CraftReward"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftReward": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/reward_popup.png",
+        "roi": [
+            380,
+            110,
+            560,
+            140
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "post_delay": 800,
+        "timeout": 5000,
+        "next": [
+            "CraftDismissReward"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftDismissReward": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            640,
+            590
+        ],
+        "post_delay": 1500,
+        "timeout": 2500,
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "CraftBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "focus": {
+            "success": "合成完成，已返回主界面"
+        }
+    }
+}
