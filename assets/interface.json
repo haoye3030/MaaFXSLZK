@@ -82,6 +82,67 @@
                                             }
                             }
             ]
+        },
+        "ShopGroups": {
+            "type": "checkbox",
+            "label": "补给兑换：选择要买什么",
+            "description": "只作用于「贸易商店 → 补给兑换」页。勾中的类别会把该页所有可兑换（未售罄）的对应商品各买 1 次。\n\n每条商品都会同时校验「名称命中关键词」和「状态仍为可兑换」，所以买过的不会重复买。货币下限默认 0（不限制）。\n\n启动前请先回到主界面。",
+            "cases": [
+                            {
+                                            "name": "food",
+                                            "label": "食物（烤鸡 / 甜点 / 海鲜串 / 沙拉等）",
+                                            "pipeline_override": {
+                                                            "ShopScan_Food": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Food_r1c1",
+                                                                                            "ShopBuy_Food_r1c2",
+                                                                                            "ShopBuy_Food_r1c3",
+                                                                                            "ShopBuy_Food_r1c4",
+                                                                                            "ShopBuy_Food_r2c1",
+                                                                                            "ShopBuy_Food_r2c2",
+                                                                                            "ShopBuy_Food_r2c3",
+                                                                                            "ShopBuy_Food_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "part",
+                                            "label": "部件（鱼雷 / 主炮 / 设备 / 舰载机 / 强化部件 / 部件箱）",
+                                            "pipeline_override": {
+                                                            "ShopScan_Part": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Part_r1c1",
+                                                                                            "ShopBuy_Part_r1c2",
+                                                                                            "ShopBuy_Part_r1c3",
+                                                                                            "ShopBuy_Part_r1c4",
+                                                                                            "ShopBuy_Part_r2c1",
+                                                                                            "ShopBuy_Part_r2c2",
+                                                                                            "ShopBuy_Part_r2c3",
+                                                                                            "ShopBuy_Part_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "book",
+                                            "label": "技能书（特训 / 指挥理论 / 支援战术）",
+                                            "pipeline_override": {
+                                                            "ShopScan_Book": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Book_r1c1",
+                                                                                            "ShopBuy_Book_r1c2",
+                                                                                            "ShopBuy_Book_r1c3",
+                                                                                            "ShopBuy_Book_r1c4",
+                                                                                            "ShopBuy_Book_r2c1",
+                                                                                            "ShopBuy_Book_r2c2",
+                                                                                            "ShopBuy_Book_r2c3",
+                                                                                            "ShopBuy_Book_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            }
+            ]
         }
     },
     "task": [
@@ -123,6 +184,13 @@
             "entry": "CraftStart",
             "option": ["CraftGroups"],
             "description": "⚠️ **尚未完整测试**，且**合成无法撤销**，首次使用请先手动确认一次。\n\n在「选项」中按类别勾选，自动进入 仓库 → 合成 标签，把所选类别里的素材逐个点开、数量拉满后合成，直到该类合不出东西为止，最后返回主界面。\n\n按类别合成，不区分初级 / 中级 / 高级：同一类别里任何一项被合成都是正向操作，因此不做过细识别。\n\n合成使用的是「信息」面板里默认的最大数量，即把该道具当日可合成的部分一次性合完。未勾选的类别不会被触碰。\n\n启动前请先回到主界面。"
+        },
+        {
+            "name": "自动兑换补给商店",
+            "label": "自动兑换补给商店（未测试）",
+            "entry": "ShopStart",
+            "option": ["ShopGroups"],
+            "description": "⚠️ **尚未完整测试**，购买会真实消耗货币且不可撤销。\n\n自动进入 商店 → 贸易商店 → 补给兑换，对勾选类别（食物 / 部件 / 技能书）中所有仍可兑换的商品各买 1 次，买完返回主界面。\n\n启动前请先回到主界面。"
         }
     ]
 }

@@ -1,0 +1,1633 @@
+{
+    "ShopStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 240000,
+        "anchor": {
+            "Resume": "ShopResume"
+        },
+        "next": [
+            "ShopOnPage",
+            "NaviCommon"
+        ]
+    },
+    "ShopOnPage": {
+        "recognition": "ColorMatch",
+        "lower": [
+            30,
+            170,
+            190
+        ],
+        "upper": [
+            60,
+            215,
+            230
+        ],
+        "roi": [
+            205,
+            180,
+            20,
+            50
+        ],
+        "count": 20,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "ShopScan_Food"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "ShopResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopClickShop"
+        ]
+    },
+    "ShopClickShop": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "post_delay": 3000,
+        "max_hit": 1,
+        "next": [
+            "ShopClickTradeTab"
+        ]
+    },
+    "ShopClickTradeTab": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            701,
+            116
+        ],
+        "post_delay": 2500,
+        "next": [
+            "ShopClickSupply"
+        ]
+    },
+    "ShopClickSupply": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            110,
+            204
+        ],
+        "post_delay": 2500,
+        "next": [
+            "ShopScan_Food"
+        ]
+    },
+    "ShopScan_Food": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "anchor": {
+            "Loop": "ShopScan_Food"
+        },
+        "next": [
+            "ShopScan_Part"
+        ],
+        "on_error": [
+            "ShopNext_Food"
+        ]
+    },
+    "ShopNext_Food": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Part"
+        ]
+    },
+    "ShopNext_Home2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopBackHome"
+        ]
+    },
+    "ShopScan_Part": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "anchor": {
+            "Loop": "ShopScan_Part"
+        },
+        "next": [
+            "ShopScan_Book"
+        ],
+        "on_error": [
+            "ShopNext_Part"
+        ]
+    },
+    "ShopNext_Part": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Book"
+        ]
+    },
+    "ShopScan_Book": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "anchor": {
+            "Loop": "ShopScan_Book"
+        },
+        "next": [
+            "ShopFreeCheck"
+        ],
+        "on_error": [
+            "ShopNext_Book"
+        ]
+    },
+    "ShopNext_Book": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopFreeCheck"
+        ]
+    },
+    "ShopBuy_Food_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第1排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第1排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第1排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第1排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第2排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第2排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第2排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Food_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Food"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "食物 第2排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第1排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第1排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第1排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第1排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第2排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第2排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第2排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Part_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Part"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "部件 第2排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第1排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第1排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第1排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第1排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第2排第1位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第2排第2位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第2排第3位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopBuy_Book_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "next": [
+            "ShopPanel_Book"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "技能书 第2排第4位命中"
+        },
+        "max_hit": 1
+    },
+    "ShopPanel_Food": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ],
+        "focus": {
+            "success": "面板已打开且商品匹配（Food）"
+        }
+    },
+    "ShopPanelReject_Food": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "面板商品不符，已取消"
+        }
+    },
+    "ShopPanel_Part": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*(鱼雷部件|主炮部件|设备部件|舰载机部件|强化部件|级部件箱|装备强化).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ],
+        "focus": {
+            "success": "面板已打开且商品匹配（Part）"
+        }
+    },
+    "ShopPanelReject_Part": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "面板商品不符，已取消"
+        }
+    },
+    "ShopPanel_Book": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*(特训|指挥理论|支援战术).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ],
+        "focus": {
+            "success": "面板已打开且商品匹配（Book）"
+        }
+    },
+    "ShopPanelReject_Book": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "focus": {
+            "success": "面板商品不符，已取消"
+        }
+    },
+    "ShopClickConfirm": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "roi": [
+            880,
+            470,
+            140,
+            70
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2600,
+        "timeout": 4000,
+        "next": [
+            "ShopWaitClosed"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopClickCancel": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [
+            690,
+            470,
+            140,
+            70
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1800,
+        "timeout": 4000,
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopWaitClosed": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [
+            690,
+            470,
+            140,
+            70
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "on_error": [
+            "ShopPressEsc"
+        ]
+    },
+    "ShopPressEsc": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            110,
+            660
+        ],
+        "post_delay": 1800,
+        "next": [
+            "ShopWaitClosed2"
+        ]
+    },
+    "ShopWaitClosed2": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [
+            690,
+            470,
+            140,
+            70
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ],
+        "on_error": [
+            "ShopBackHome"
+        ]
+    },
+    "ShopFreeCheck": {
+        "recognition": "OCR",
+        "expected": "免费[1-9]/\\d次",
+        "roi": [
+            290,
+            678,
+            380,
+            35
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "ShopClickRefresh"
+        ],
+        "on_error": [
+            "ShopBackHome"
+        ]
+    },
+    "ShopClickRefresh": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            929,
+            692
+        ],
+        "post_delay": 1800,
+        "next": [
+            "ShopZeroCostCheck"
+        ]
+    },
+    "ShopZeroCostCheck": {
+        "recognition": "OCR",
+        "expected": "消耗.0.钻石",
+        "roi": [
+            480,
+            315,
+            320,
+            40
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopConfirmRefresh"
+        ],
+        "on_error": [
+            "ShopCancelRefresh"
+        ]
+    },
+    "ShopConfirmRefresh": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            830,
+            425,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2800,
+        "timeout": 4000,
+        "next": [
+            "ShopScan_Food"
+        ],
+        "on_error": [
+            "ShopBackHome"
+        ],
+        "focus": {
+            "success": "免费刷新完成（消耗 0 钻石）"
+        }
+    },
+    "ShopCancelRefresh": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "roi": [
+            630,
+            425,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1800,
+        "timeout": 4000,
+        "next": [
+            "ShopBackHome"
+        ],
+        "on_error": [
+            "ShopNext_Home2"
+        ],
+        "focus": {
+            "success": "刷新需消耗钻石，已放弃"
+        }
+    },
+    "ShopBackHome": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "focus": {
+            "success": "补给兑换完成，已返回主界面"
+        }
+    }
+}
