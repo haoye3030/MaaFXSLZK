@@ -148,14 +148,7 @@
             "Loop": "ShopScan_Food1"
         },
         "next": [
-            "ShopBuy_Food_r1c1",
-            "ShopBuy_Food_r1c2",
-            "ShopBuy_Food_r1c3",
-            "ShopBuy_Food_r1c4",
-            "ShopBuy_Food_r2c1",
-            "ShopBuy_Food_r2c2",
-            "ShopBuy_Food_r2c3",
-            "ShopBuy_Food_r2c4"
+            "ShopScan_Part1"
         ],
         "on_error": [
             "ShopNext_Food1"
@@ -183,14 +176,7 @@
             "Loop": "ShopScan_Part1"
         },
         "next": [
-            "ShopBuy_Part_r1c1",
-            "ShopBuy_Part_r1c2",
-            "ShopBuy_Part_r1c3",
-            "ShopBuy_Part_r1c4",
-            "ShopBuy_Part_r2c1",
-            "ShopBuy_Part_r2c2",
-            "ShopBuy_Part_r2c3",
-            "ShopBuy_Part_r2c4"
+            "ShopScan_Book1"
         ],
         "on_error": [
             "ShopNext_Part1"
@@ -211,14 +197,7 @@
             "Loop": "ShopScan_Book1"
         },
         "next": [
-            "ShopBuy_Book_r1c1",
-            "ShopBuy_Book_r1c2",
-            "ShopBuy_Book_r1c3",
-            "ShopBuy_Book_r1c4",
-            "ShopBuy_Book_r2c1",
-            "ShopBuy_Book_r2c2",
-            "ShopBuy_Book_r2c3",
-            "ShopBuy_Book_r2c4"
+            "ShopTop2"
         ],
         "on_error": [
             "ShopNext_Book1"
@@ -239,14 +218,7 @@
             "Loop": "ShopScan_Food2"
         },
         "next": [
-            "ShopBuy_Food_r1c1",
-            "ShopBuy_Food_r1c2",
-            "ShopBuy_Food_r1c3",
-            "ShopBuy_Food_r1c4",
-            "ShopBuy_Food_r2c1",
-            "ShopBuy_Food_r2c2",
-            "ShopBuy_Food_r2c3",
-            "ShopBuy_Food_r2c4"
+            "ShopScan_Part2"
         ],
         "on_error": [
             "ShopNext_Food2"
@@ -267,14 +239,7 @@
             "Loop": "ShopScan_Part2"
         },
         "next": [
-            "ShopBuy_Part_r1c1",
-            "ShopBuy_Part_r1c2",
-            "ShopBuy_Part_r1c3",
-            "ShopBuy_Part_r1c4",
-            "ShopBuy_Part_r2c1",
-            "ShopBuy_Part_r2c2",
-            "ShopBuy_Part_r2c3",
-            "ShopBuy_Part_r2c4"
+            "ShopScan_Book2"
         ],
         "on_error": [
             "ShopNext_Part2"
@@ -295,14 +260,7 @@
             "Loop": "ShopScan_Book2"
         },
         "next": [
-            "ShopBuy_Book_r1c1",
-            "ShopBuy_Book_r1c2",
-            "ShopBuy_Book_r1c3",
-            "ShopBuy_Book_r1c4",
-            "ShopBuy_Book_r2c1",
-            "ShopBuy_Book_r2c2",
-            "ShopBuy_Book_r2c3",
-            "ShopBuy_Book_r2c4"
+            "ShopFreeCheck"
         ],
         "on_error": [
             "ShopNext_Book2"
