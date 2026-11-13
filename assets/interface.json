@@ -86,27 +86,246 @@
         "ShopGroups": {
             "type": "checkbox",
             "label": "补给兑换：选择要买什么",
-            "description": "只作用于「贸易商店 → 补给兑换」页。勾中的类别会把该页所有可兑换（未售罄）的对应商品各买 1 次。\n\n每条商品都会同时校验「名称命中关键词」和「状态仍为可兑换」，所以买过的不会重复买。货币下限默认 0（不限制）。\n\n启动前请先回到主界面。",
+            "description": "只作用于「贸易商店 → 补给兑换」页。勾中的类别会把该页所有可兑换（未售罄）的对应商品各买 1 次。\n\n特训素材按科目拆分（航空 / 辅助 / 雷击 / 炮击 / 支援战术 / 指挥理论），可单独勾选某一种。识别依据是名称里的汉字科目词，不依赖罗马数字，因此不受 Ⅰ/Ⅱ 识别不稳的影响。\n\n每条商品同时校验「名称命中」和「状态仍可兑换」，买过的不会重复买；点开面板后还会再读一次商品名做二次校验。\n\n刷新功能当前关闭。启动前请先回到主界面。",
             "cases": [
                             {
                                             "name": "food",
                                             "label": "食物（烤鸡 / 甜点 / 海鲜串 / 沙拉等）",
                                             "pipeline_override": {
-                                                            "ShopScan_Food1": {"next": ["ShopBuy_Food_r1c1", "ShopBuy_Food_r1c2", "ShopBuy_Food_r1c3", "ShopBuy_Food_r1c4", "ShopBuy_Food_r2c1", "ShopBuy_Food_r2c2", "ShopBuy_Food_r2c3", "ShopBuy_Food_r2c4"]}, "ShopScan_Food2": {"next": ["ShopBuy_Food_r1c1", "ShopBuy_Food_r1c2", "ShopBuy_Food_r1c3", "ShopBuy_Food_r1c4", "ShopBuy_Food_r2c1", "ShopBuy_Food_r2c2", "ShopBuy_Food_r2c3", "ShopBuy_Food_r2c4"]}, "ShopRefreshGate": {"next": ["ShopFreeCheck"]}
+                                                            "ShopScan_Food1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Food_r1c1",
+                                                                                            "ShopBuy_Food_r1c2",
+                                                                                            "ShopBuy_Food_r1c3",
+                                                                                            "ShopBuy_Food_r1c4",
+                                                                                            "ShopBuy_Food_r2c1",
+                                                                                            "ShopBuy_Food_r2c2",
+                                                                                            "ShopBuy_Food_r2c3",
+                                                                                            "ShopBuy_Food_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Food2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Food_r1c1",
+                                                                                            "ShopBuy_Food_r1c2",
+                                                                                            "ShopBuy_Food_r1c3",
+                                                                                            "ShopBuy_Food_r1c4",
+                                                                                            "ShopBuy_Food_r2c1",
+                                                                                            "ShopBuy_Food_r2c2",
+                                                                                            "ShopBuy_Food_r2c3",
+                                                                                            "ShopBuy_Food_r2c4"
+                                                                            ]
+                                                            }
                                             }
                             },
                             {
                                             "name": "part",
                                             "label": "部件（鱼雷 / 主炮 / 设备 / 舰载机 / 强化部件 / 部件箱）",
                                             "pipeline_override": {
-                                                            "ShopScan_Part1": {"next": ["ShopBuy_Part_r1c1", "ShopBuy_Part_r1c2", "ShopBuy_Part_r1c3", "ShopBuy_Part_r1c4", "ShopBuy_Part_r2c1", "ShopBuy_Part_r2c2", "ShopBuy_Part_r2c3", "ShopBuy_Part_r2c4"]}, "ShopScan_Part2": {"next": ["ShopBuy_Part_r1c1", "ShopBuy_Part_r1c2", "ShopBuy_Part_r1c3", "ShopBuy_Part_r1c4", "ShopBuy_Part_r2c1", "ShopBuy_Part_r2c2", "ShopBuy_Part_r2c3", "ShopBuy_Part_r2c4"]}, "ShopRefreshGate": {"next": ["ShopFreeCheck"]}
+                                                            "ShopScan_Part1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Part_r1c1",
+                                                                                            "ShopBuy_Part_r1c2",
+                                                                                            "ShopBuy_Part_r1c3",
+                                                                                            "ShopBuy_Part_r1c4",
+                                                                                            "ShopBuy_Part_r2c1",
+                                                                                            "ShopBuy_Part_r2c2",
+                                                                                            "ShopBuy_Part_r2c3",
+                                                                                            "ShopBuy_Part_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Part2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Part_r1c1",
+                                                                                            "ShopBuy_Part_r1c2",
+                                                                                            "ShopBuy_Part_r1c3",
+                                                                                            "ShopBuy_Part_r1c4",
+                                                                                            "ShopBuy_Part_r2c1",
+                                                                                            "ShopBuy_Part_r2c2",
+                                                                                            "ShopBuy_Part_r2c3",
+                                                                                            "ShopBuy_Part_r2c4"
+                                                                            ]
+                                                            }
                                             }
                             },
                             {
-                                            "name": "book",
-                                            "label": "技能书（特训 / 指挥理论 / 支援战术）",
+                                            "name": "air",
+                                            "label": "航空特训",
                                             "pipeline_override": {
-                                                            "ShopScan_Book1": {"next": ["ShopBuy_Book_r1c1", "ShopBuy_Book_r1c2", "ShopBuy_Book_r1c3", "ShopBuy_Book_r1c4", "ShopBuy_Book_r2c1", "ShopBuy_Book_r2c2", "ShopBuy_Book_r2c3", "ShopBuy_Book_r2c4"]}, "ShopScan_Book2": {"next": ["ShopBuy_Book_r1c1", "ShopBuy_Book_r1c2", "ShopBuy_Book_r1c3", "ShopBuy_Book_r1c4", "ShopBuy_Book_r2c1", "ShopBuy_Book_r2c2", "ShopBuy_Book_r2c3", "ShopBuy_Book_r2c4"]}, "ShopRefreshGate": {"next": ["ShopFreeCheck"]}
+                                                            "ShopScan_Air1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Air_r1c1",
+                                                                                            "ShopBuy_Air_r1c2",
+                                                                                            "ShopBuy_Air_r1c3",
+                                                                                            "ShopBuy_Air_r1c4",
+                                                                                            "ShopBuy_Air_r2c1",
+                                                                                            "ShopBuy_Air_r2c2",
+                                                                                            "ShopBuy_Air_r2c3",
+                                                                                            "ShopBuy_Air_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Air2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Air_r1c1",
+                                                                                            "ShopBuy_Air_r1c2",
+                                                                                            "ShopBuy_Air_r1c3",
+                                                                                            "ShopBuy_Air_r1c4",
+                                                                                            "ShopBuy_Air_r2c1",
+                                                                                            "ShopBuy_Air_r2c2",
+                                                                                            "ShopBuy_Air_r2c3",
+                                                                                            "ShopBuy_Air_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "aux",
+                                            "label": "辅助特训",
+                                            "pipeline_override": {
+                                                            "ShopScan_Aux1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Aux_r1c1",
+                                                                                            "ShopBuy_Aux_r1c2",
+                                                                                            "ShopBuy_Aux_r1c3",
+                                                                                            "ShopBuy_Aux_r1c4",
+                                                                                            "ShopBuy_Aux_r2c1",
+                                                                                            "ShopBuy_Aux_r2c2",
+                                                                                            "ShopBuy_Aux_r2c3",
+                                                                                            "ShopBuy_Aux_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Aux2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Aux_r1c1",
+                                                                                            "ShopBuy_Aux_r1c2",
+                                                                                            "ShopBuy_Aux_r1c3",
+                                                                                            "ShopBuy_Aux_r1c4",
+                                                                                            "ShopBuy_Aux_r2c1",
+                                                                                            "ShopBuy_Aux_r2c2",
+                                                                                            "ShopBuy_Aux_r2c3",
+                                                                                            "ShopBuy_Aux_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "lei",
+                                            "label": "雷击特训",
+                                            "pipeline_override": {
+                                                            "ShopScan_Lei1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Lei_r1c1",
+                                                                                            "ShopBuy_Lei_r1c2",
+                                                                                            "ShopBuy_Lei_r1c3",
+                                                                                            "ShopBuy_Lei_r1c4",
+                                                                                            "ShopBuy_Lei_r2c1",
+                                                                                            "ShopBuy_Lei_r2c2",
+                                                                                            "ShopBuy_Lei_r2c3",
+                                                                                            "ShopBuy_Lei_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Lei2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Lei_r1c1",
+                                                                                            "ShopBuy_Lei_r1c2",
+                                                                                            "ShopBuy_Lei_r1c3",
+                                                                                            "ShopBuy_Lei_r1c4",
+                                                                                            "ShopBuy_Lei_r2c1",
+                                                                                            "ShopBuy_Lei_r2c2",
+                                                                                            "ShopBuy_Lei_r2c3",
+                                                                                            "ShopBuy_Lei_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "pao",
+                                            "label": "炮击特训",
+                                            "pipeline_override": {
+                                                            "ShopScan_Pao1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Pao_r1c1",
+                                                                                            "ShopBuy_Pao_r1c2",
+                                                                                            "ShopBuy_Pao_r1c3",
+                                                                                            "ShopBuy_Pao_r1c4",
+                                                                                            "ShopBuy_Pao_r2c1",
+                                                                                            "ShopBuy_Pao_r2c2",
+                                                                                            "ShopBuy_Pao_r2c3",
+                                                                                            "ShopBuy_Pao_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Pao2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Pao_r1c1",
+                                                                                            "ShopBuy_Pao_r1c2",
+                                                                                            "ShopBuy_Pao_r1c3",
+                                                                                            "ShopBuy_Pao_r1c4",
+                                                                                            "ShopBuy_Pao_r2c1",
+                                                                                            "ShopBuy_Pao_r2c2",
+                                                                                            "ShopBuy_Pao_r2c3",
+                                                                                            "ShopBuy_Pao_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "zhi",
+                                            "label": "支援战术",
+                                            "pipeline_override": {
+                                                            "ShopScan_Zhi1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Zhi_r1c1",
+                                                                                            "ShopBuy_Zhi_r1c2",
+                                                                                            "ShopBuy_Zhi_r1c3",
+                                                                                            "ShopBuy_Zhi_r1c4",
+                                                                                            "ShopBuy_Zhi_r2c1",
+                                                                                            "ShopBuy_Zhi_r2c2",
+                                                                                            "ShopBuy_Zhi_r2c3",
+                                                                                            "ShopBuy_Zhi_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Zhi2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Zhi_r1c1",
+                                                                                            "ShopBuy_Zhi_r1c2",
+                                                                                            "ShopBuy_Zhi_r1c3",
+                                                                                            "ShopBuy_Zhi_r1c4",
+                                                                                            "ShopBuy_Zhi_r2c1",
+                                                                                            "ShopBuy_Zhi_r2c2",
+                                                                                            "ShopBuy_Zhi_r2c3",
+                                                                                            "ShopBuy_Zhi_r2c4"
+                                                                            ]
+                                                            }
+                                            }
+                            },
+                            {
+                                            "name": "cmd",
+                                            "label": "指挥理论",
+                                            "pipeline_override": {
+                                                            "ShopScan_Cmd1": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Cmd_r1c1",
+                                                                                            "ShopBuy_Cmd_r1c2",
+                                                                                            "ShopBuy_Cmd_r1c3",
+                                                                                            "ShopBuy_Cmd_r1c4",
+                                                                                            "ShopBuy_Cmd_r2c1",
+                                                                                            "ShopBuy_Cmd_r2c2",
+                                                                                            "ShopBuy_Cmd_r2c3",
+                                                                                            "ShopBuy_Cmd_r2c4"
+                                                                            ]
+                                                            },
+                                                            "ShopScan_Cmd2": {
+                                                                            "next": [
+                                                                                            "ShopBuy_Cmd_r1c1",
+                                                                                            "ShopBuy_Cmd_r1c2",
+                                                                                            "ShopBuy_Cmd_r1c3",
+                                                                                            "ShopBuy_Cmd_r1c4",
+                                                                                            "ShopBuy_Cmd_r2c1",
+                                                                                            "ShopBuy_Cmd_r2c2",
+                                                                                            "ShopBuy_Cmd_r2c3",
+                                                                                            "ShopBuy_Cmd_r2c4"
+                                                                            ]
+                                                            }
                                             }
                             }
             ]

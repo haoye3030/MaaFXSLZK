@@ -2,7 +2,7 @@
     "ShopStart": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "timeout": 300000,
+        "timeout": 420000,
         "anchor": {
             "Resume": "ShopResume"
         },
@@ -161,13 +161,6 @@
             "ShopScan_Part1"
         ]
     },
-    "ShopNext_Home3": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "ShopBackHome"
-        ]
-    },
     "ShopScan_Part1": {
         "recognition": "DirectHit",
         "action": "DoNothing",
@@ -176,7 +169,7 @@
             "Loop": "ShopScan_Part1"
         },
         "next": [
-            "ShopScan_Book1"
+            "ShopScan_Air1"
         ],
         "on_error": [
             "ShopNext_Part1"
@@ -186,24 +179,129 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "ShopScan_Book1"
+            "ShopScan_Air1"
         ]
     },
-    "ShopScan_Book1": {
+    "ShopScan_Air1": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 7000,
         "anchor": {
-            "Loop": "ShopScan_Book1"
+            "Loop": "ShopScan_Air1"
+        },
+        "next": [
+            "ShopScan_Aux1"
+        ],
+        "on_error": [
+            "ShopNext_Air1"
+        ]
+    },
+    "ShopNext_Air1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Aux1"
+        ]
+    },
+    "ShopScan_Aux1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Aux1"
+        },
+        "next": [
+            "ShopScan_Lei1"
+        ],
+        "on_error": [
+            "ShopNext_Aux1"
+        ]
+    },
+    "ShopNext_Aux1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Lei1"
+        ]
+    },
+    "ShopScan_Lei1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Lei1"
+        },
+        "next": [
+            "ShopScan_Pao1"
+        ],
+        "on_error": [
+            "ShopNext_Lei1"
+        ]
+    },
+    "ShopNext_Lei1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Pao1"
+        ]
+    },
+    "ShopScan_Pao1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Pao1"
+        },
+        "next": [
+            "ShopScan_Zhi1"
+        ],
+        "on_error": [
+            "ShopNext_Pao1"
+        ]
+    },
+    "ShopNext_Pao1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Zhi1"
+        ]
+    },
+    "ShopScan_Zhi1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Zhi1"
+        },
+        "next": [
+            "ShopScan_Cmd1"
+        ],
+        "on_error": [
+            "ShopNext_Zhi1"
+        ]
+    },
+    "ShopNext_Zhi1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Cmd1"
+        ]
+    },
+    "ShopScan_Cmd1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Cmd1"
         },
         "next": [
             "ShopTop2"
         ],
         "on_error": [
-            "ShopNext_Book1"
+            "ShopNext_Cmd1"
         ]
     },
-    "ShopNext_Book1": {
+    "ShopNext_Cmd1": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
@@ -239,7 +337,7 @@
             "Loop": "ShopScan_Part2"
         },
         "next": [
-            "ShopScan_Book2"
+            "ShopScan_Air2"
         ],
         "on_error": [
             "ShopNext_Part2"
@@ -249,24 +347,129 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "ShopScan_Book2"
+            "ShopScan_Air2"
         ]
     },
-    "ShopScan_Book2": {
+    "ShopScan_Air2": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 7000,
         "anchor": {
-            "Loop": "ShopScan_Book2"
+            "Loop": "ShopScan_Air2"
         },
         "next": [
-            "ShopFreeCheck"
+            "ShopScan_Aux2"
         ],
         "on_error": [
-            "ShopNext_Book2"
+            "ShopNext_Air2"
         ]
     },
-    "ShopNext_Book2": {
+    "ShopNext_Air2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Aux2"
+        ]
+    },
+    "ShopScan_Aux2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Aux2"
+        },
+        "next": [
+            "ShopScan_Lei2"
+        ],
+        "on_error": [
+            "ShopNext_Aux2"
+        ]
+    },
+    "ShopNext_Aux2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Lei2"
+        ]
+    },
+    "ShopScan_Lei2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Lei2"
+        },
+        "next": [
+            "ShopScan_Pao2"
+        ],
+        "on_error": [
+            "ShopNext_Lei2"
+        ]
+    },
+    "ShopNext_Lei2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Pao2"
+        ]
+    },
+    "ShopScan_Pao2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Pao2"
+        },
+        "next": [
+            "ShopScan_Zhi2"
+        ],
+        "on_error": [
+            "ShopNext_Pao2"
+        ]
+    },
+    "ShopNext_Pao2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Zhi2"
+        ]
+    },
+    "ShopScan_Zhi2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Zhi2"
+        },
+        "next": [
+            "ShopScan_Cmd2"
+        ],
+        "on_error": [
+            "ShopNext_Zhi2"
+        ]
+    },
+    "ShopNext_Zhi2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopScan_Cmd2"
+        ]
+    },
+    "ShopScan_Cmd2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 7000,
+        "anchor": {
+            "Loop": "ShopScan_Cmd2"
+        },
+        "next": [
+            "ShopRefreshGate"
+        ],
+        "on_error": [
+            "ShopNext_Cmd2"
+        ]
+    },
+    "ShopNext_Cmd2": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
@@ -617,6 +820,41 @@
             }
         ]
     },
+    "ShopPanel_Food": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
     "ShopBuy_Part_r1c1": {
         "recognition": "And",
         "all_of": [
@@ -961,385 +1199,6 @@
             }
         ]
     },
-    "ShopBuy_Book_r1c1": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    250,
-                    163,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    250,
-                    341,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            400,
-            271
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r1c2": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    495,
-                    163,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    495,
-                    341,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            644,
-            271
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r1c3": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    740,
-                    163,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    740,
-                    341,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            886,
-            271
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r1c4": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    985,
-                    163,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    985,
-                    341,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            1128,
-            271
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r2c1": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    250,
-                    418,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    250,
-                    594,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            400,
-            524
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r2c2": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    495,
-                    418,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    495,
-                    594,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            644,
-            524
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r2c3": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    740,
-                    418,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    740,
-                    594,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            886,
-            524
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopBuy_Book_r2c4": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    985,
-                    418,
-                    240,
-                    42
-                ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    985,
-                    594,
-                    240,
-                    30
-                ],
-                "expected": ".*换[1-9].*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "Click",
-        "target": [
-            1128,
-            524
-        ],
-        "post_delay": 2200,
-        "max_hit": 3,
-        "next": [
-            "ShopPanel_Book"
-        ],
-        "on_error": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
-        ]
-    },
-    "ShopPanel_Food": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    480,
-                    175,
-                    220,
-                    45
-                ],
-                "expected": ".*(烤鸡|甜点|海鲜串|沙拉|沙滩食品|沙滩食物).*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    690,
-                    470,
-                    140,
-                    70
-                ],
-                "expected": ".*取消.*",
-                "threshold": 0.7
-            }
-        ],
-        "action": "DoNothing",
-        "timeout": 4000,
-        "next": [
-            "ShopClickConfirm"
-        ],
-        "on_error": [
-            "ShopClickCancel"
-        ]
-    },
     "ShopPanel_Part": {
         "recognition": "And",
         "all_of": [
@@ -1375,7 +1234,351 @@
             "ShopClickCancel"
         ]
     },
-    "ShopPanel_Book": {
+    "ShopBuy_Air_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Air_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Air"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Air": {
         "recognition": "And",
         "all_of": [
             {
@@ -1386,7 +1589,1902 @@
                     220,
                     45
                 ],
-                "expected": ".*(特训|指挥理论|支援战术).*",
+                "expected": ".*航空.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopBuy_Aux_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Aux_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Aux"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Aux": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*辅助.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopBuy_Lei_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Lei_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Lei"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Lei": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*雷击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopBuy_Pao_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Pao_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Pao"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Pao": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*炮击.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopBuy_Zhi_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Zhi_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Zhi"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Zhi": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*支援战术.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    690,
+                    470,
+                    140,
+                    70
+                ],
+                "expected": ".*取消.*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "ShopClickConfirm"
+        ],
+        "on_error": [
+            "ShopClickCancel"
+        ]
+    },
+    "ShopBuy_Cmd_r1c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r1c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r1c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r1c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    163,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    341,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            271
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r2c1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    250,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            400,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r2c2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    495,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            644,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r2c3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    740,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            886,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopBuy_Cmd_r2c4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    418,
+                    240,
+                    42
+                ],
+                "expected": ".*指挥理论.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    985,
+                    594,
+                    240,
+                    30
+                ],
+                "expected": ".*换[1-9].*",
+                "threshold": 0.7
+            }
+        ],
+        "action": "Click",
+        "target": [
+            1128,
+            524
+        ],
+        "post_delay": 2200,
+        "max_hit": 3,
+        "next": [
+            "ShopPanel_Cmd"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopPanel_Cmd": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    480,
+                    175,
+                    220,
+                    45
+                ],
+                "expected": ".*指挥理论.*",
                 "threshold": 0.7
             },
             {
@@ -1566,10 +3664,7 @@
         ],
         "on_error": [
             "ShopBackHome"
-        ],
-        "focus": {
-            "success": "免费刷新完成（0 钻石）"
-        }
+        ]
     },
     "ShopCancelRefresh": {
         "recognition": "OCR",
@@ -1588,11 +3683,15 @@
             "ShopBackHome"
         ],
         "on_error": [
-            "ShopNext_Home3"
-        ],
-        "focus": {
-            "success": "刷新需钻石，已放弃"
-        }
+            "ShopNext_Home4"
+        ]
+    },
+    "ShopNext_Home4": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopBackHome"
+        ]
     },
     "ShopBackHome": {
         "recognition": "TemplateMatch",
