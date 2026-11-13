@@ -1,0 +1,455 @@
+{
+    "MailStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 180000,
+        "anchor": {
+            "Resume": "MailResume"
+        },
+        "next": [
+            "MailOnInbox",
+            "NaviCommon"
+        ]
+    },
+    "MailOnInbox": {
+        "recognition": "OCR",
+        "expected": "即将过期",
+        "roi": [
+            225,
+            106,
+            120,
+            34
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "MailClickSoon"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "MailResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "MailClickIcon"
+        ]
+    },
+    "MailClickIcon": {
+        "recognition": "TemplateMatch",
+        "template": "common/btn_mail.png",
+        "roi": [
+            15,
+            154,
+            30,
+            32
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "max_hit": 1,
+        "next": [
+            "MailClickSoon"
+        ]
+    },
+    "MailClickSoon": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            240,
+            122
+        ],
+        "post_delay": 1800,
+        "next": [
+            "MailStopCheck"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            "MailEnd"
+        ]
+    },
+    "MailStopCheck": {
+        "recognition": "OCR",
+        "expected": ".*[1-3]天后过期.*",
+        "roi": [
+            280,
+            190,
+            90,
+            32
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "MailSel_1"
+        ],
+        "on_error": [
+            "MailEnd"
+        ]
+    },
+    "MailSel_1": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            180,
+            198
+        ],
+        "post_delay": 1200,
+        "anchor": {
+            "Next": "MailSel_2"
+        },
+        "next": [
+            "MailGet_1"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailGet_1": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    280,
+                    190,
+                    90,
+                    32
+                ],
+                "expected": ".*[1-3]天后过期.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1080,
+                    570,
+                    180,
+                    60
+                ],
+                "expected": "领取",
+                "threshold": 0.7
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000,
+        "next": [
+            "MailReward"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailSel_2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            180,
+            268
+        ],
+        "post_delay": 1200,
+        "anchor": {
+            "Next": "MailSel_3"
+        },
+        "next": [
+            "MailGet_2"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailGet_2": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    280,
+                    260,
+                    90,
+                    32
+                ],
+                "expected": ".*[1-3]天后过期.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1080,
+                    570,
+                    180,
+                    60
+                ],
+                "expected": "领取",
+                "threshold": 0.7
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000,
+        "next": [
+            "MailReward"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailSel_3": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            180,
+            337
+        ],
+        "post_delay": 1200,
+        "anchor": {
+            "Next": "MailSel_4"
+        },
+        "next": [
+            "MailGet_3"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailGet_3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    280,
+                    329,
+                    90,
+                    32
+                ],
+                "expected": ".*[1-3]天后过期.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1080,
+                    570,
+                    180,
+                    60
+                ],
+                "expected": "领取",
+                "threshold": 0.7
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000,
+        "next": [
+            "MailReward"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailSel_4": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            180,
+            405
+        ],
+        "post_delay": 1200,
+        "anchor": {
+            "Next": "MailSel_5"
+        },
+        "next": [
+            "MailGet_4"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailGet_4": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    280,
+                    397,
+                    90,
+                    32
+                ],
+                "expected": ".*[1-3]天后过期.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1080,
+                    570,
+                    180,
+                    60
+                ],
+                "expected": "领取",
+                "threshold": 0.7
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000,
+        "next": [
+            "MailReward"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailSel_5": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            180,
+            471
+        ],
+        "post_delay": 1200,
+        "anchor": {
+            "Next": "MailEnd"
+        },
+        "next": [
+            "MailGet_5"
+        ],
+        "timeout": 5000,
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailGet_5": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "roi": [
+                    280,
+                    463,
+                    90,
+                    32
+                ],
+                "expected": ".*[1-3]天后过期.*",
+                "threshold": 0.7
+            },
+            {
+                "recognition": "OCR",
+                "roi": [
+                    1080,
+                    570,
+                    180,
+                    60
+                ],
+                "expected": "领取",
+                "threshold": 0.7
+            }
+        ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 3000,
+        "next": [
+            "MailReward"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailReward": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/reward_popup.png",
+        "roi": [
+            380,
+            110,
+            560,
+            140
+        ],
+        "threshold": 0.8,
+        "action": "DoNothing",
+        "timeout": 5000,
+        "next": [
+            "MailDismiss"
+        ],
+        "on_error": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailDismiss": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            640,
+            590
+        ],
+        "post_delay": 1600,
+        "next": [
+            {
+                "name": "Next",
+                "anchor": true
+            }
+        ]
+    },
+    "MailEnd": {
+        "recognition": "TemplateMatch",
+        "template": "task_claim/subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "focus": {
+            "success": "邮件领取完成，已返回主界面"
+        }
+    }
+}
