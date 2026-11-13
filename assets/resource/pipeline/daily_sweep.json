@@ -5,7 +5,7 @@
         "timeout": 120000,
         "anchor": {
             "Resume": "DailySweepResume",
-            "Next": "DailySweepTryConvoy"
+            "Next": "DailySweepTryWeapon"
         },
         "next": ["DailySweepOnDaily", "NaviCommon"]
     },
@@ -55,6 +55,35 @@
         "target": [130, 222],
         "post_delay": 3000,
         "next": [{ "name": "Next", "anchor": true }]
+    },
+
+    "DailySweepTryWeapon": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 4000,
+        "anchor": { "Next": "DailySweepTryConvoy" },
+        "next": ["DailySweepClickWeapon"],
+        "on_error": ["DailySweepTryConvoy"]
+    },
+
+    "DailySweepClickWeapon": {
+        "recognition": "TemplateMatch",
+        "template": "daily_sweep/card_weapon.png",
+        "roi": [0, 555, 1280, 145],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1600,
+        "next": ["DailySweepClickWeapon2"]
+    },
+
+    "DailySweepClickWeapon2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": "DailySweepClickWeapon",
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": ["DailySweepPopupCheck", "DailySweepDismiss"],
+        "on_error": ["DailySweepTryConvoy"]
     },
 
     "DailySweepTryConvoy": {
