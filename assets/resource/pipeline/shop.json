@@ -3565,14 +3565,56 @@
         "action": "DoNothing",
         "timeout": 6000,
         "next": [
-            {
-                "name": "Loop",
-                "anchor": true
-            }
+            "ShopCheckShortage"
         ],
         "on_error": [
             "ShopPressBlank"
         ]
+    },
+    "ShopCheckShortage": {
+        "recognition": "OCR",
+        "expected": "晶币不足",
+        "roi": [
+            560,
+            310,
+            180,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 1500,
+        "next": [
+            "ShopAckShortage"
+        ],
+        "on_error": [
+            {
+                "name": "Loop",
+                "anchor": true
+            }
+        ]
+    },
+    "ShopAckShortage": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            735,
+            430,
+            195,
+            50
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "ShopBackHome2"
+        ],
+        "on_error": [
+            "ShopBackHome"
+        ],
+        "focus": {
+            "success": "余额不足，已停止购买并返回主界面"
+        }
     },
     "ShopPressBlank": {
         "recognition": "DirectHit",
@@ -3619,12 +3661,15 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            929,
-            692
+            933,
+            700
         ],
-        "post_delay": 1800,
+        "post_delay": 2200,
         "next": [
             "ShopZeroCost"
+        ],
+        "on_error": [
+            "ShopCancelRefresh"
         ]
     },
     "ShopZeroCost": {
@@ -3650,10 +3695,10 @@
         "recognition": "OCR",
         "expected": ".*确定.*",
         "roi": [
-            830,
-            425,
-            110,
-            60
+            735,
+            430,
+            195,
+            50
         ],
         "threshold": 0.7,
         "action": "Click",
@@ -3670,10 +3715,10 @@
         "recognition": "OCR",
         "expected": ".*取消.*",
         "roi": [
-            630,
-            425,
-            110,
-            60
+            548,
+            430,
+            170,
+            50
         ],
         "threshold": 0.7,
         "action": "Click",
@@ -3683,10 +3728,37 @@
             "ShopBackHome"
         ],
         "on_error": [
-            "ShopNext_Home4"
+            "ShopAckDialog"
         ]
     },
     "ShopNext_Home4": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopBackHome"
+        ]
+    },
+    "ShopAckDialog": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "roi": [
+            735,
+            430,
+            195,
+            50
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 3000,
+        "next": [
+            "ShopBackHome2"
+        ],
+        "on_error": [
+            "ShopBackHome"
+        ]
+    },
+    "ShopBackHome2": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
