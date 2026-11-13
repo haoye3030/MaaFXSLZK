@@ -270,7 +270,7 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "ShopFreeCheck"
+            "ShopRefreshGate"
         ]
     },
     "ShopBuy_Food_r1c1": {
@@ -1489,6 +1489,13 @@
                 "name": "Loop",
                 "anchor": true
             }
+        ]
+    },
+    "ShopRefreshGate": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ShopBackHome"
         ]
     },
     "ShopFreeCheck": {
