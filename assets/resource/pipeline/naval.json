@@ -3,263 +3,450 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 120000,
-        "anchor": { "Resume": "NavalResume" },
-        "next": ["NaviCommon"]
+        "anchor": {
+            "Resume": "NavalResume"
+        },
+        "next": [
+            "NaviCommon"
+        ]
     },
     "NavalResume": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "next": ["NavalOpenQuickClaim"]
+        "next": [
+            "NavalOpenQuickClaim"
+        ]
     },
     "NavalOpenQuickClaim": {
         "recognition": "TemplateMatch",
         "template": "common/btn_quick_claim.png",
-        "roi": [1150, 175, 130, 50],
+        "roi": [
+            1150,
+            175,
+            130,
+            50
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 20000,
-        "next": ["NavalClaimRefinery", "NavalClaimStore"]
+        "next": [
+            "NavalClaimRefinery",
+            "NavalClaimStore"
+        ]
     },
     "NavalClaimRefinery": {
         "recognition": "TemplateMatch",
         "template": "naval/claim_all_refinery.png",
-        "roi": [1100, 60, 130, 80],
+        "roi": [
+            1100,
+            60,
+            130,
+            80
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 1500,
         "timeout": 15000,
-        "next": ["NavalClaimStore", "NavalEnterRefinery"]
+        "next": [
+            "NavalAfterClaim1"
+        ]
     },
     "NavalClaimStore": {
         "recognition": "TemplateMatch",
         "template": "naval/claim_all_store.png",
-        "roi": [1100, 148, 130, 80],
+        "roi": [
+            1100,
+            148,
+            130,
+            80
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 1500,
         "timeout": 15000,
-        "next": ["NavalEnterRefinery"]
+        "next": [
+            "NavalAfterClaim2"
+        ]
     },
     "NavalEnterRefinery": {
         "recognition": "DirectHit",
         "action": "Click",
-        "target": [755, 95],
+        "target": [
+            755,
+            95
+        ],
         "post_delay": 4000,
-        "next": ["NavalShiftBtn"]
+        "next": [
+            "NavalShiftBtn"
+        ]
     },
     "NavalShiftBtn": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_shift.png",
-        "roi": [266, 596, 60, 78],
+        "roi": [
+            266,
+            596,
+            60,
+            78
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 20000,
-        "next": ["NavalEnsureChkSpa"]
+        "next": [
+            "NavalEnsureChkSpa"
+        ]
     },
     "NavalEnsureChkSpa": {
         "recognition": "TemplateMatch",
         "template": "naval/chk_spa.png",
-        "roi": [700, 560, 26, 22],
+        "roi": [
+            700,
+            560,
+            26,
+            22
+        ],
         "threshold": 0.85,
         "action": "DoNothing",
         "timeout": 6000,
-        "next": ["NavalEnsureChkAutoSort"]
+        "next": [
+            "NavalEnsureChkAutoSort"
+        ]
     },
     "NavalEnsureChkAutoSort": {
         "recognition": "TemplateMatch",
         "template": "naval/chk_auto_sort.png",
-        "roi": [951, 559, 26, 22],
+        "roi": [
+            951,
+            559,
+            26,
+            22
+        ],
         "threshold": 0.85,
         "action": "DoNothing",
         "timeout": 6000,
-        "next": ["NavalClickEdit"]
+        "next": [
+            "NavalClickEdit"
+        ]
     },
     "NavalClickEdit": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_edit.png",
-        "roi": [780, 592, 232, 66],
+        "roi": [
+            780,
+            592,
+            232,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2000,
         "timeout": 20000,
-        "next": ["NavalStopShiftPopup"]
+        "next": [
+            "NavalStopShiftPopup"
+        ]
     },
     "NavalStopShiftPopup": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_stop_shift.png",
-        "roi": [520, 320, 240, 40],
+        "roi": [
+            520,
+            320,
+            240,
+            40
+        ],
         "threshold": 0.75,
         "action": "DoNothing",
         "timeout": 15000,
-        "next": ["NavalStopShiftOk"]
+        "next": [
+            "NavalStopShiftOk"
+        ]
     },
     "NavalStopShiftOk": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_ok.png",
-        "roi": [730, 428, 205, 66],
+        "roi": [
+            730,
+            428,
+            205,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 15000,
-        "next": ["NavalClickStartShift"]
+        "next": [
+            "NavalClickStartShift"
+        ]
     },
     "NavalClickStartShift": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_start_shift.png",
-        "roi": [780, 592, 232, 66],
+        "roi": [
+            780,
+            592,
+            232,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2000,
         "timeout": 20000,
-        "next": ["NavalShiftSuccessPopup"]
+        "next": [
+            "NavalShiftSuccessPopup"
+        ]
     },
     "NavalShiftSuccessPopup": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_shift_success.png",
-        "roi": [380, 305, 525, 68],
+        "roi": [
+            380,
+            305,
+            525,
+            68
+        ],
         "threshold": 0.7,
         "action": "DoNothing",
         "timeout": 20000,
-        "next": ["NavalShiftSuccessOk"]
+        "next": [
+            "NavalShiftSuccessOk"
+        ]
     },
     "NavalShiftSuccessOk": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_ok2.png",
-        "roi": [730, 428, 205, 66],
+        "roi": [
+            730,
+            428,
+            205,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 15000,
-        "next": ["NavalBackHome"]
+        "next": [
+            "NavalBackHome"
+        ]
     },
     "NavalBackHome": {
         "recognition": "TemplateMatch",
         "template": "task_claim/subpage_home.png",
-        "roi": [185, 10, 110, 60],
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
         "threshold": 0.7,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 20000,
-        "next": ["NavalStartSecond"]
+        "next": [
+            "NavalStartSecond"
+        ]
     },
     "NavalStartSecond": {
         "recognition": "TemplateMatch",
         "template": "gift_claim/nav_shop.png",
-        "roi": [10, 650, 90, 60],
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
         "threshold": 0.7,
         "action": "DoNothing",
         "timeout": 30000,
-        "next": ["NavalOpenQuickClaim2"]
+        "next": [
+            "NavalOpenQuickClaim2"
+        ]
     },
     "NavalOpenQuickClaim2": {
         "recognition": "TemplateMatch",
         "template": "common/btn_quick_claim.png",
-        "roi": [1150, 175, 130, 50],
+        "roi": [
+            1150,
+            175,
+            130,
+            50
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 20000,
-        "next": ["NavalEnterStore"]
+        "next": [
+            "NavalEnterStore"
+        ]
     },
     "NavalEnterStore": {
         "recognition": "DirectHit",
         "action": "Click",
-        "target": [755, 182],
+        "target": [
+            755,
+            182
+        ],
         "post_delay": 4000,
-        "next": ["NavalShiftBtn2"]
+        "next": [
+            "NavalShiftBtn2"
+        ]
     },
     "NavalShiftBtn2": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_shift.png",
-        "roi": [266, 596, 60, 78],
+        "roi": [
+            266,
+            596,
+            60,
+            78
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 20000,
-        "next": ["NavalEnsureChkSpa2"]
+        "next": [
+            "NavalEnsureChkSpa2"
+        ]
     },
     "NavalEnsureChkSpa2": {
         "recognition": "TemplateMatch",
         "template": "naval/chk_spa.png",
-        "roi": [700, 560, 26, 22],
+        "roi": [
+            700,
+            560,
+            26,
+            22
+        ],
         "threshold": 0.85,
         "action": "DoNothing",
         "timeout": 6000,
-        "next": ["NavalEnsureChkAutoSort2"]
+        "next": [
+            "NavalEnsureChkAutoSort2"
+        ]
     },
     "NavalEnsureChkAutoSort2": {
         "recognition": "TemplateMatch",
         "template": "naval/chk_auto_sort.png",
-        "roi": [951, 559, 26, 22],
+        "roi": [
+            951,
+            559,
+            26,
+            22
+        ],
         "threshold": 0.85,
         "action": "DoNothing",
         "timeout": 6000,
-        "next": ["NavalClickEdit2"]
+        "next": [
+            "NavalClickEdit2"
+        ]
     },
     "NavalClickEdit2": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_edit.png",
-        "roi": [780, 592, 232, 66],
+        "roi": [
+            780,
+            592,
+            232,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2000,
         "timeout": 20000,
-        "next": ["NavalStopShiftPopup2"]
+        "next": [
+            "NavalStopShiftPopup2"
+        ]
     },
     "NavalStopShiftPopup2": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_stop_shift.png",
-        "roi": [520, 320, 240, 40],
+        "roi": [
+            520,
+            320,
+            240,
+            40
+        ],
         "threshold": 0.75,
         "action": "DoNothing",
         "timeout": 15000,
-        "next": ["NavalStopShiftOk2"]
+        "next": [
+            "NavalStopShiftOk2"
+        ]
     },
     "NavalStopShiftOk2": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_ok.png",
-        "roi": [730, 428, 205, 66],
+        "roi": [
+            730,
+            428,
+            205,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 15000,
-        "next": ["NavalClickStartShift2"]
+        "next": [
+            "NavalClickStartShift2"
+        ]
     },
     "NavalClickStartShift2": {
         "recognition": "TemplateMatch",
         "template": "naval/btn_start_shift.png",
-        "roi": [780, 592, 232, 66],
+        "roi": [
+            780,
+            592,
+            232,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2000,
         "timeout": 20000,
-        "next": ["NavalShiftSuccessPopup2"]
+        "next": [
+            "NavalShiftSuccessPopup2"
+        ]
     },
     "NavalShiftSuccessPopup2": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_shift_success.png",
-        "roi": [380, 305, 525, 68],
+        "roi": [
+            380,
+            305,
+            525,
+            68
+        ],
         "threshold": 0.7,
         "action": "DoNothing",
         "timeout": 20000,
-        "next": ["NavalShiftSuccessOk2"]
+        "next": [
+            "NavalShiftSuccessOk2"
+        ]
     },
     "NavalShiftSuccessOk2": {
         "recognition": "TemplateMatch",
         "template": "naval/popup_ok2.png",
-        "roi": [730, 428, 205, 66],
+        "roi": [
+            730,
+            428,
+            205,
+            66
+        ],
         "threshold": 0.75,
         "action": "Click",
         "post_delay": 2500,
         "timeout": 15000,
-        "next": ["NavalFinish"]
+        "next": [
+            "NavalFinish"
+        ]
     },
     "NavalFinish": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "next": ["NavalBackHome2"],
+        "next": [
+            "NavalBackHome2"
+        ],
         "focus": {
             "success": "港区资源收取与换班完成"
         }
@@ -267,12 +454,121 @@
     "NavalBackHome2": {
         "recognition": "TemplateMatch",
         "template": "task_claim/subpage_home.png",
-        "roi": [185, 10, 110, 60],
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
         "threshold": 0.7,
         "action": "Click",
         "post_delay": 2000,
         "focus": {
             "success": "港区资源收取与换班完成，已返回主界面"
         }
+    },
+    "NavalAfterClaim1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 10000,
+        "next": [
+            "NavalFullPopup1",
+            "NavalRewardPopup1",
+            "NavalClaimStore"
+        ]
+    },
+    "NavalFullPopup1": {
+        "recognition": "OCR",
+        "expected": ".*已满.*",
+        "roi": [
+            550,
+            310,
+            200,
+            70
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            841,
+            465
+        ],
+        "post_delay": 1200,
+        "timeout": 3000,
+        "next": [
+            "NavalClaimStore"
+        ]
+    },
+    "NavalRewardPopup1": {
+        "recognition": "OCR",
+        "expected": ".*点击继续.*",
+        "roi": [
+            500,
+            560,
+            350,
+            90
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            663,
+            601
+        ],
+        "post_delay": 1500,
+        "timeout": 4000,
+        "next": [
+            "NavalClaimStore"
+        ]
+    },
+    "NavalAfterClaim2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 10000,
+        "next": [
+            "NavalFullPopup2",
+            "NavalRewardPopup2",
+            "NavalEnterRefinery"
+        ]
+    },
+    "NavalFullPopup2": {
+        "recognition": "OCR",
+        "expected": ".*已满.*",
+        "roi": [
+            550,
+            310,
+            200,
+            70
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            841,
+            465
+        ],
+        "post_delay": 1200,
+        "timeout": 3000,
+        "next": [
+            "NavalEnterRefinery"
+        ]
+    },
+    "NavalRewardPopup2": {
+        "recognition": "OCR",
+        "expected": ".*点击继续.*",
+        "roi": [
+            500,
+            560,
+            350,
+            90
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            663,
+            601
+        ],
+        "post_delay": 1500,
+        "timeout": 4000,
+        "next": [
+            "NavalEnterRefinery"
+        ]
     }
 }
