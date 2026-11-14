@@ -2219,6 +2219,68 @@
                 }
             }
         ]
+    },
+        "BeachCount": {
+        "type": "select",
+        "label": "训练数量",
+        "description": "本次最多训练几个舰灵位。默认「填满」，训练到没有空位为止（沙滩共 6 位）。",
+        "default_case": "填满",
+        "cases": [
+            {
+                "name": "填满",
+                "label": "填满（最多 6 个）",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 6
+                    }
+                }
+            },
+            {
+                "name": "1个",
+                "label": "1 个",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 1
+                    }
+                }
+            },
+            {
+                "name": "2个",
+                "label": "2 个",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 2
+                    }
+                }
+            },
+            {
+                "name": "3个",
+                "label": "3 个",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 3
+                    }
+                }
+            },
+            {
+                "name": "4个",
+                "label": "4 个",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 4
+                    }
+                }
+            },
+            {
+                "name": "5个",
+                "label": "5 个",
+                "pipeline_override": {
+                    "BeachFindSlot": {
+                        "max_hit": 5
+                    }
+                }
+            }
+        ]
     }
     },
     "task": [
@@ -2287,7 +2349,8 @@
                 "BeachType3",
                 "BeachType4",
                 "BeachType5",
-                "BeachType6"
+                "BeachType6",
+                "BeachCount"
             ],
             "description": "⚠️ **尚未完整测试**，训练会消耗食物库存且不可撤销。\n\n自动从主界面打开「快速领取」→ 领取沙滩已完成的训练经验 → 点沙滩行「+」进入沙滩。\n\n对空训练位：按舰种筛选（最多 6 种，可多选）→ 切换为等级升序 → 排除 LV.100 满级舰灵 → 取最低级的一艘 → 连点最左边的食物 6 份填满槽位 → 开始训练。循环直到没有空位。\n\n「完成」「继续训练」「中止」三个按钮保持禁用。启动前请先回到主界面。"
         }
