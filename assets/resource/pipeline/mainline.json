@@ -357,25 +357,280 @@
         "action": "DoNothing",
         "timeout": 3500,
         "next": [
-            "MainSetTimesOne"
+            "MainStopPreset"
         ],
         "on_error": [
             "MainEnd"
         ]
     },
-    "MainSetTimesOne": {
+    "MainStopPreset": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "MainSetRepeat"
+        ],
+        "on_error": [
+            "MainSetRepeat"
+        ]
+    },
+    "MainStopAllOn1": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            349,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            360,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOn2"
+        ],
+        "on_error": [
+            "MainStopAllOn2"
+        ]
+    },
+    "MainStopAllOn2": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            509,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            520,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOn3"
+        ],
+        "on_error": [
+            "MainStopAllOn3"
+        ]
+    },
+    "MainStopAllOn3": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            669,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            680,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOn4"
+        ],
+        "on_error": [
+            "MainStopAllOn4"
+        ]
+    },
+    "MainStopAllOn4": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            349,
+            288,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            360,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOn5"
+        ],
+        "on_error": [
+            "MainStopAllOn5"
+        ]
+    },
+    "MainStopAllOn5": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            509,
+            288,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            520,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainSetRepeat"
+        ],
+        "on_error": [
+            "MainSetRepeat"
+        ]
+    },
+    "MainStopAllOff1": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            349,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "target": [
+            360,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOff2"
+        ],
+        "on_error": [
+            "MainStopAllOff2"
+        ]
+    },
+    "MainStopAllOff2": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            509,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "target": [
+            520,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOff3"
+        ],
+        "on_error": [
+            "MainStopAllOff3"
+        ]
+    },
+    "MainStopAllOff3": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            669,
+            249,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "target": [
+            680,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOff4"
+        ],
+        "on_error": [
+            "MainStopAllOff4"
+        ]
+    },
+    "MainStopAllOff4": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            349,
+            288,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "target": [
+            360,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainStopAllOff5"
+        ],
+        "on_error": [
+            "MainStopAllOff5"
+        ]
+    },
+    "MainStopAllOff5": {
+        "recognition": "TemplateMatch",
+        "template": "mainline/check_on1.png",
+        "roi": [
+            509,
+            288,
+            22,
+            22
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "target": [
+            520,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2000,
+        "next": [
+            "MainSetRepeat"
+        ],
+        "on_error": [
+            "MainSetRepeat"
+        ]
+    },
+    "MainSetRepeat": {
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            137,
-            136
+            133,
+            126
         ],
         "post_delay": 800,
         "next": [
-            "MainStartTrust"
+            "MainSetFormation"
         ],
         "on_error": [
-            "MainStartTrust"
+            "MainSetFormation"
         ]
     },
     "MainStartTrust": {
@@ -567,5 +822,65 @@
         "focus": {
             "success": "主线托管完成"
         }
+    },
+    "MainSetFormation": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            526,
+            190
+        ],
+        "post_delay": 400,
+        "next": [
+            "MainSetIdleLock"
+        ],
+        "on_error": [
+            "MainSetIdleLock"
+        ]
+    },
+    "MainSetIdleLock": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            686,
+            370
+        ],
+        "post_delay": 400,
+        "next": [
+            "MainSetMulti"
+        ],
+        "on_error": [
+            "MainSetMulti"
+        ]
+    },
+    "MainSetMulti": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            872,
+            578
+        ],
+        "post_delay": 800,
+        "next": [
+            "MainMultiPick"
+        ],
+        "on_error": [
+            "MainStartTrust"
+        ]
+    },
+    "MainMultiPick": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            872,
+            465
+        ],
+        "post_delay": 800,
+        "next": [
+            "MainStartTrust"
+        ],
+        "on_error": [
+            "MainStartTrust"
+        ]
     }
 }

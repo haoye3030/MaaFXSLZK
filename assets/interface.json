@@ -1972,6 +1972,253 @@
                 }
             }
         ]
+    },
+        "MainRepeat": {
+        "type": "select",
+        "label": "重复关卡次数",
+        "description": "托管设置里的「重复关卡次数」。默认 1 次最省燃料；选「直到无法战斗」会一直刷到燃料耗尽。",
+        "default_case": "1次",
+        "cases": [
+            {
+                "name": "1次",
+                "label": "1 次",
+                "pipeline_override": {
+                    "MainSetRepeat": {
+                        "target": [
+                            133,
+                            126
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "5次",
+                "label": "5 次",
+                "pipeline_override": {
+                    "MainSetRepeat": {
+                        "target": [
+                            230,
+                            126
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "10次",
+                "label": "10 次",
+                "pipeline_override": {
+                    "MainSetRepeat": {
+                        "target": [
+                            328,
+                            126
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "30次",
+                "label": "30 次",
+                "pipeline_override": {
+                    "MainSetRepeat": {
+                        "target": [
+                            431,
+                            126
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "直到无法战斗",
+                "label": "直到无法战斗",
+                "pipeline_override": {
+                    "MainSetRepeat": {
+                        "target": [
+                            532,
+                            126
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+        "MainFormation": {
+        "type": "select",
+        "label": "阵形",
+        "description": "托管设置里的「阵形选择」。",
+        "default_case": "自选阵形",
+        "cases": [
+            {
+                "name": "使用推荐阵形",
+                "label": "使用推荐阵形",
+                "pipeline_override": {
+                    "MainSetFormation": {
+                        "target": [
+                            360,
+                            190
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "自选阵形",
+                "label": "自选阵形",
+                "pipeline_override": {
+                    "MainSetFormation": {
+                        "target": [
+                            526,
+                            190
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+        "MainStopPreset": {
+        "type": "select",
+        "label": "停止托管条件",
+        "description": "停止托管是多选。选「保持现状」不动它；「全部勾选」确保 5 项都选中；「全部取消」确保 5 项都取消。",
+        "default_case": "保持现状",
+        "cases": [
+            {
+                "name": "保持现状",
+                "label": "保持现状（不改动）",
+                "pipeline_override": {}
+            },
+            {
+                "name": "全部勾选",
+                "label": "全部勾选（5 项全开）",
+                "pipeline_override": {
+                    "MainStopPreset": {
+                        "next": [
+                            "MainStopAllOn1"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "全部取消",
+                "label": "全部取消（5 项全关）",
+                "pipeline_override": {
+                    "MainStopPreset": {
+                        "next": [
+                            "MainStopAllOff1"
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+        "MainIdleLock": {
+        "type": "select",
+        "label": "闲置锁屏",
+        "description": "托管设置里的「闲置锁屏」。选「永不」可避免战斗中锁屏。",
+        "default_case": "永不",
+        "cases": [
+            {
+                "name": "30秒",
+                "label": "30 秒",
+                "pipeline_override": {
+                    "MainSetIdleLock": {
+                        "target": [
+                            360,
+                            370
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "2分钟",
+                "label": "2 分钟",
+                "pipeline_override": {
+                    "MainSetIdleLock": {
+                        "target": [
+                            468,
+                            370
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "10分钟",
+                "label": "10 分钟",
+                "pipeline_override": {
+                    "MainSetIdleLock": {
+                        "target": [
+                            577,
+                            370
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "永不",
+                "label": "永不",
+                "pipeline_override": {
+                    "MainSetIdleLock": {
+                        "target": [
+                            686,
+                            370
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+        "MainMulti": {
+        "type": "select",
+        "label": "多倍战斗",
+        "description": "关卡详情页底部的「多倍战斗」倍数。默认 3 倍。",
+        "default_case": "3倍",
+        "cases": [
+            {
+                "name": "默认最高",
+                "label": "默认最高",
+                "pipeline_override": {
+                    "MainMultiPick": {
+                        "target": [
+                            872,
+                            424
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "3倍",
+                "label": "3 倍",
+                "pipeline_override": {
+                    "MainMultiPick": {
+                        "target": [
+                            872,
+                            465
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "2倍",
+                "label": "2 倍",
+                "pipeline_override": {
+                    "MainMultiPick": {
+                        "target": [
+                            872,
+                            502
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "1倍",
+                "label": "1 倍",
+                "pipeline_override": {
+                    "MainMultiPick": {
+                        "target": [
+                            872,
+                            540
+                        ]
+                    }
+                }
+            }
+        ]
     }
     },
     "task": [
@@ -2049,7 +2296,16 @@
             "name": "主线关卡托管",
             "label": "主线关卡托管（第 5 / 10 关）",
             "entry": "MainStart",
-            "option": ["MainChapter", "MainStage", "MainDifficulty"],
+            "option": [
+                "MainChapter",
+                "MainStage",
+                "MainDifficulty",
+                "MainRepeat",
+                "MainFormation",
+                "MainStopPreset",
+                "MainIdleLock",
+                "MainMulti"
+            ],
             "description": "⚠️ **会消耗燃料**（1-5 实测约 255，随关卡浮动），出战不可撤销。\n\n自动进入 出击→主线，切到指定章节，选出第 5 关或第 10 关，开「托管」并确认重复次数为 1 次、多倍战斗为 3，打完自动收结算并返回主界面。\n\n托管设置里的「重复关卡次数」每次都会重置为 1 次，避免误连刷。启动前请先回到主界面。"
         }
     ]
