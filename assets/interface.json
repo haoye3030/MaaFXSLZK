@@ -345,7 +345,7 @@
                 }
             ],
             "pipeline_override": {
-                "MailStopCheck": {
+                "MailCheck_1": {
                     "expected": ".*{days}天后过期.*"
                 },
                 "MailGet_1": {
@@ -500,9 +500,9 @@
                     "name": "all",
                     "label": "领取全部有附件的邮件",
                     "pipeline_override": {
-                        "MailStopCheck": {
-                            "expected": ".*[0-9]+天后过期.*"
-                        },
+                        "MailCheck_1": {
+                    "expected": ".*[0-9]+天后过期.*"
+                },
                         "MailGet_1": {
                             "all_of": [
                                 {

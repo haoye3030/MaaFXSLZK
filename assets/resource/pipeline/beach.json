@@ -395,12 +395,12 @@
         "recognition": "TemplateMatch",
         "template": "beach/btn_start_train.png",
         "roi": [
-            965,
-            590,
-            210,
-            65
+            910,
+            570,
+            340,
+            110
         ],
-        "threshold": 0.8,
+        "threshold": 0.7,
         "action": "DoNothing",
         "timeout": 30000,
         "next": [

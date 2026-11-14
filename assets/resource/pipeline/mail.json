@@ -79,25 +79,6 @@
             "Loop": "MailLoop"
         },
         "next": [
-            "MailStopCheck"
-        ],
-        "on_error": [
-            "MailEnd"
-        ]
-    },
-    "MailStopCheck": {
-        "recognition": "OCR",
-        "expected": ".*1天后过期.*",
-        "roi": [
-            280,
-            190,
-            90,
-            32
-        ],
-        "threshold": 0.7,
-        "action": "DoNothing",
-        "timeout": 2000,
-        "next": [
             "MailSel_1"
         ],
         "on_error": [
@@ -114,39 +95,22 @@
         "post_delay": 1100,
         "timeout": 4000,
         "next": [
-            "MailGet_1"
+            "MailCheck_1"
         ],
         "on_error": [
-            "MailNext_1"
+            "MailEnd"
         ]
     },
     "MailGet_1": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    280,
-                    190,
-                    90,
-                    32
-                ],
-                "expected": ".*1天后过期.*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    1080,
-                    570,
-                    180,
-                    60
-                ],
-                "expected": "领取",
-                "threshold": 0.7
-            }
+        "recognition": "OCR",
+        "expected": "领取",
+        "roi": [
+            1080,
+            570,
+            180,
+            60
         ],
-        "box_index": 1,
+        "threshold": 0.7,
         "action": "Click",
         "post_delay": 1800,
         "timeout": 3000,
@@ -154,7 +118,7 @@
             "MailReward_1"
         ],
         "on_error": [
-            "MailNext_1"
+            "MailDeleteAll"
         ]
     },
     "MailReward_1": {
@@ -173,7 +137,7 @@
             "MailDismiss_1"
         ],
         "on_error": [
-            "MailNext_1"
+            "MailDeleteAll"
         ]
     },
     "MailDismiss_1": {
@@ -184,377 +148,6 @@
             590
         ],
         "post_delay": 1400,
-        "next": [
-            "MailNext_1"
-        ]
-    },
-    "MailNext_1": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "MailSel_2"
-        ]
-    },
-    "MailSel_2": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            180,
-            268
-        ],
-        "post_delay": 1100,
-        "timeout": 4000,
-        "next": [
-            "MailGet_2"
-        ],
-        "on_error": [
-            "MailNext_2"
-        ]
-    },
-    "MailGet_2": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    280,
-                    260,
-                    90,
-                    32
-                ],
-                "expected": ".*1天后过期.*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    1080,
-                    570,
-                    180,
-                    60
-                ],
-                "expected": "领取",
-                "threshold": 0.7
-            }
-        ],
-        "box_index": 1,
-        "action": "Click",
-        "post_delay": 1800,
-        "timeout": 3000,
-        "next": [
-            "MailReward_2"
-        ],
-        "on_error": [
-            "MailNext_2"
-        ]
-    },
-    "MailReward_2": {
-        "recognition": "TemplateMatch",
-        "template": "task_claim/reward_popup.png",
-        "roi": [
-            380,
-            110,
-            560,
-            140
-        ],
-        "threshold": 0.8,
-        "action": "DoNothing",
-        "timeout": 4000,
-        "next": [
-            "MailDismiss_2"
-        ],
-        "on_error": [
-            "MailNext_2"
-        ]
-    },
-    "MailDismiss_2": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            640,
-            590
-        ],
-        "post_delay": 1400,
-        "next": [
-            "MailNext_2"
-        ]
-    },
-    "MailNext_2": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "MailSel_3"
-        ]
-    },
-    "MailSel_3": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            180,
-            337
-        ],
-        "post_delay": 1100,
-        "timeout": 4000,
-        "next": [
-            "MailGet_3"
-        ],
-        "on_error": [
-            "MailNext_3"
-        ]
-    },
-    "MailGet_3": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    280,
-                    329,
-                    90,
-                    32
-                ],
-                "expected": ".*1天后过期.*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    1080,
-                    570,
-                    180,
-                    60
-                ],
-                "expected": "领取",
-                "threshold": 0.7
-            }
-        ],
-        "box_index": 1,
-        "action": "Click",
-        "post_delay": 1800,
-        "timeout": 3000,
-        "next": [
-            "MailReward_3"
-        ],
-        "on_error": [
-            "MailNext_3"
-        ]
-    },
-    "MailReward_3": {
-        "recognition": "TemplateMatch",
-        "template": "task_claim/reward_popup.png",
-        "roi": [
-            380,
-            110,
-            560,
-            140
-        ],
-        "threshold": 0.8,
-        "action": "DoNothing",
-        "timeout": 4000,
-        "next": [
-            "MailDismiss_3"
-        ],
-        "on_error": [
-            "MailNext_3"
-        ]
-    },
-    "MailDismiss_3": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            640,
-            590
-        ],
-        "post_delay": 1400,
-        "next": [
-            "MailNext_3"
-        ]
-    },
-    "MailNext_3": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "MailSel_4"
-        ]
-    },
-    "MailSel_4": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            180,
-            405
-        ],
-        "post_delay": 1100,
-        "timeout": 4000,
-        "next": [
-            "MailGet_4"
-        ],
-        "on_error": [
-            "MailNext_4"
-        ]
-    },
-    "MailGet_4": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    280,
-                    397,
-                    90,
-                    32
-                ],
-                "expected": ".*1天后过期.*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    1080,
-                    570,
-                    180,
-                    60
-                ],
-                "expected": "领取",
-                "threshold": 0.7
-            }
-        ],
-        "box_index": 1,
-        "action": "Click",
-        "post_delay": 1800,
-        "timeout": 3000,
-        "next": [
-            "MailReward_4"
-        ],
-        "on_error": [
-            "MailNext_4"
-        ]
-    },
-    "MailReward_4": {
-        "recognition": "TemplateMatch",
-        "template": "task_claim/reward_popup.png",
-        "roi": [
-            380,
-            110,
-            560,
-            140
-        ],
-        "threshold": 0.8,
-        "action": "DoNothing",
-        "timeout": 4000,
-        "next": [
-            "MailDismiss_4"
-        ],
-        "on_error": [
-            "MailNext_4"
-        ]
-    },
-    "MailDismiss_4": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            640,
-            590
-        ],
-        "post_delay": 1400,
-        "next": [
-            "MailNext_4"
-        ]
-    },
-    "MailNext_4": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "MailSel_5"
-        ]
-    },
-    "MailSel_5": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            180,
-            471
-        ],
-        "post_delay": 1100,
-        "timeout": 4000,
-        "next": [
-            "MailGet_5"
-        ],
-        "on_error": [
-            "MailNext_5"
-        ]
-    },
-    "MailGet_5": {
-        "recognition": "And",
-        "all_of": [
-            {
-                "recognition": "OCR",
-                "roi": [
-                    280,
-                    463,
-                    90,
-                    32
-                ],
-                "expected": ".*1天后过期.*",
-                "threshold": 0.7
-            },
-            {
-                "recognition": "OCR",
-                "roi": [
-                    1080,
-                    570,
-                    180,
-                    60
-                ],
-                "expected": "领取",
-                "threshold": 0.7
-            }
-        ],
-        "box_index": 1,
-        "action": "Click",
-        "post_delay": 1800,
-        "timeout": 3000,
-        "next": [
-            "MailReward_5"
-        ],
-        "on_error": [
-            "MailNext_5"
-        ]
-    },
-    "MailReward_5": {
-        "recognition": "TemplateMatch",
-        "template": "task_claim/reward_popup.png",
-        "roi": [
-            380,
-            110,
-            560,
-            140
-        ],
-        "threshold": 0.8,
-        "action": "DoNothing",
-        "timeout": 4000,
-        "next": [
-            "MailDismiss_5"
-        ],
-        "on_error": [
-            "MailNext_5"
-        ]
-    },
-    "MailDismiss_5": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            640,
-            590
-        ],
-        "post_delay": 1400,
-        "next": [
-            "MailNext_5"
-        ]
-    },
-    "MailNext_5": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
         "next": [
             "MailDeleteAll"
         ]
@@ -595,5 +188,24 @@
         "focus": {
             "success": "邮件处理完成，已返回主界面"
         }
+    },
+    "MailCheck_1": {
+        "recognition": "OCR",
+        "expected": ".*12天后过期.*",
+        "roi": [
+            225,
+            188,
+            200,
+            45
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "MailGet_1"
+        ],
+        "on_error": [
+            "MailEnd"
+        ]
     }
 }
