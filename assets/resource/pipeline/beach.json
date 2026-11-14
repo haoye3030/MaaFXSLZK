@@ -229,89 +229,111 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "BeachCheckTraining1"
+            "BeachPick1"
         ],
-        "on_error": [
-            "BeachPickFirst"
-        ]
+        "on_error": []
     },
-    "BeachCheckTraining1": {
+    "BeachPick1": {
         "recognition": "OCR",
         "expected": "训练中",
         "roi": [
-            20,
+            25,
             245,
             120,
             55
         ],
         "threshold": 0.7,
-        "action": "DoNothing",
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            95,
+            255
+        ],
+        "post_delay": 1800,
         "timeout": 2500,
         "next": [
-            "BeachCheckTraining2"
+            "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPickSecond"
+            "BeachPick2"
         ]
     },
-    "BeachCheckTraining2": {
+    "BeachPick2": {
         "recognition": "OCR",
         "expected": "训练中",
         "roi": [
-            202,
+            207,
             245,
             120,
             55
         ],
         "threshold": 0.7,
-        "action": "DoNothing",
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            277,
+            255
+        ],
+        "post_delay": 1800,
         "timeout": 2500,
         "next": [
-            "BeachCheckTraining3"
+            "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPickThird"
+            "BeachPick3"
         ]
     },
-    "BeachCheckTraining3": {
+    "BeachPick3": {
         "recognition": "OCR",
         "expected": "训练中",
         "roi": [
-            381,
+            386,
             245,
             120,
             55
         ],
         "threshold": 0.7,
-        "action": "DoNothing",
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            456,
+            255
+        ],
+        "post_delay": 1800,
         "timeout": 2500,
         "next": [
-            "BeachCheckTraining4"
+            "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPickFourth"
+            "BeachPick4"
         ]
     },
-    "BeachCheckTraining4": {
+    "BeachPick4": {
         "recognition": "OCR",
         "expected": "训练中",
         "roi": [
-            559,
+            564,
             245,
             120,
             55
         ],
         "threshold": 0.7,
-        "action": "DoNothing",
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            634,
+            255
+        ],
+        "post_delay": 1800,
         "timeout": 2500,
         "next": [
-            "BeachCheckTraining5"
+            "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPickFifth"
+            "BeachPick5"
         ]
     },
-    "BeachCheckTraining5": {
+    "BeachPick5": {
         "recognition": "OCR",
         "expected": "训练中",
         "roi": [
@@ -321,244 +343,41 @@
             55
         ],
         "threshold": 0.7,
-        "action": "DoNothing",
-        "timeout": 2500,
-        "next": [
-            "BeachPickSixth"
-        ],
-        "on_error": [
-            "BeachPickSixth"
-        ]
-    },
-    "BeachPickFirst": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            95,
-            255
-        ],
-        "post_delay": 1800,
-        "next": [
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachDismiss1"
-        ]
-    },
-    "BeachDismiss1": {
-        "recognition": "OCR",
-        "expected": "系统提示",
-        "roi": [
-            330,
-            160,
-            190,
-            70
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachPickSecond"
-        ],
-        "on_error": [
-            "BeachPickSecond"
-        ]
-    },
-    "BeachPickSecond": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            277,
-            255
-        ],
-        "post_delay": 1800,
-        "next": [
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachDismiss2"
-        ]
-    },
-    "BeachDismiss2": {
-        "recognition": "OCR",
-        "expected": "系统提示",
-        "roi": [
-            330,
-            160,
-            190,
-            70
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachPickThird"
-        ],
-        "on_error": [
-            "BeachPickThird"
-        ]
-    },
-    "BeachPickThird": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            456,
-            255
-        ],
-        "post_delay": 1800,
-        "next": [
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachDismiss3"
-        ]
-    },
-    "BeachDismiss3": {
-        "recognition": "OCR",
-        "expected": "系统提示",
-        "roi": [
-            330,
-            160,
-            190,
-            70
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachPickFourth"
-        ],
-        "on_error": [
-            "BeachPickFourth"
-        ]
-    },
-    "BeachPickFourth": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            634,
-            255
-        ],
-        "post_delay": 1800,
-        "next": [
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachDismiss4"
-        ]
-    },
-    "BeachDismiss4": {
-        "recognition": "OCR",
-        "expected": "系统提示",
-        "roi": [
-            330,
-            160,
-            190,
-            70
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachPickFifth"
-        ],
-        "on_error": [
-            "BeachPickFifth"
-        ]
-    },
-    "BeachPickFifth": {
-        "recognition": "DirectHit",
+        "inverse": true,
         "action": "Click",
         "target": [
             810,
             255
         ],
         "post_delay": 1800,
+        "timeout": 2500,
         "next": [
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachDismiss5"
+            "BeachPick6"
         ]
     },
-    "BeachDismiss5": {
+    "BeachPick6": {
         "recognition": "OCR",
-        "expected": "系统提示",
+        "expected": "训练中",
         "roi": [
-            330,
-            160,
-            190,
-            70
+            900,
+            245,
+            140,
+            55
         ],
         "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachPickSixth"
-        ],
-        "on_error": [
-            "BeachPickSixth"
-        ]
-    },
-    "BeachPickSixth": {
-        "recognition": "DirectHit",
+        "inverse": true,
         "action": "Click",
         "target": [
             987,
             255
         ],
         "post_delay": 1800,
+        "timeout": 2500,
         "next": [
             "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachDismiss6"
-        ]
-    },
-    "BeachDismiss6": {
-        "recognition": "OCR",
-        "expected": "系统提示",
-        "roi": [
-            330,
-            160,
-            190,
-            70
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "target": [
-            628,
-            461
-        ],
-        "post_delay": 900,
-        "timeout": 2000,
-        "next": [
-            "BeachEnd"
         ],
         "on_error": [
             "BeachEnd"

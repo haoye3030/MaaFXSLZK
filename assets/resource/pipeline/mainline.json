@@ -369,9 +369,7 @@
         "next": [
             "MainSetRepeat"
         ],
-        "on_error": [
-            "MainSetRepeat"
-        ]
+        "on_error": []
     },
     "MainStopAllOn1": {
         "recognition": "TemplateMatch",
@@ -384,15 +382,10 @@
         ],
         "threshold": 0.85,
         "inverse": true,
-        "action": "Click",
-        "target": [
-            360,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
-            "MainStopAllOn2"
+            "MainStopAllOn1c"
         ],
         "on_error": [
             "MainStopAllOn2"
@@ -409,15 +402,10 @@
         ],
         "threshold": 0.85,
         "inverse": true,
-        "action": "Click",
-        "target": [
-            520,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
-            "MainStopAllOn3"
+            "MainStopAllOn2c"
         ],
         "on_error": [
             "MainStopAllOn3"
@@ -434,15 +422,10 @@
         ],
         "threshold": 0.85,
         "inverse": true,
-        "action": "Click",
-        "target": [
-            680,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
-            "MainStopAllOn4"
+            "MainStopAllOn3c"
         ],
         "on_error": [
             "MainStopAllOn4"
@@ -459,15 +442,10 @@
         ],
         "threshold": 0.85,
         "inverse": true,
-        "action": "Click",
-        "target": [
-            360,
-            299
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
-            "MainStopAllOn5"
+            "MainStopAllOn4c"
         ],
         "on_error": [
             "MainStopAllOn5"
@@ -484,15 +462,10 @@
         ],
         "threshold": 0.85,
         "inverse": true,
-        "action": "Click",
-        "target": [
-            520,
-            299
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
-            "MainSetRepeat"
+            "MainStopAllOn5c"
         ],
         "on_error": [
             "MainSetRepeat"
@@ -508,18 +481,13 @@
             22
         ],
         "threshold": 0.85,
-        "action": "Click",
-        "target": [
-            360,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
             "MainStopAllOff2"
         ],
         "on_error": [
-            "MainStopAllOff2"
+            "MainStopAllOff1c"
         ]
     },
     "MainStopAllOff2": {
@@ -532,18 +500,13 @@
             22
         ],
         "threshold": 0.85,
-        "action": "Click",
-        "target": [
-            520,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
             "MainStopAllOff3"
         ],
         "on_error": [
-            "MainStopAllOff3"
+            "MainStopAllOff2c"
         ]
     },
     "MainStopAllOff3": {
@@ -556,18 +519,13 @@
             22
         ],
         "threshold": 0.85,
-        "action": "Click",
-        "target": [
-            680,
-            260
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
             "MainStopAllOff4"
         ],
         "on_error": [
-            "MainStopAllOff4"
+            "MainStopAllOff3c"
         ]
     },
     "MainStopAllOff4": {
@@ -580,18 +538,13 @@
             22
         ],
         "threshold": 0.85,
-        "action": "Click",
-        "target": [
-            360,
-            299
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
             "MainStopAllOff5"
         ],
         "on_error": [
-            "MainStopAllOff5"
+            "MainStopAllOff4c"
         ]
     },
     "MainStopAllOff5": {
@@ -604,18 +557,13 @@
             22
         ],
         "threshold": 0.85,
-        "action": "Click",
-        "target": [
-            520,
-            299
-        ],
-        "post_delay": 400,
+        "action": "DoNothing",
         "timeout": 2000,
         "next": [
             "MainSetRepeat"
         ],
         "on_error": [
-            "MainSetRepeat"
+            "MainStopAllOff5c"
         ]
     },
     "MainSetRepeat": {
@@ -629,9 +577,7 @@
         "next": [
             "MainSetFormation"
         ],
-        "on_error": [
-            "MainSetFormation"
-        ]
+        "on_error": []
     },
     "MainStartTrust": {
         "recognition": "DirectHit",
@@ -662,7 +608,7 @@
         "action": "DoNothing",
         "timeout": 60000,
         "next": [
-            "MainBattleDone"
+            "MainInBattleOk"
         ],
         "on_error": [
             "MainBattleDone"
@@ -696,7 +642,7 @@
         ],
         "post_delay": 2000,
         "next": [
-            "MainCloseTrust"
+            "MainConfirmDoneOk"
         ],
         "on_error": [
             "MainCloseTrust"
@@ -723,9 +669,7 @@
         "next": [
             "MainSettleSkip"
         ],
-        "on_error": [
-            "MainSettleSkip"
-        ]
+        "on_error": []
     },
     "MainSettleSkip": {
         "recognition": "DirectHit",
@@ -736,7 +680,7 @@
         ],
         "post_delay": 2000,
         "next": [
-            "MainReward"
+            "MainSettleSkipOk"
         ],
         "on_error": [
             "MainReward"
@@ -757,7 +701,7 @@
         "post_delay": 2000,
         "timeout": 6000,
         "next": [
-            "MainLeave"
+            "MainRewardOk"
         ],
         "on_error": [
             "MainLeave"
@@ -801,7 +745,7 @@
         "post_delay": 2000,
         "timeout": 4000,
         "next": [
-            "MainEnd"
+            "MainBackDeployOk"
         ],
         "on_error": [
             "MainEnd"
@@ -834,9 +778,7 @@
         "next": [
             "MainSetIdleLock"
         ],
-        "on_error": [
-            "MainSetIdleLock"
-        ]
+        "on_error": []
     },
     "MainSetIdleLock": {
         "recognition": "DirectHit",
@@ -849,9 +791,7 @@
         "next": [
             "MainSetMulti"
         ],
-        "on_error": [
-            "MainSetMulti"
-        ]
+        "on_error": []
     },
     "MainSetMulti": {
         "recognition": "DirectHit",
@@ -879,8 +819,181 @@
         "next": [
             "MainStartTrust"
         ],
-        "on_error": [
-            "MainStartTrust"
+        "on_error": []
+    },
+    "MainStopAllOn1c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOn2"
         ]
+    },
+    "MainStopAllOn2c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            520,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOn3"
+        ]
+    },
+    "MainStopAllOn3c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            680,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOn4"
+        ]
+    },
+    "MainStopAllOn4c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOn5"
+        ]
+    },
+    "MainStopAllOn5c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            520,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainSetRepeat"
+        ]
+    },
+    "MainStopAllOff1c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOff2"
+        ]
+    },
+    "MainStopAllOff2c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            520,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOff3"
+        ]
+    },
+    "MainStopAllOff3c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            680,
+            260
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOff4"
+        ]
+    },
+    "MainStopAllOff4c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            360,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainStopAllOff5"
+        ]
+    },
+    "MainStopAllOff5c": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            520,
+            299
+        ],
+        "post_delay": 400,
+        "timeout": 2500,
+        "next": [
+            "MainSetRepeat"
+        ]
+    },
+    "MainInBattleOk": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 300000,
+        "next": [
+            "MainBattleDone"
+        ],
+        "on_error": []
+    },
+    "MainConfirmDoneOk": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": [
+            "MainCloseTrust"
+        ],
+        "on_error": []
+    },
+    "MainSettleSkipOk": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 8000,
+        "next": [
+            "MainReward"
+        ],
+        "on_error": []
+    },
+    "MainRewardOk": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 8000,
+        "next": [
+            "MainLeave"
+        ],
+        "on_error": []
+    },
+    "MainBackDeployOk": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "next": [
+            "MainEnd"
+        ],
+        "on_error": []
     }
 }
