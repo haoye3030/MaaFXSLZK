@@ -463,7 +463,7 @@
             "Loop": "ShopScan_Cmd2"
         },
         "next": [
-            "ShopRefreshGate"
+            "ShopFreeCheck"
         ],
         "on_error": [
             "ShopNext_Cmd2"
@@ -473,7 +473,10 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "ShopRefreshGate"
+            "ShopFreeCheck"
+        ],
+        "on_error": [
+            "ShopBackHome"
         ]
     },
     "ShopBuy_Food_r1c1": {
@@ -3640,7 +3643,7 @@
     },
     "ShopFreeCheck": {
         "recognition": "OCR",
-        "expected": ".*免费[1-9]/\\d次.*",
+        "expected": ".*免费\\s*[1-9]\\s*/\\s*\\d+\\s*次.*",
         "roi": [
             290,
             678,
