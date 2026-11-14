@@ -1,0 +1,425 @@
+{
+    "BeachStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 300000,
+        "anchor": {
+            "Resume": "BeachResume"
+        },
+        "next": [
+            "BeachOnMain",
+            "NaviCommon"
+        ]
+    },
+    "BeachOnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "BeachOpenQuick"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "BeachResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachOpenQuick"
+        ]
+    },
+    "BeachOpenQuick": {
+        "recognition": "TemplateMatch",
+        "template": "common/btn_quick_claim.png",
+        "roi": [
+            1150,
+            175,
+            130,
+            50
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "max_hit": 1,
+        "next": [
+            "BeachClaimBeach"
+        ]
+    },
+    "BeachClaimBeach": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1165,
+            626
+        ],
+        "post_delay": 1800,
+        "next": [
+            "BeachRewardLoop"
+        ],
+        "on_error": [
+            "BeachReturnMain"
+        ],
+        "timeout": 5000
+    },
+    "BeachRewardLoop": {
+        "recognition": "OCR",
+        "expected": "点击继续",
+        "roi": [
+            400,
+            560,
+            500,
+            90
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1400,
+        "timeout": 4000,
+        "max_hit": 4,
+        "next": [
+            "BeachReturnMain"
+        ],
+        "on_error": [
+            "BeachRewardDone"
+        ]
+    },
+    "BeachRewardDone": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachReturnMain"
+        ]
+    },
+    "BeachReturnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 4000,
+        "next": [
+            "BeachOpenQuick2"
+        ],
+        "on_error": [
+            "BeachReturnDone"
+        ]
+    },
+    "BeachReturnDone": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachOpenQuick2"
+        ]
+    },
+    "BeachOpenQuick2": {
+        "recognition": "TemplateMatch",
+        "template": "common/btn_quick_claim.png",
+        "roi": [
+            1150,
+            175,
+            130,
+            50
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "max_hit": 1,
+        "next": [
+            "BeachEnterBeach"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachEnterBeach": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            877,
+            627
+        ],
+        "post_delay": 2500,
+        "next": [
+            "BeachFindSlot"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachFindSlot": {
+        "recognition": "OCR",
+        "expected": "选择舰灵",
+        "roi": [
+            250,
+            170,
+            800,
+            520
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2200,
+        "timeout": 4000,
+        "max_hit": 6,
+        "next": [
+            "BeachOpenFilter"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachOpenFilter": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1185,
+            59
+        ],
+        "post_delay": 1500,
+        "next": [
+            "BeachTypeSlot1"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachTypeSlot1": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachTypeSlot2"
+        ]
+    },
+    "BeachTypeSlot2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachTypeSlot3"
+        ]
+    },
+    "BeachTypeSlot3": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachTypeSlot4"
+        ]
+    },
+    "BeachTypeSlot4": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachTypeSlot5"
+        ]
+    },
+    "BeachTypeSlot5": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachTypeSlot6"
+        ]
+    },
+    "BeachTypeSlot6": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachCloseFilter"
+        ]
+    },
+    "BeachCloseFilter": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1233,
+            59
+        ],
+        "post_delay": 1500,
+        "next": [
+            "BeachSortAsc"
+        ],
+        "on_error": [
+            "BeachAfterSort2"
+        ]
+    },
+    "BeachSortAsc": {
+        "recognition": "OCR",
+        "expected": ".*降序.*",
+        "roi": [
+            960,
+            30,
+            170,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 2500,
+        "next": [
+            "BeachAfterSort"
+        ],
+        "on_error": [
+            "BeachAfterSort2"
+        ]
+    },
+    "BeachAfterSort2": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachAfterSort"
+        ]
+    },
+    "BeachAfterSort": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachNotMax"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachNotMax": {
+        "recognition": "OCR",
+        "expected": "100",
+        "roi": [
+            20,
+            160,
+            120,
+            45
+        ],
+        "threshold": 0.85,
+        "inverse": true,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "BeachPickFirst"
+        ]
+    },
+    "BeachPickFirst": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            90,
+            250
+        ],
+        "post_delay": 2000,
+        "next": [
+            "BeachFood1"
+        ]
+    },
+    "BeachFood1": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachFood2"
+        ]
+    },
+    "BeachFood2": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachFood3"
+        ]
+    },
+    "BeachFood3": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachFood4"
+        ]
+    },
+    "BeachFood4": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachFood5"
+        ]
+    },
+    "BeachFood5": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachFood6"
+        ]
+    },
+    "BeachFood6": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            196,
+            368
+        ],
+        "post_delay": 350,
+        "next": [
+            "BeachStartTrain"
+        ]
+    },
+    "BeachStartTrain": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1047,
+            616
+        ],
+        "post_delay": 2500,
+        "next": [
+            "BeachFindSlot"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachEnd": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "focus": {
+            "success": "沙滩训练安排完成，已返回主界面"
+        }
+    }
+}

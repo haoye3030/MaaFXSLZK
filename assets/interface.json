@@ -641,6 +641,1098 @@
                     }
                 }
             ]
+        },
+        "BeachType1": {
+            "type": "select",
+            "label": "舰种 1",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot1": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "BeachType2": {
+            "type": "select",
+            "label": "舰种 2",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot2": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "BeachType3": {
+            "type": "select",
+            "label": "舰种 3",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot3": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "BeachType4": {
+            "type": "select",
+            "label": "舰种 4",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot4": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "BeachType5": {
+            "type": "select",
+            "label": "舰种 5",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot5": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "BeachType6": {
+            "type": "select",
+            "label": "舰种 6",
+            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "default_case": "none",
+            "cases": [
+                {
+                    "name": "none",
+                    "label": "不选择",
+                    "pipeline_override": {}
+                },
+                {
+                    "name": "驱逐",
+                    "label": "驱逐",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻巡",
+                    "label": "轻巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重巡",
+                    "label": "重巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战列",
+                    "label": "战列",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "战巡",
+                    "label": "战巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                843,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航母",
+                    "label": "航母",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                956,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "轻母",
+                    "label": "轻母",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                1069,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "装母",
+                    "label": "装母",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                1182,
+                                246
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "补给",
+                    "label": "补给",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                278,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "重炮",
+                    "label": "重炮",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                391,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "雷巡",
+                    "label": "雷巡",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                504,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "航战",
+                    "label": "航战",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                617,
+                                301
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "水母",
+                    "label": "水母",
+                    "pipeline_override": {
+                        "BeachTypeSlot6": {
+                            "action": "Click",
+                            "target": [
+                                730,
+                                301
+                            ]
+                        }
+                    }
+                }
+            ]
         }
     },
     "task": [
@@ -698,6 +1790,20 @@
                 "MailDays"
             ],
             "description": "⚠️ **尚未完整测试**。\n\n自动进入邮箱，按「即将过期」排序后只领取剩余天数在阈值内的邮件附件，处理完返回主界面。已领取的邮件和无附件公告会自动跳过。\n\n启动前请先回到主界面。"
+        },
+        {
+            "name": "沙滩训练舰灵等级",
+            "label": "沙滩训练舰灵等级（未测试）",
+            "entry": "BeachStart",
+            "option": [
+                "BeachType1",
+                "BeachType2",
+                "BeachType3",
+                "BeachType4",
+                "BeachType5",
+                "BeachType6"
+            ],
+            "description": "⚠️ **尚未完整测试**，训练会消耗食物库存且不可撤销。\n\n自动从主界面打开「快速领取」→ 领取沙滩已完成的训练经验 → 点沙滩行「+」进入沙滩。\n\n对空训练位：按舰种筛选（最多 6 种，可多选）→ 切换为等级升序 → 排除 LV.100 满级舰灵 → 取最低级的一艘 → 连点最左边的食物 6 份填满槽位 → 开始训练。循环直到没有空位。\n\n「完成」「继续训练」「中止」三个按钮保持禁用。启动前请先回到主界面。"
         }
     ]
 }
