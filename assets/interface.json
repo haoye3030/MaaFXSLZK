@@ -645,7 +645,7 @@
         "BeachType1": {
             "type": "select",
             "label": "舰种 1",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -660,8 +660,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -673,8 +673,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -686,8 +686,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -699,8 +699,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -712,8 +712,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -725,8 +725,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -738,8 +738,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -751,8 +751,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -764,8 +764,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -777,8 +777,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -790,8 +790,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -803,8 +803,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -816,8 +816,8 @@
                         "BeachTypeSlot1": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }
@@ -827,7 +827,7 @@
         "BeachType2": {
             "type": "select",
             "label": "舰种 2",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -842,8 +842,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -855,8 +855,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -868,8 +868,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -881,8 +881,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -894,8 +894,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -907,8 +907,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -920,8 +920,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -933,8 +933,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -946,8 +946,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -959,8 +959,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -972,8 +972,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -985,8 +985,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -998,8 +998,8 @@
                         "BeachTypeSlot2": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }
@@ -1009,7 +1009,7 @@
         "BeachType3": {
             "type": "select",
             "label": "舰种 3",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -1024,8 +1024,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -1037,8 +1037,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -1050,8 +1050,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -1063,8 +1063,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -1076,8 +1076,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -1089,8 +1089,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -1102,8 +1102,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -1115,8 +1115,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -1128,8 +1128,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -1141,8 +1141,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -1154,8 +1154,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -1167,8 +1167,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -1180,8 +1180,8 @@
                         "BeachTypeSlot3": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }
@@ -1191,7 +1191,7 @@
         "BeachType4": {
             "type": "select",
             "label": "舰种 4",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -1206,8 +1206,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -1219,8 +1219,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -1232,8 +1232,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -1245,8 +1245,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -1258,8 +1258,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -1271,8 +1271,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -1284,8 +1284,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -1297,8 +1297,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -1310,8 +1310,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -1323,8 +1323,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -1336,8 +1336,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -1349,8 +1349,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -1362,8 +1362,8 @@
                         "BeachTypeSlot4": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }
@@ -1373,7 +1373,7 @@
         "BeachType5": {
             "type": "select",
             "label": "舰种 5",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -1388,8 +1388,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -1401,8 +1401,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -1414,8 +1414,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -1427,8 +1427,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -1440,8 +1440,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -1453,8 +1453,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -1466,8 +1466,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -1479,8 +1479,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -1492,8 +1492,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -1505,8 +1505,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -1518,8 +1518,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -1531,8 +1531,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -1544,8 +1544,8 @@
                         "BeachTypeSlot5": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }
@@ -1555,7 +1555,7 @@
         "BeachType6": {
             "type": "select",
             "label": "舰种 6",
-            "description": "选择要训练的舰种，最多可同时选 6 种；不选则留空。多个舰种会在同一次筛选里一起勾选。",
+            "description": "选择要训练的舰种，最多可同时选 6 种。每次运行会先把筛选面板复位再逐个勾选，不会残留上次的选择；不选则不按舰种筛选。",
             "default_case": "none",
             "cases": [
                 {
@@ -1570,8 +1570,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                391,
-                                246
+                                393,
+                                216
                             ]
                         }
                     }
@@ -1583,8 +1583,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                504,
-                                246
+                                507,
+                                216
                             ]
                         }
                     }
@@ -1596,8 +1596,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                617,
-                                246
+                                621,
+                                216
                             ]
                         }
                     }
@@ -1609,8 +1609,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                730,
-                                246
+                                732,
+                                216
                             ]
                         }
                     }
@@ -1622,8 +1622,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                843,
-                                246
+                                847,
+                                216
                             ]
                         }
                     }
@@ -1635,8 +1635,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                956,
-                                246
+                                961,
+                                216
                             ]
                         }
                     }
@@ -1648,8 +1648,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                1069,
-                                246
+                                1075,
+                                216
                             ]
                         }
                     }
@@ -1661,8 +1661,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                1182,
-                                246
+                                1188,
+                                216
                             ]
                         }
                     }
@@ -1674,8 +1674,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                278,
-                                301
+                                279,
+                                268
                             ]
                         }
                     }
@@ -1687,8 +1687,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                391,
-                                301
+                                393,
+                                268
                             ]
                         }
                     }
@@ -1700,8 +1700,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                504,
-                                301
+                                507,
+                                268
                             ]
                         }
                     }
@@ -1713,8 +1713,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                617,
-                                301
+                                621,
+                                268
                             ]
                         }
                     }
@@ -1726,8 +1726,8 @@
                         "BeachTypeSlot6": {
                             "action": "Click",
                             "target": [
-                                730,
-                                301
+                                732,
+                                268
                             ]
                         }
                     }

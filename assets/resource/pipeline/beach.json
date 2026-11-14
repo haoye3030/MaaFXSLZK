@@ -51,94 +51,6 @@
         "post_delay": 2000,
         "max_hit": 1,
         "next": [
-            "BeachClaimBeach"
-        ]
-    },
-    "BeachClaimBeach": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            1165,
-            626
-        ],
-        "post_delay": 1800,
-        "next": [
-            "BeachRewardLoop"
-        ],
-        "on_error": [
-            "BeachReturnMain"
-        ],
-        "timeout": 5000
-    },
-    "BeachRewardLoop": {
-        "recognition": "OCR",
-        "expected": "点击继续",
-        "roi": [
-            400,
-            560,
-            500,
-            90
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "post_delay": 1400,
-        "timeout": 4000,
-        "max_hit": 4,
-        "next": [
-            "BeachReturnMain"
-        ],
-        "on_error": [
-            "BeachRewardDone"
-        ]
-    },
-    "BeachRewardDone": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "BeachReturnMain"
-        ]
-    },
-    "BeachReturnMain": {
-        "recognition": "TemplateMatch",
-        "template": "common/ui_subpage_home.png",
-        "roi": [
-            185,
-            10,
-            110,
-            60
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "post_delay": 2000,
-        "timeout": 4000,
-        "next": [
-            "BeachOpenQuick2"
-        ],
-        "on_error": [
-            "BeachReturnDone"
-        ]
-    },
-    "BeachReturnDone": {
-        "recognition": "DirectHit",
-        "action": "DoNothing",
-        "next": [
-            "BeachOpenQuick2"
-        ]
-    },
-    "BeachOpenQuick2": {
-        "recognition": "TemplateMatch",
-        "template": "common/btn_quick_claim.png",
-        "roi": [
-            1150,
-            175,
-            130,
-            50
-        ],
-        "threshold": 0.7,
-        "action": "Click",
-        "post_delay": 2000,
-        "max_hit": 1,
-        "next": [
             "BeachEnterBeach"
         ],
         "on_error": [
@@ -149,8 +61,8 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            877,
-            627
+            753,
+            626
         ],
         "post_delay": 2500,
         "next": [
@@ -189,6 +101,26 @@
             59
         ],
         "post_delay": 1500,
+        "next": [
+            "BeachFilterResetAll"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachFilterResetAll": {
+        "recognition": "OCR",
+        "expected": "全部",
+        "roi": [
+            225,
+            192,
+            108,
+            48
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "post_delay": 900,
+        "timeout": 3000,
         "next": [
             "BeachTypeSlot1"
         ],
@@ -242,10 +174,11 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            1233,
-            59
+            1220,
+            52
         ],
         "post_delay": 1500,
+        "timeout": 3000,
         "next": [
             "BeachSortAsc"
         ],
@@ -257,10 +190,10 @@
         "recognition": "OCR",
         "expected": ".*降序.*",
         "roi": [
-            960,
-            30,
-            170,
-            60
+            955,
+            25,
+            180,
+            45
         ],
         "threshold": 0.7,
         "action": "Click",
@@ -284,26 +217,28 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "BeachNotMax"
+            "BeachCheckTraining"
         ],
         "on_error": [
             "BeachEnd"
         ]
     },
-    "BeachNotMax": {
+    "BeachCheckTraining": {
         "recognition": "OCR",
-        "expected": "100",
+        "expected": "训练中",
         "roi": [
-            20,
-            160,
+            25,
+            245,
             120,
-            45
+            55
         ],
-        "threshold": 0.85,
-        "inverse": true,
+        "threshold": 0.7,
         "action": "DoNothing",
         "timeout": 2500,
         "next": [
+            "BeachPickSecond"
+        ],
+        "on_error": [
             "BeachPickFirst"
         ]
     },
@@ -311,11 +246,64 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            90,
-            250
+            95,
+            255
         ],
         "post_delay": 2000,
         "next": [
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachPickSecond"
+        ]
+    },
+    "BeachPickSecond": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            277,
+            255
+        ],
+        "post_delay": 2000,
+        "next": [
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachFoodPanel": {
+        "recognition": "OCR",
+        "expected": ".*补充食品.*",
+        "roi": [
+            100,
+            0,
+            400,
+            70
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "BeachClearFood"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachClearFood": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            245,
+            521
+        ],
+        "post_delay": 400,
+        "max_hit": 8,
+        "next": [
+            "BeachClearFood"
+        ],
+        "on_error": [
             "BeachFood1"
         ]
     },
@@ -418,6 +406,27 @@
         "threshold": 0.7,
         "action": "Click",
         "post_delay": 2000,
+        "timeout": 3000,
+        "max_hit": 4,
+        "next": [
+            "BeachEnd"
+        ],
+        "on_error": [
+            "BeachDone"
+        ]
+    },
+    "BeachDone": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
         "focus": {
             "success": "沙滩训练安排完成，已返回主界面"
         }
