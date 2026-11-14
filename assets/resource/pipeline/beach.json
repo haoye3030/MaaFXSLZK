@@ -125,9 +125,9 @@
         "expected": "全部",
         "roi": [
             225,
-            192,
+            220,
             108,
-            48
+            55
         ],
         "threshold": 0.8,
         "action": "Click",
@@ -186,8 +186,8 @@
         "recognition": "DirectHit",
         "action": "Click",
         "target": [
-            1220,
-            52
+            1241,
+            53
         ],
         "post_delay": 1500,
         "timeout": 3000,
@@ -229,7 +229,13 @@
         "recognition": "DirectHit",
         "action": "DoNothing",
         "next": [
-            "BeachPick1"
+            "BeachPick1",
+            "BeachPick2",
+            "BeachPick3",
+            "BeachPick4",
+            "BeachPick5",
+            "BeachPick6",
+            "BeachEnd"
         ],
         "on_error": []
     },
@@ -255,7 +261,7 @@
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPick2"
+            "BeachEnd"
         ]
     },
     "BeachPick2": {
@@ -280,7 +286,7 @@
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPick3"
+            "BeachEnd"
         ]
     },
     "BeachPick3": {
@@ -305,7 +311,7 @@
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPick4"
+            "BeachEnd"
         ]
     },
     "BeachPick4": {
@@ -330,7 +336,7 @@
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPick5"
+            "BeachEnd"
         ]
     },
     "BeachPick5": {
@@ -355,7 +361,7 @@
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachPick6"
+            "BeachEnd"
         ]
     },
     "BeachPick6": {
