@@ -235,6 +235,8 @@
             "BeachPick4",
             "BeachPick5",
             "BeachPick6",
+            "BeachPick7",
+            "BeachPick8",
             "BeachEnd"
         ],
         "on_error": []
@@ -390,17 +392,17 @@
         ]
     },
     "BeachFoodPanel": {
-        "recognition": "OCR",
-        "expected": ".*补充食品.*",
+        "recognition": "TemplateMatch",
+        "template": "beach/btn_start_train.png",
         "roi": [
-            100,
-            0,
-            400,
-            70
+            965,
+            590,
+            210,
+            65
         ],
-        "threshold": 0.7,
+        "threshold": 0.8,
         "action": "DoNothing",
-        "timeout": 2500,
+        "timeout": 30000,
         "next": [
             "BeachClearFood"
         ],
@@ -491,5 +493,55 @@
         "focus": {
             "success": "沙滩训练安排完成，已返回主界面"
         }
+    },
+    "BeachPick7": {
+        "recognition": "OCR",
+        "expected": "训练中",
+        "roi": [
+            1095,
+            245,
+            130,
+            55
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            1165,
+            255
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick8": {
+        "recognition": "OCR",
+        "expected": "训练中",
+        "roi": [
+            25,
+            435,
+            120,
+            55
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            95,
+            450
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
     }
 }
