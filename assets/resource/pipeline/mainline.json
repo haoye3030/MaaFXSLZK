@@ -1,0 +1,571 @@
+{
+    "MainStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 600000,
+        "anchor": {
+            "Resume": "MainResume"
+        },
+        "next": [
+            "MainOnMain",
+            "NaviCommon"
+        ]
+    },
+    "MainOnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "MainOpenDeploy"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "MainResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "MainOpenDeploy"
+        ]
+    },
+    "MainOpenDeploy": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1182,
+            572
+        ],
+        "post_delay": 2500,
+        "next": [
+            "MainCheckDeploy"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainCheckDeploy": {
+        "recognition": "OCR",
+        "expected": "主线",
+        "roi": [
+            60,
+            110,
+            140,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 4000,
+        "next": [
+            "MainOpenChapter"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainOpenChapter": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            607,
+            36
+        ],
+        "post_delay": 1200,
+        "next": [
+            "MainFindChapter"
+        ],
+        "on_error": [
+            "MainScrollChapter1"
+        ],
+        "timeout": 3000
+    },
+    "MainScrollChapter1": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            580,
+            430
+        ],
+        "end": [
+            580,
+            10
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindChapter"
+        ],
+        "on_error": [
+            "MainScrollChapter2"
+        ]
+    },
+    "MainScrollChapter2": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            580,
+            430
+        ],
+        "end": [
+            580,
+            10
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindChapter"
+        ],
+        "on_error": [
+            "MainScrollChapter3"
+        ]
+    },
+    "MainScrollChapter3": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            580,
+            430
+        ],
+        "end": [
+            580,
+            10
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindChapter"
+        ],
+        "on_error": [
+            "MainScrollChapter4"
+        ]
+    },
+    "MainScrollChapter4": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            580,
+            430
+        ],
+        "end": [
+            580,
+            10
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindChapter"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainFindChapter": {
+        "recognition": "OCR",
+        "expected": "第一章",
+        "roi": [
+            515,
+            71,
+            140,
+            370
+        ],
+        "threshold": 0.75,
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "MainSetDifficulty"
+        ]
+    },
+    "MainSetDifficulty": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            963,
+            607
+        ],
+        "post_delay": 1200,
+        "next": [
+            "MainFindStage"
+        ],
+        "on_error": [
+            "MainScrollStage1"
+        ],
+        "timeout": 3000
+    },
+    "MainScrollStage1": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1050,
+            330
+        ],
+        "end": [
+            430,
+            330
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindStage"
+        ],
+        "on_error": [
+            "MainScrollStage2"
+        ]
+    },
+    "MainScrollStage2": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1050,
+            330
+        ],
+        "end": [
+            430,
+            330
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindStage"
+        ],
+        "on_error": [
+            "MainScrollStage3"
+        ]
+    },
+    "MainScrollStage3": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1050,
+            330
+        ],
+        "end": [
+            430,
+            330
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindStage"
+        ],
+        "on_error": [
+            "MainScrollStage4"
+        ]
+    },
+    "MainScrollStage4": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1050,
+            330
+        ],
+        "end": [
+            430,
+            330
+        ],
+        "duration": 600,
+        "post_delay": 1200,
+        "timeout": 3500,
+        "next": [
+            "MainFindStage"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainFindStage": {
+        "recognition": "OCR",
+        "expected": ".*-5",
+        "roi": [
+            200,
+            140,
+            1060,
+            330
+        ],
+        "threshold": 0.8,
+        "action": "Click",
+        "target_offset": [
+            -28,
+            0,
+            0,
+            0
+        ],
+        "post_delay": 2500,
+        "next": [
+            "MainStagePanel"
+        ]
+    },
+    "MainStagePanel": {
+        "recognition": "OCR",
+        "expected": ".*[0-9]+-[0-9]+.*",
+        "roi": [
+            150,
+            180,
+            450,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3500,
+        "next": [
+            "MainClickTrust"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainClickTrust": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            830,
+            585
+        ],
+        "post_delay": 2000,
+        "next": [
+            "MainTrustPanel"
+        ],
+        "on_error": [
+            "MainEnd"
+        ],
+        "timeout": 4000
+    },
+    "MainTrustPanel": {
+        "recognition": "OCR",
+        "expected": ".*重复关卡次数.*",
+        "roi": [
+            100,
+            55,
+            560,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3500,
+        "next": [
+            "MainSetTimesOne"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainSetTimesOne": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            137,
+            136
+        ],
+        "post_delay": 800,
+        "next": [
+            "MainStartTrust"
+        ],
+        "on_error": [
+            "MainStartTrust"
+        ]
+    },
+    "MainStartTrust": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1072,
+            620
+        ],
+        "post_delay": 4000,
+        "next": [
+            "MainInBattle"
+        ],
+        "on_error": [
+            "MainEnd"
+        ],
+        "timeout": 8000
+    },
+    "MainInBattle": {
+        "recognition": "OCR",
+        "expected": ".*托管中.*",
+        "roi": [
+            900,
+            300,
+            320,
+            120
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 60000,
+        "next": [
+            "MainBattleDone"
+        ],
+        "on_error": [
+            "MainBattleDone"
+        ]
+    },
+    "MainBattleDone": {
+        "recognition": "OCR",
+        "expected": ".*停止托管.*",
+        "roi": [
+            400,
+            250,
+            500,
+            120
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 300000,
+        "next": [
+            "MainConfirmDone"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainConfirmDone": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            838,
+            461
+        ],
+        "post_delay": 2000,
+        "next": [
+            "MainCloseTrust"
+        ],
+        "on_error": [
+            "MainCloseTrust"
+        ],
+        "timeout": 4000
+    },
+    "MainCloseTrust": {
+        "recognition": "OCR",
+        "expected": ".*托管设置.*",
+        "roi": [
+            70,
+            5,
+            320,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            1141,
+            18
+        ],
+        "post_delay": 2500,
+        "timeout": 4000,
+        "next": [
+            "MainSettleSkip"
+        ],
+        "on_error": [
+            "MainSettleSkip"
+        ]
+    },
+    "MainSettleSkip": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            640,
+            300
+        ],
+        "post_delay": 2000,
+        "next": [
+            "MainReward"
+        ],
+        "on_error": [
+            "MainReward"
+        ],
+        "timeout": 4000
+    },
+    "MainReward": {
+        "recognition": "OCR",
+        "expected": ".*点击继续.*",
+        "roi": [
+            530,
+            570,
+            200,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2000,
+        "timeout": 6000,
+        "next": [
+            "MainLeave"
+        ],
+        "on_error": [
+            "MainLeave"
+        ]
+    },
+    "MainLeave": {
+        "recognition": "OCR",
+        "expected": "离开",
+        "roi": [
+            550,
+            555,
+            730,
+            155
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 6000,
+        "next": [
+            "MainBackDeploy"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainBackDeploy": {
+        "recognition": "OCR",
+        "expected": "主线",
+        "roi": [
+            60,
+            110,
+            140,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            71,
+            30
+        ],
+        "post_delay": 2000,
+        "timeout": 4000,
+        "next": [
+            "MainEnd"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainEnd": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "focus": {
+            "success": "主线托管完成"
+        }
+    }
+}

@@ -1733,7 +1733,246 @@
                     }
                 }
             ]
-        }
+        },
+        "MainChapter":     {
+        "type": "select",
+        "label": "主线章节",
+        "description": "选择要打的主线章节（共 20 章）。运行时会自动打开章节下拉并滚动找到该章。",
+        "default_case": "第一章",
+        "cases": [
+            {
+                "name": "第一章",
+                "label": "第一章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第一章"
+                    }
+                }
+            },
+            {
+                "name": "第二章",
+                "label": "第二章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第二章"
+                    }
+                }
+            },
+            {
+                "name": "第三章",
+                "label": "第三章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第三章"
+                    }
+                }
+            },
+            {
+                "name": "第四章",
+                "label": "第四章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第四章"
+                    }
+                }
+            },
+            {
+                "name": "第五章",
+                "label": "第五章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第五章"
+                    }
+                }
+            },
+            {
+                "name": "第六章",
+                "label": "第六章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第六章"
+                    }
+                }
+            },
+            {
+                "name": "第七章",
+                "label": "第七章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第七章"
+                    }
+                }
+            },
+            {
+                "name": "第八章",
+                "label": "第八章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第八章"
+                    }
+                }
+            },
+            {
+                "name": "第九章",
+                "label": "第九章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第九章"
+                    }
+                }
+            },
+            {
+                "name": "第十章",
+                "label": "第十章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十章"
+                    }
+                }
+            },
+            {
+                "name": "第十一章",
+                "label": "第十一章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十一章"
+                    }
+                }
+            },
+            {
+                "name": "第十二章",
+                "label": "第十二章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十二章"
+                    }
+                }
+            },
+            {
+                "name": "第十三章",
+                "label": "第十三章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十三章"
+                    }
+                }
+            },
+            {
+                "name": "第十四章",
+                "label": "第十四章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十四章"
+                    }
+                }
+            },
+            {
+                "name": "第十五章",
+                "label": "第十五章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十五章"
+                    }
+                }
+            },
+            {
+                "name": "第十六章",
+                "label": "第十六章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十六章"
+                    }
+                }
+            },
+            {
+                "name": "第十七章",
+                "label": "第十七章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十七章"
+                    }
+                }
+            },
+            {
+                "name": "第十八章",
+                "label": "第十八章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十八章"
+                    }
+                }
+            },
+            {
+                "name": "第十九章",
+                "label": "第十九章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第十九章"
+                    }
+                }
+            },
+            {
+                "name": "第二十章",
+                "label": "第二十章",
+                "pipeline_override": {
+                    "MainFindChapter": {
+                        "expected": "第二十章"
+                    }
+                }
+            }
+        ]
+    },
+        "MainStage":     {
+        "type": "select",
+        "label": "关卡",
+        "description": "每章固定打第 5 关或第 10 关。找不到时会左右滚动地图，最多滚动 4 次。",
+        "default_case": "第5关",
+        "cases": [
+            {
+                "name": "第5关",
+                "label": "第 5 关",
+                "pipeline_override": {
+                    "MainFindStage": {
+                        "expected": ".*-5"
+                    }
+                }
+            },
+            {
+                "name": "第10关",
+                "label": "第 10 关",
+                "pipeline_override": {
+                    "MainFindStage": {
+                        "expected": ".*-10"
+                    }
+                }
+            }
+        ]
+    },
+        "MainDifficulty":     {
+        "type": "select",
+        "label": "难度",
+        "description": "关卡难度，默认简单。",
+        "default_case": "简单",
+        "cases": [
+            {
+                "name": "简单",
+                "label": "简单",
+                "pipeline_override": {}
+            },
+            {
+                "name": "困难",
+                "label": "困难",
+                "pipeline_override": {
+                    "MainSetDifficulty": {
+                        "target": [
+                            1117,
+                            607
+                        ]
+                    }
+                }
+            }
+        ]
+    }
     },
     "task": [
         {
@@ -1804,6 +2043,14 @@
                 "BeachType6"
             ],
             "description": "⚠️ **尚未完整测试**，训练会消耗食物库存且不可撤销。\n\n自动从主界面打开「快速领取」→ 领取沙滩已完成的训练经验 → 点沙滩行「+」进入沙滩。\n\n对空训练位：按舰种筛选（最多 6 种，可多选）→ 切换为等级升序 → 排除 LV.100 满级舰灵 → 取最低级的一艘 → 连点最左边的食物 6 份填满槽位 → 开始训练。循环直到没有空位。\n\n「完成」「继续训练」「中止」三个按钮保持禁用。启动前请先回到主界面。"
+        }
+        ,
+        {
+            "name": "主线关卡托管",
+            "label": "主线关卡托管（第 5 / 10 关）",
+            "entry": "MainStart",
+            "option": ["MainChapter", "MainStage", "MainDifficulty"],
+            "description": "⚠️ **会消耗燃料**（1-5 实测约 255，随关卡浮动），出战不可撤销。\n\n自动进入 出击→主线，切到指定章节，选出第 5 关或第 10 关，开「托管」并确认重复次数为 1 次、多倍战斗为 3，打完自动收结算并返回主界面。\n\n托管设置里的「重复关卡次数」每次都会重置为 1 次，避免误连刷。启动前请先回到主界面。"
         }
     ]
 }
