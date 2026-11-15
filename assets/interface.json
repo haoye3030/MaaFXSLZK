@@ -330,6 +330,52 @@
                             }
             ]
         },
+        "ExpLimitedHours": {
+            "type": "select",
+            "label": "限时远征时长",
+            "description": "有限时远征时优先派限时远征，默认 12 小时。切换时长会改变该分组下的任务列表与奖励道具。",
+            "default_case": "12",
+            "cases": [
+                {
+                    "name": "12",
+                    "label": "12 小时（默认）",
+                    "pipeline_override": { "ExpClickLimited": { "target": [1197, 655] } }
+                },
+                {
+                    "name": "10",
+                    "label": "10 小时",
+                    "pipeline_override": { "ExpClickLimited": { "target": [1076, 655] } }
+                },
+                {
+                    "name": "8",
+                    "label": "8 小时",
+                    "pipeline_override": { "ExpClickLimited": { "target": [946, 655] } }
+                }
+            ]
+        },
+        "ExpDailyHours": {
+            "type": "select",
+            "label": "每日远征时长",
+            "description": "没有限时远征时改派每日远征，默认 8 小时。",
+            "default_case": "8",
+            "cases": [
+                {
+                    "name": "8",
+                    "label": "8 小时（默认）",
+                    "pipeline_override": { "ExpClickDaily": { "target": [1197, 604] } }
+                },
+                {
+                    "name": "4",
+                    "label": "4 小时",
+                    "pipeline_override": { "ExpClickDaily": { "target": [1076, 604] } }
+                },
+                {
+                    "name": "2",
+                    "label": "2 小时",
+                    "pipeline_override": { "ExpClickDaily": { "target": [946, 604] } }
+                }
+            ]
+        },
         "MailDays": {
             "type": "input",
             "label": "领取剩余多少天整的邮件",
@@ -2018,6 +2064,16 @@
             "name": "领取任务奖励",
             "entry": "TaskClaimStart",
             "description": "启动前请先让游戏回到主界面（关闭每日登录弹窗等所有遮罩），否则无法识别底部的「任务」按钮。任务结束后会自动返回主界面。"
+        },
+        {
+            "name": "远征领取与派遣",
+            "label": "远征领取与派遣（第一版，未完整测试）",
+            "entry": "ExpeditionStart",
+            "option": [
+                "ExpLimitedHours",
+                "ExpDailyHours"
+            ],
+            "description": "自动进入远征页 → 点「全部领取」收走已完成奖励并关闭「大功告成」弹窗 → 优先检查限时远征分组，有可派任务就按限时时长派遣，没有则改派每日远征 → 循环派遣到队伍用尽 → 返回主界面。\n\n同一时长分组内按「概率获得」道具优先级挑任务：III级部件箱（部件）> 椰子甜点 / 蜜汁烤鸡 / 基础装备箱 / 高阶装备箱（食物与装备箱）> GE晶体 > 其他。\n\n舰队沿用游戏上次编队，只点「出征」，不改动任何编队。队伍上限不写死，以界面「出击队伍 X/Y」为准。\n\n启动前请先回到主界面。"
         },
         {
             "name": "领取免费礼包",
