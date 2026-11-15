@@ -161,8 +161,8 @@
     "ExpSelectTask": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "timeout": 40000,
-        "max_hit": 6,
+        "timeout": 60000,
+        "max_hit": 8,
         "next": [
             "ExpPickPart3",
             "ExpPickHighGear",
@@ -303,7 +303,7 @@
         "action": "Click",
         "post_delay": 1500,
         "timeout": 2500,
-        "max_hit": 6,
+        "max_hit": 8,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail2"
@@ -334,7 +334,7 @@
     },
     "ExpCheckFull": {
         "recognition": "OCR",
-        "expected": ".*(3/3|4/4).*",
+        "expected": ".*4\\s*/\\s*4.*",
         "roi": [1100, 85, 180, 45],
         "threshold": 0.7,
         "action": "DoNothing",
