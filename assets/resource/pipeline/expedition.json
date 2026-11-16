@@ -158,12 +158,24 @@
             "ExpSelectTask"
         ]
     },
+    "ExpFullStop": {
+        "recognition": "OCR",
+        "expected": ".*4\\s*/\\s*4.*",
+        "roi": [1100, 85, 180, 45],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "next": [
+            "ExpBackHome"
+        ]
+    },
     "ExpSelectTask": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 6000,
         "max_hit": 20,
         "next": [
+            "ExpFullStop",
             "ExpRow1Part3",
             "ExpRow2Part3",
             "ExpRow3Part3",
@@ -202,7 +214,7 @@
         "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -229,7 +241,7 @@
         "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -256,7 +268,7 @@
         "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -283,7 +295,7 @@
         "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -310,7 +322,7 @@
         "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -337,7 +349,7 @@
         "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -364,7 +376,7 @@
         "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -391,7 +403,7 @@
         "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -418,7 +430,7 @@
         "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -434,7 +446,7 @@
         "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -450,7 +462,7 @@
         "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -466,7 +478,7 @@
         "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
-        "max_hit": 1,
+        "max_hit": 4,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
@@ -534,11 +546,33 @@
         ]
     },
     "ExpAfterDispatch": {
-        "recognition": "DirectHit",
+        "recognition": "TemplateMatch",
+        "template": "expedition/btn_dispatch.png",
+        "roi": [360, 520, 220, 100],
+        "threshold": 0.75,
+        "inverse": true,
         "action": "DoNothing",
+        "timeout": 2500,
+        "max_hit": 12,
         "next": [
             "ExpCheckFull",
             "ExpSelectTask"
+        ],
+        "on_error": [
+            "ExpPanelRetry"
+        ]
+    },
+    "ExpPanelRetry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [469, 572],
+        "post_delay": 1800,
+        "max_hit": 3,
+        "next": [
+            "ExpAfterDispatch"
+        ],
+        "on_error": [
+            "ExpBackHome"
         ]
     },
     "ExpCheckFull": {
