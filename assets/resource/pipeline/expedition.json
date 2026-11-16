@@ -161,123 +161,332 @@
     "ExpSelectTask": {
         "recognition": "DirectHit",
         "action": "DoNothing",
-        "timeout": 60000,
-        "max_hit": 8,
+        "timeout": 6000,
+        "max_hit": 20,
         "next": [
-            "ExpPickPart3",
-            "ExpPickHighGear",
-            "ExpPickBasicGear",
-            "ExpPickCoconut",
-            "ExpPickChicken",
-            "ExpPickGE",
-            "ExpPickAny"
+            "ExpRow1Part3",
+            "ExpRow2Part3",
+            "ExpRow3Part3",
+            "ExpRow1Food",
+            "ExpRow2Food",
+            "ExpRow3Food",
+            "ExpRow1GE",
+            "ExpRow2GE",
+            "ExpRow3GE",
+            "ExpRow1Any",
+            "ExpRow2Any",
+            "ExpRow3Any"
         ],
         "on_error": [
+            "ExpScrollDown",
             "ExpBackHome"
         ]
     },
-    "ExpPickPart3": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/part3.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow1Part3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 215, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/part3.png",
+                "roi": [1170, 165, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickHighGear": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/high_gear.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow2Part3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 342, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/part3.png",
+                "roi": [1170, 295, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickBasicGear": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/basic_gear.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow3Part3": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 470, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/part3.png",
+                "roi": [1170, 430, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickCoconut": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/coconut.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow1Food": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 215, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": ["expedition/coconut.png", "expedition/chicken.png", "expedition/basic_gear.png", "expedition/high_gear.png"],
+                "roi": [1170, 165, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickChicken": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/chicken.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow2Food": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 342, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": ["expedition/coconut.png", "expedition/chicken.png", "expedition/basic_gear.png", "expedition/high_gear.png"],
+                "roi": [1170, 295, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [880, 360],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickGE": {
-        "recognition": "TemplateMatch",
-        "template": "expedition/ge.png",
-        "roi": [1150, 120, 130, 400],
-        "threshold": 0.75,
+    "ExpRow3Food": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 470, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": ["expedition/coconut.png", "expedition/chicken.png", "expedition/basic_gear.png", "expedition/high_gear.png"],
+                "roi": [1170, 430, 95, 95],
+                "threshold": 0.75
+            }
+        ],
         "action": "Click",
-        "target_offset": [-383, 0, 0, 0],
+        "target": [887, 488],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
         ]
     },
-    "ExpPickAny": {
+    "ExpRow1GE": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 215, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/ge.png",
+                "roi": [1170, 165, 95, 95],
+                "threshold": 0.75
+            }
+        ],
+        "action": "Click",
+        "target": [878, 232],
+        "post_delay": 1200,
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "ExpPanelGo",
+            "ExpPanelFail",
+            "ExpPanelFail2"
+        ]
+    },
+    "ExpRow2GE": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 342, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/ge.png",
+                "roi": [1170, 295, 95, 95],
+                "threshold": 0.75
+            }
+        ],
+        "action": "Click",
+        "target": [880, 360],
+        "post_delay": 1200,
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "ExpPanelGo",
+            "ExpPanelFail",
+            "ExpPanelFail2"
+        ]
+    },
+    "ExpRow3GE": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": ".*\\d{1,2}:00:00.*",
+                "roi": [825, 470, 130, 40],
+                "threshold": 0.7
+            },
+            {
+                "recognition": "TemplateMatch",
+                "template": "expedition/ge.png",
+                "roi": [1170, 430, 95, 95],
+                "threshold": 0.75
+            }
+        ],
+        "action": "Click",
+        "target": [887, 488],
+        "post_delay": 1200,
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "ExpPanelGo",
+            "ExpPanelFail",
+            "ExpPanelFail2"
+        ]
+    },
+    "ExpRow1Any": {
         "recognition": "OCR",
-        "expected": ".*(08|10|12):00:00.*",
-        "roi": [820, 140, 260, 380],
+        "expected": ".*\\d{1,2}:00:00.*",
+        "roi": [825, 215, 130, 40],
         "threshold": 0.7,
         "action": "Click",
+        "target": [878, 232],
         "post_delay": 1200,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "ExpPanelGo",
             "ExpPanelFail",
             "ExpPanelFail2"
+        ]
+    },
+    "ExpRow2Any": {
+        "recognition": "OCR",
+        "expected": ".*\\d{1,2}:00:00.*",
+        "roi": [825, 342, 130, 40],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [880, 360],
+        "post_delay": 1200,
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "ExpPanelGo",
+            "ExpPanelFail",
+            "ExpPanelFail2"
+        ]
+    },
+    "ExpRow3Any": {
+        "recognition": "OCR",
+        "expected": ".*\\d{1,2}:00:00.*",
+        "roi": [825, 470, 130, 40],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [887, 488],
+        "post_delay": 1200,
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "ExpPanelGo",
+            "ExpPanelFail",
+            "ExpPanelFail2"
+        ]
+    },
+    "ExpScrollDown": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [1000, 470],
+        "end": [1000, 220],
+        "duration": 500,
+        "post_delay": 1200,
+        "timeout": 4000,
+        "max_hit": 3,
+        "next": [
+            "ExpSelectTask"
+        ],
+        "on_error": [
+            "ExpBackHome"
         ]
     },
     "ExpPanelGo": {
