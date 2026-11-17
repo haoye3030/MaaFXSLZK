@@ -230,16 +230,20 @@
         "action": "DoNothing",
         "next": [
             "BeachPopupCancel",
-            "BeachPick1",
-            "BeachPick2",
-            "BeachPick3",
-            "BeachPick4",
-            "BeachPick5",
-            "BeachPick6",
-            "BeachPick7",
-            "BeachPick8",
-            "BeachPick9",
-            "BeachPick10",
+            "BeachPick_r1c1",
+            "BeachPick_r1c2",
+            "BeachPick_r1c3",
+            "BeachPick_r1c4",
+            "BeachPick_r1c5",
+            "BeachPick_r1c6",
+            "BeachPick_r1c7",
+            "BeachPick_r2c1",
+            "BeachPick_r2c2",
+            "BeachPick_r2c3",
+            "BeachPick_r2c4",
+            "BeachPick_r2c5",
+            "BeachPick_r2c6",
+            "BeachPick_r2c7",
             "BeachEnd"
         ],
         "on_error": [],
@@ -266,14 +270,14 @@
             "BeachEnd"
         ]
     },
-    "BeachPick1": {
+    "BeachPick_r1c1": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            25,
+            48,
             245,
-            120,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -292,20 +296,20 @@
             "BeachEnd"
         ]
     },
-    "BeachPick2": {
+    "BeachPick_r1c2": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            207,
+            228,
             245,
-            120,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
         "action": "Click",
         "target": [
-            277,
+            275,
             255
         ],
         "post_delay": 1800,
@@ -318,20 +322,20 @@
             "BeachEnd"
         ]
     },
-    "BeachPick3": {
+    "BeachPick_r1c3": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            386,
+            408,
             245,
-            120,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
         "action": "Click",
         "target": [
-            456,
+            455,
             255
         ],
         "post_delay": 1800,
@@ -344,20 +348,20 @@
             "BeachEnd"
         ]
     },
-    "BeachPick4": {
+    "BeachPick_r1c4": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            564,
+            588,
             245,
-            120,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
         "action": "Click",
         "target": [
-            634,
+            635,
             255
         ],
         "post_delay": 1800,
@@ -370,20 +374,20 @@
             "BeachEnd"
         ]
     },
-    "BeachPick5": {
+    "BeachPick_r1c5": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            735,
+            768,
             245,
-            120,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
         "action": "Click",
         "target": [
-            810,
+            815,
             255
         ],
         "post_delay": 1800,
@@ -396,21 +400,229 @@
             "BeachEnd"
         ]
     },
-    "BeachPick6": {
+    "BeachPick_r1c6": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
         "roi": [
-            900,
+            948,
             245,
-            140,
-            55
+            132,
+            52
         ],
         "threshold": 0.7,
         "inverse": true,
         "action": "Click",
         "target": [
-            987,
+            995,
             255
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r1c7": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            1128,
+            245,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            1175,
+            255
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c1": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            48,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            95,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c2": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            228,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            275,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c3": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            408,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            455,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c4": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            588,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            635,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c5": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            768,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            815,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c6": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            948,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            995,
+            536
+        ],
+        "post_delay": 1800,
+        "timeout": 2500,
+        "next": [
+            "BeachPopupCancel",
+            "BeachFoodPanel"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachPick_r2c7": {
+        "recognition": "OCR",
+        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "roi": [
+            1128,
+            526,
+            132,
+            52
+        ],
+        "threshold": 0.7,
+        "inverse": true,
+        "action": "Click",
+        "target": [
+            1175,
+            536
         ],
         "post_delay": 1800,
         "timeout": 2500,
@@ -524,109 +736,5 @@
         "focus": {
             "success": "沙滩训练安排完成，已返回主界面"
         }
-    },
-    "BeachPick7": {
-        "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
-        "roi": [
-            1095,
-            245,
-            130,
-            55
-        ],
-        "threshold": 0.7,
-        "inverse": true,
-        "action": "Click",
-        "target": [
-            1165,
-            255
-        ],
-        "post_delay": 1800,
-        "timeout": 2500,
-        "next": [
-            "BeachPopupCancel",
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachEnd"
-        ]
-    },
-    "BeachPick8": {
-        "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
-        "roi": [
-            25,
-            435,
-            120,
-            55
-        ],
-        "threshold": 0.7,
-        "inverse": true,
-        "action": "Click",
-        "target": [
-            95,
-            450
-        ],
-        "post_delay": 1800,
-        "timeout": 2500,
-        "next": [
-            "BeachPopupCancel",
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachEnd"
-        ]
-    },
-    "BeachPick9": {
-        "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
-        "roi": [
-            207,
-            435,
-            120,
-            55
-        ],
-        "threshold": 0.7,
-        "inverse": true,
-        "action": "Click",
-        "target": [
-            277,
-            450
-        ],
-        "post_delay": 1800,
-        "timeout": 2500,
-        "next": [
-            "BeachPopupCancel",
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachEnd"
-        ]
-    },
-    "BeachPick10": {
-        "recognition": "OCR",
-        "expected": ".*(训练|远征|出征).*",
-        "roi": [
-            386,
-            435,
-            120,
-            55
-        ],
-        "threshold": 0.7,
-        "inverse": true,
-        "action": "Click",
-        "target": [
-            456,
-            450
-        ],
-        "post_delay": 1800,
-        "timeout": 2500,
-        "next": [
-            "BeachPopupCancel",
-            "BeachFoodPanel"
-        ],
-        "on_error": [
-            "BeachEnd"
-        ]
     }
 }
