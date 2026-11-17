@@ -322,7 +322,8 @@
         "action": "DoNothing",
         "timeout": 3500,
         "next": [
-            "MainClickTrust"
+            "MainDockFullGuard",
+            "MainStageReady"
         ],
         "on_error": [
             "MainEnd"
@@ -337,6 +338,7 @@
         ],
         "post_delay": 2000,
         "next": [
+            "MainTrustLockGuard",
             "MainTrustPanel"
         ],
         "on_error": [
@@ -591,7 +593,7 @@
             "MainInBattle"
         ],
         "on_error": [
-            "MainEnd"
+            "MainTrustRetry"
         ],
         "timeout": 8000
     },
@@ -669,7 +671,9 @@
         "next": [
             "MainSettleSkip"
         ],
-        "on_error": []
+        "on_error": [
+            "MainEnd"
+        ]
     },
     "MainSettleSkip": {
         "recognition": "DirectHit",
@@ -995,5 +999,118 @@
             "MainEnd"
         ],
         "on_error": []
+    },
+    "MainTrustRetry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1072,
+            620
+        ],
+        "post_delay": 4000,
+        "timeout": 8000,
+        "max_hit": 1,
+        "next": [
+            "MainInBattle"
+        ],
+        "on_error": [
+            "MainBackOut"
+        ]
+    },
+    "MainBackOut": {
+        "recognition": "DirectHit",
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1500,
+        "timeout": 3000,
+        "max_hit": 2,
+        "next": [
+            "MainBackOutRetry"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainBackOutRetry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 800,
+        "next": [
+            "MainEnd"
+        ]
+    },
+    "MainDockFullGuard": {
+        "recognition": "OCR",
+        "expected": ".*请整理后再出击.*",
+        "roi": [
+            400,
+            320,
+            480,
+            90
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "max_hit": 1,
+        "next": [
+            "MainDockFullExit"
+        ],
+        "on_error": [
+            "MainStageReady"
+        ]
+    },
+    "MainDockFullExit": {
+        "recognition": "DirectHit",
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1500,
+        "max_hit": 2,
+        "next": [
+            "MainDockFullExitDone"
+        ],
+        "on_error": [
+            "MainEnd"
+        ]
+    },
+    "MainDockFullExitDone": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 800,
+        "next": [
+            "MainEnd"
+        ]
+    },
+    "MainTrustLockGuard": {
+        "recognition": "OCR",
+        "expected": ".*任意充值解锁.*",
+        "roi": [
+            400,
+            60,
+            400,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2000,
+        "max_hit": 1,
+        "next": [
+            "MainTrustLockedProceed"
+        ]
+    },
+    "MainTrustLockedProceed": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 500,
+        "next": [
+            "MainStartTrust"
+        ]
+    },
+    "MainStageReady": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 300,
+        "next": [
+            "MainClickTrust"
+        ]
     }
 }
