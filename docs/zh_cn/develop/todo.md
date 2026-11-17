@@ -8,18 +8,18 @@
 
 | 入口 | 功能 | 状态 |
 |---|---|---|
-| `TaskClaimStart` | 领取任务奖励 | ✅ 10.5s |
-| `ExpeditionStart` | 远征领取与派遣 | ✅ 23.5s |
-| `GiftClaimStart` | 领取免费礼包 | ✅ 21.8s |
+| `TaskClaimStart` | 领取任务奖励 | ✅ 10.7s |
+| `ExpeditionStart` | 远征领取与派遣 | ✅ 27.4s |
+| `GiftClaimStart` | 领取免费礼包 | ✅ 11.8s |
 | `SecretaryTalkStart` | 与秘书舰互动 | ✅ 5.4s |
-| `ExerciseStart` | 参与演习 | ✅ 454.0s |
-| `NavalStart` | 收取港区资源并换班 | ✅ 96.7s |
-| `DailySweepStart` | 自动扫荡日常关卡 | ✅ 通过 |
-| `CraftStart` | 自动合成仓库道具 | ✅ 通过 |
-| `ShopStart` | 自动兑换补给商店 | ✅ 113.3s |
-| `MailStart` | 领取临期邮件 | ✅ 16.3s |
-| `BeachStart` | 沙滩训练舰灵等级 | ✅ 144.1s |
-| `MainStart` | 主线关卡托管 | ✅ 64.8s |
+| `ExerciseStart` | 参与演习 | ✅ 31.0s |
+| `NavalStart` | 收取港区资源并换班 | ✅ 64.9s |
+| `DailySweepStart` | 自动扫荡日常关卡 | ✅ 68.4s |
+| `CraftStart` | 自动合成仓库道具 | ✅ 16.8s |
+| `ShopStart` | 自动兑换补给商店 | ✅ 57.6s |
+| `MailStart` | 领取临期邮件 | ✅ 16.6s |
+| `BeachStart` | 沙滩训练舰灵等级 | ✅ 18.1s |
+| `MainStart` | 主线关卡托管 | ✅ 66.6s |
 
 ---
 
