@@ -169,12 +169,27 @@
             "ExpBackHome"
         ]
     },
+    "ExpPanelGuard": {
+        "recognition": "TemplateMatch",
+        "template": "expedition/panel_clear.png",
+        "roi": [520, 335, 210, 80],
+        "threshold": 0.75,
+        "action": "Click",
+        "target": [832, 232],
+        "post_delay": 1500,
+        "timeout": 800,
+        "max_hit": 3,
+        "next": [
+            "ExpSelectTask"
+        ]
+    },
     "ExpSelectTask": {
         "recognition": "DirectHit",
         "action": "DoNothing",
         "timeout": 6000,
         "max_hit": 20,
         "next": [
+            "ExpPanelGuard",
             "ExpFullStop",
             "ExpRow1Part3",
             "ExpRow2Part3",
