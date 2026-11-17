@@ -244,7 +244,7 @@
             "BeachPick_r2c5",
             "BeachPick_r2c6",
             "BeachPick_r2c7",
-            "BeachRescan",
+            "BeachScrollNext",
             "BeachEnd"
         ],
         "on_error": [],
@@ -271,6 +271,52 @@
             "BeachEnd"
         ]
     },
+    "BeachScrollNext": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            640,
+            600
+        ],
+        "end": [
+            640,
+            220
+        ],
+        "duration": 500,
+        "post_delay": 1200,
+        "timeout": 3000,
+        "max_hit": 2,
+        "next": [
+            "BeachResort"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachResort": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1100,
+            47
+        ],
+        "post_delay": 1500,
+        "timeout": 3000,
+        "max_hit": 2,
+        "next": [
+            "BeachRescanCheck"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachRescanCheck": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "BeachAfterSort"
+        ]
+    },
     "BeachBackOut": {
         "recognition": "DirectHit",
         "action": "ClickKey",
@@ -290,23 +336,6 @@
         "action": "DoNothing",
         "post_delay": 800,
         "next": [
-            "BeachEnd"
-        ]
-    },
-    "BeachRescan": {
-        "recognition": "DirectHit",
-        "action": "Click",
-        "target": [
-            1100,
-            47
-        ],
-        "post_delay": 1500,
-        "timeout": 3000,
-        "max_hit": 1,
-        "next": [
-            "BeachAfterSort"
-        ],
-        "on_error": [
             "BeachEnd"
         ]
     },
