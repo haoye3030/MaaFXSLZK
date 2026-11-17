@@ -244,6 +244,7 @@
             "BeachPick_r2c5",
             "BeachPick_r2c6",
             "BeachPick_r2c7",
+            "BeachRescan",
             "BeachEnd"
         ],
         "on_error": [],
@@ -270,14 +271,53 @@
             "BeachEnd"
         ]
     },
+    "BeachBackOut": {
+        "recognition": "DirectHit",
+        "action": "ClickKey",
+        "key": 4,
+        "post_delay": 1500,
+        "timeout": 3000,
+        "max_hit": 3,
+        "next": [
+            "BeachBackOutRetry"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
+    "BeachBackOutRetry": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "post_delay": 800,
+        "next": [
+            "BeachEnd"
+        ]
+    },
+    "BeachRescan": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            1100,
+            47
+        ],
+        "post_delay": 1500,
+        "timeout": 3000,
+        "max_hit": 1,
+        "next": [
+            "BeachAfterSort"
+        ],
+        "on_error": [
+            "BeachEnd"
+        ]
+    },
     "BeachPick_r1c1": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             48,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -288,22 +328,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c2": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             228,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -314,22 +355,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c3": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             408,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -340,22 +382,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c4": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             588,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -366,22 +409,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c5": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             768,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -392,22 +436,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c6": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             948,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -418,22 +463,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r1c7": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             1128,
-            245,
-            132,
-            52
+            242,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -444,22 +490,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c1": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             48,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -470,22 +517,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c2": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             228,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -496,22 +544,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c3": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             408,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -522,22 +571,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c4": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             588,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -548,22 +598,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c5": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             768,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -574,22 +625,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c6": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             948,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -600,22 +652,23 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachPick_r2c7": {
         "recognition": "OCR",
-        "expected": ".*(训练|远征|出征|生产|学习).*",
+        "expected": "(.*(训练|远征|出征|生产|学习).*)|(^\\s*100\\s*$)",
         "roi": [
             1128,
-            526,
-            132,
-            52
+            523,
+            140,
+            133
         ],
         "threshold": 0.7,
         "inverse": true,
@@ -626,12 +679,13 @@
         ],
         "post_delay": 1800,
         "timeout": 2500,
+        "max_hit": 1,
         "next": [
             "BeachPopupCancel",
             "BeachFoodPanel"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachFoodPanel": {
@@ -650,7 +704,7 @@
             "BeachClearFood"
         ],
         "on_error": [
-            "BeachEnd"
+            "BeachBackOut"
         ]
     },
     "BeachClearFood": {

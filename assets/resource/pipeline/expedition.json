@@ -176,7 +176,7 @@
     },
     "ExpCheckLimitedTask": {
         "recognition": "OCR",
-        "expected": ".*(08|10|12):00:00.*",
+        "expected": ".*\\d{1,2}:00:00.*",
         "roi": [
             820,
             140,
@@ -794,7 +794,7 @@
     },
     "ExpPanelFail": {
         "recognition": "OCR",
-        "expected": ".*(08|10|12):00:00.*",
+        "expected": ".*\\d{1,2}:00:00.*",
         "roi": [
             820,
             140,
