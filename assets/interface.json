@@ -30,6 +30,12 @@
             ]
         }
     ],
+    "agent": {
+        "child_exec": "E:\\DSH\\MaaFX\\agent-venv\\Scripts\\python.exe",
+        "child_args": [
+            "agent/main.py"
+        ]
+    },
     "option": {
         "CraftGroups": {
             "type": "checkbox",
@@ -330,49 +336,79 @@
                             }
             ]
         },
-        "ExpLimitedHours": {
+        "ExpLatestDone": {
             "type": "select",
-            "label": "限时远征时长",
-            "description": "有限时远征时优先派限时远征，默认 12 小时。切换时长会改变该分组下的任务列表与奖励道具。",
-            "default_case": "12",
+            "label": "每日远征最晚完成时刻",
+            "description": "每日远征必须在这个时刻之前完成。派遣时按档位自动挑任务：S 部件箱 > A 食物与装备箱 > B GE晶体与奸商货箱 > C 晶币 > D 单人份药浴/曲率凝剂/造灵芯片；同档位内 S/A 选时长长的，B/C/D 选时长短的。夜间（18:00-23:59）先派限时远征（同档位同方向排序），再派每日。选「不限」则不检查完成时刻。",
+            "default_case": "23:00",
             "cases": [
                 {
-                    "name": "12",
-                    "label": "12 小时（默认）",
-                    "pipeline_override": { "ExpClickLimited": { "target": [1197, 655] } }
+                    "name": "23:00",
+                    "label": "23:00（默认）",
+                    "pipeline_override": {}
                 },
                 {
-                    "name": "10",
-                    "label": "10 小时",
-                    "pipeline_override": { "ExpClickLimited": { "target": [1076, 655] } }
+                    "name": "22:00",
+                    "label": "22:00",
+                    "pipeline_override": {
+                        "ExpDlyGateS8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
+                        "ExpDlyGateS4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateS2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateA8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
+                        "ExpDlyGateA4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateA2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateB2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateB4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateB8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
+                        "ExpDlyGateC2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateC4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateC8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
+                        "ExpDlyGateD2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateD4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } }
+                    }
                 },
                 {
-                    "name": "8",
-                    "label": "8 小时",
-                    "pipeline_override": { "ExpClickLimited": { "target": [946, 655] } }
-                }
-            ]
-        },
-        "ExpDailyHours": {
-            "type": "select",
-            "label": "每日远征时长",
-            "description": "没有限时远征时改派每日远征，默认 8 小时。",
-            "default_case": "8",
-            "cases": [
-                {
-                    "name": "8",
-                    "label": "8 小时（默认）",
-                    "pipeline_override": { "ExpClickDaily": { "target": [1197, 604] } }
+                    "name": "23:30",
+                    "label": "23:30",
+                    "pipeline_override": {
+                        "ExpDlyGateS8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
+                        "ExpDlyGateS4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateS2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateA8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
+                        "ExpDlyGateA4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateA2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateB2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateB4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateB8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
+                        "ExpDlyGateC2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateC4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateC8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
+                        "ExpDlyGateD2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateD4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } }
+                    }
                 },
                 {
-                    "name": "4",
-                    "label": "4 小时",
-                    "pipeline_override": { "ExpClickDaily": { "target": [1076, 604] } }
-                },
-                {
-                    "name": "2",
-                    "label": "2 小时",
-                    "pipeline_override": { "ExpClickDaily": { "target": [946, 604] } }
+                    "name": "unlimited",
+                    "label": "不限",
+                    "pipeline_override": {
+                        "ExpDlyGateS8": { "recognition": "DirectHit" },
+                        "ExpDlyGateS4": { "recognition": "DirectHit" },
+                        "ExpDlyGateS2": { "recognition": "DirectHit" },
+                        "ExpDlyGateA8": { "recognition": "DirectHit" },
+                        "ExpDlyGateA4": { "recognition": "DirectHit" },
+                        "ExpDlyGateA2": { "recognition": "DirectHit" },
+                        "ExpDlyGateB2": { "recognition": "DirectHit" },
+                        "ExpDlyGateB4": { "recognition": "DirectHit" },
+                        "ExpDlyGateB8": { "recognition": "DirectHit" },
+                        "ExpDlyGateC2": { "recognition": "DirectHit" },
+                        "ExpDlyGateC4": { "recognition": "DirectHit" },
+                        "ExpDlyGateC8": { "recognition": "DirectHit" },
+                        "ExpDlyGateD2": { "recognition": "DirectHit" },
+                        "ExpDlyGateD4": { "recognition": "DirectHit" },
+                        "ExpDlyGateD8": { "recognition": "DirectHit" }
+                    }
                 }
             ]
         },
@@ -2070,10 +2106,9 @@
             "label": "远征领取与派遣",
             "entry": "ExpeditionStart",
             "option": [
-                "ExpLimitedHours",
-                "ExpDailyHours"
+                "ExpLatestDone"
             ],
-            "description": "自动进入远征页 → 点「全部领取」收走已完成奖励并关闭「大功告成」弹窗 → 优先检查限时远征分组，有可派任务就按限时时长派遣，没有则改派每日远征 → 循环派遣到队伍用尽 → 返回主界面。\n\n同一时长分组内按「概率获得」道具优先级挑任务：III级部件箱（部件）> 椰子甜点 / 蜜汁烤鸡 / 基础装备箱 / 高阶装备箱（食物与装备箱）> GE晶体 > 其他。\n\n舰队沿用游戏上次编队，只点「出征」，不改动任何编队。当前出击队伍上限为 4 队，识别到「4 / 4」后自动收尾。\n\n启动前请先回到主界面。"
+            "description": "自动进入远征页 → 点「全部领取」收走已完成奖励 → 夜间（18:00-23:59）先派限时远征、再派每日远征 → 循环派遣到队伍用尽 → 返回主界面。\n\n每日远征按档位自动挑任务：S 部件箱 > A 食物与装备箱 > B GE晶体与奸商货箱 > C 晶币 > D 单人份药浴/曲率凝剂/造灵芯片；同档位内 S/A 选时长长的，B/C/D 选时长短的，并保证在「最晚完成时刻」前结束（见选项）。限时远征按同档位同方向挑选。\n\n舰队沿用游戏上次编队，只点「出征」，不改动任何编队。当前出击队伍上限为 4 队，识别到「4 / 4」后自动收尾。\n\n启动前请先回到主界面。"
         },
         {
             "name": "领取免费礼包",
