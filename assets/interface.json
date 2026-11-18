@@ -339,7 +339,7 @@
         "ExpLatestDone": {
             "type": "select",
             "label": "每日远征最晚完成时刻",
-            "description": "每日远征必须在这个时刻之前完成。派遣时按档位自动挑任务：S 部件箱 > A 食物与装备箱 > B GE晶体与奸商货箱 > C 晶币 > D 单人份药浴/曲率凝剂/造灵芯片；同档位内 S/A 选时长长的，B/C/D 选时长短的。夜间（18:00-23:59）先派限时远征（同档位同方向排序），再派每日。选「不限」则不检查完成时刻。",
+            "description": "每日远征必须在这个时刻之前完成。派遣时按档位自动挑任务：S 部件箱/高阶装备箱/紧急调遣证 > A 技能书与食物 > B 奸商的货箱与 GE晶体 > C 晶币 > D 单人份药浴/曲率凝剂/造灵芯片/进阶与基础装备箱 > 其它未收录道具兜底；同档位内 S/A 选时长长的，B/C/D 选时长短的。夜间（18:00-23:59）先派限时远征（同档位同方向排序），再派每日。选「不限」则不检查完成时刻。",
             "default_case": "23:00",
             "cases": [
                 {
@@ -365,7 +365,10 @@
                         "ExpDlyGateC8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
                         "ExpDlyGateD2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
                         "ExpDlyGateD4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
-                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } }
+                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } },
+                        "ExpDlyGateX2": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 2 } },
+                        "ExpDlyGateX4": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 4 } },
+                        "ExpDlyGateX8": { "custom_recognition_param": { "latest_done": "22:00", "duration_hours": 8 } }
                     }
                 },
                 {
@@ -386,7 +389,10 @@
                         "ExpDlyGateC8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
                         "ExpDlyGateD2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
                         "ExpDlyGateD4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
-                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } }
+                        "ExpDlyGateD8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } },
+                        "ExpDlyGateX2": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 2 } },
+                        "ExpDlyGateX4": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 4 } },
+                        "ExpDlyGateX8": { "custom_recognition_param": { "latest_done": "23:30", "duration_hours": 8 } }
                     }
                 },
                 {
@@ -407,7 +413,10 @@
                         "ExpDlyGateC8": { "recognition": "DirectHit" },
                         "ExpDlyGateD2": { "recognition": "DirectHit" },
                         "ExpDlyGateD4": { "recognition": "DirectHit" },
-                        "ExpDlyGateD8": { "recognition": "DirectHit" }
+                        "ExpDlyGateD8": { "recognition": "DirectHit" },
+                        "ExpDlyGateX2": { "recognition": "DirectHit" },
+                        "ExpDlyGateX4": { "recognition": "DirectHit" },
+                        "ExpDlyGateX8": { "recognition": "DirectHit" }
                     }
                 }
             ]

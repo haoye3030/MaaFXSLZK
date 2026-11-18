@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""生成新 expedition.json：远征派遣重构 v1（分组模式开）。
-从旧文件复制保留节点、以旧行节点为模板生成 90 个行节点、
-15 个限时 chip、15 个每日门控。幂等：重复跑时模板从新文件取。"""
+"""生成 expedition.json：远征派遣重构 v1.3（分组模式开，档位模板齐全）。
+从旧文件复制保留节点、以旧行节点为模板生成 108 个行节点（6 档 × 3 时长 × 3 行 × 2 组）、
+18 个限时 chip、18 个每日门控。幂等：重复跑时模板从新文件取。"""
 import json, copy, shutil, sys
 
 REPO = 'E:/DSH/MaaFX/MaaFXSLZK'
@@ -70,24 +70,38 @@ ROW_GEO = {
     2: {'text_y': 342, 'icon_y': 295, 'click': [880, 360]},
     3: {'text_y': 470, 'icon_y': 430, 'click': [887, 488]},
 }
+# 档位 → 行图标模板（2026-11-18 用户确认归属；模板全部从实机远征行截图 (1180, ROW_Y) 裁 64×64，
+# 三项校验：非纯色 std>15 / 自命中 NCC=1.000 / 跨道具最高干扰 <0.55；同款跨组可复用单一模板）。
+#   S=3级部件箱(part3)、高阶装备箱、紧急调遣证      —— 长时优先
+#   A=技能书三类（高级指挥理论/初级训练合集/初级支援战术）+ 食物（旧模板待验证）
+#   B=奸商的货箱、GE晶体                            —— 短时优先
+#   C=晶币                                          —— 短时优先
+#   D=单人份药浴、曲率凝剂、造灵芯片、进阶装备箱、基础装备箱
+# 注：coconut/chicken 是旧 UI 裁的食物模板，今日 18 行里没出现食物，未能验证；ge.png 对当前
+# GE晶体美术只有 0.56，B 档事实只剩奸商的货箱模板。两者保留作候选，实测不超过阈值不会误命中。
 TIER_TPL = {
-    'S': 'expedition/part3.png',
-    'A': ['expedition/coconut.png', 'expedition/chicken.png',
-          'expedition/basic_gear.png', 'expedition/high_gear.png'],
-    'B': 'expedition/ge.png',
+    'S': ['expedition/part3.png', 'expedition/gear_high.png', 'expedition/pass_dispatch.png'],
+    'A': ['expedition/book_command.png', 'expedition/book_training.png', 'expedition/book_tactic.png',
+          'expedition/coconut.png', 'expedition/chicken.png'],
+    'B': ['expedition/smuggle_box.png', 'expedition/ge.png'],
+    'C': ['expedition/coin.png'],
+    'D': ['expedition/bath.png', 'expedition/curvature.png', 'expedition/spirit_chip.png',
+          'expedition/gear_advanced.png', 'expedition/gear_basic.png'],
 }
 LTD_CHIP = {12: [1197, 655], 10: [1076, 655], 8: [946, 655]}
 DLY_CHIP = {8: [1197, 604], 4: [1076, 604], 2: [946, 604]}
+# 链顺序 = 档位优先级；同档内 S/A 长时优先、B/C/D 短时优先。
+# 末尾的 X 档是兜底：没有模板（纯 OCR），只要行时长对得上就派，保证未收录的道具也能派出去。
 LTD_CHAIN = [('S',12),('S',10),('S',8), ('A',12),('A',10),('A',8),
              ('B',8),('B',10),('B',12), ('C',8),('C',10),('C',12),
-             ('D',8),('D',10),('D',12)]
+             ('D',8),('D',10),('D',12), ('X',8),('X',10),('X',12)]
 DLY_CHAIN = [('S',8),('S',4),('S',2), ('A',8),('A',4),('A',2),
              ('B',2),('B',4),('B',8), ('C',2),('C',4),('C',8),
-             ('D',2),('D',4),('D',8)]
+             ('D',2),('D',4),('D',8), ('X',2),('X',4),('X',8)]
 ROW_NEXT = ['ExpPanelDispatched', 'ExpPanelGo', 'ExpPanelFail', 'ExpPanelFail2']
 
 def make_row(prefix, tier, dur, r, text):
-    body = copy.deepcopy(and_tpl if tier in TIER_TPL else ocr_tpl)
+    body = copy.deepcopy(and_tpl if TIER_TPL.get(tier) else ocr_tpl)
     geo = ROW_GEO[r]
     if body.get('recognition') == 'And':
         for e in body['all_of']:
