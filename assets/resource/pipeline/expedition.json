@@ -32,7 +32,11 @@
         "action": "DoNothing",
         "timeout": 2500,
         "next": [
+            "NaviDrawerClose",
             "ExpOpenQuick"
+        ],
+        "on_error": [
+            "NaviCommon"
         ]
     },
     "ExpOpenQuick": {
