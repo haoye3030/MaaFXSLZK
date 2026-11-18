@@ -10,10 +10,11 @@ MaaFXSLZK —— 《拂晓：胜利之刻》MaaFramework 自动化助手。pipel
 |---|---|
 | 仓库根（**只改这里**） | `E:\DSH\MaaFX\MaaFXSLZK` |
 | 运行副本（同步产物，不要手改） | `E:\DSH\MaaFX\release\win-x64` |
-| pipeline | `assets/resource/pipeline/*.json`（13 个文件，**全局节点空间共用**） |
-| agent 扩展 | `agent/recognizers.py`（识别器类）+ `agent/main.py`（AgentServer 入口），由 `interface.json` 的 `agent` 字段拉起 |
+| pipeline | `assets/resource/pipeline/*.json`（14 个文件，**全局节点空间共用**） |
+| agent 扩展 | `agent/recognizers.py`（远征时间识别器）、`agent/quiz.py`（答题识别器 + 题库匹配）、`agent/main.py`（AgentServer 入口），由 `interface.json` 的 `agent` 字段拉起 |
+| 答题题库 | `docs/quiz-bank.md`（人工维护的唯一真源）→ `python tools/gen_quiz_bank.py` → `agent/quiz_bank.py`（生成物，勿手改） |
 | agent venv | `E:\DSH\MaaFX\agent-venv`（**maafw==5.10.0 协议 7，不可升级**，仓库/release 之外） |
-| 素材 | `assets/resource/image/<功能>/`，共 93 张 |
+| 素材 | `assets/resource/image/<功能>/`，共 104 张 |
 | 任务入口 | `assets/interface.json`（**JSONC，允许 `//` 注释**，标准 `json.loads` 会失败） |
 | 模拟器 | MuMu，adb `C:/Program Files/Netease/MuMu/nx_main/adb.exe`，设备 `127.0.0.1:16384` |
 | 失败截图 | `debug/on_error/`（`save_on_error` 自动产出，文件名 = 时间戳\_节点名） |
@@ -48,6 +49,9 @@ python tools/check_assets.py --static    # 只做静态检查
 
 # agent 扩展 e2e（协议 7 生产配对：5.10 客户端 + 5.10 子进程）
 & "E:\DSH\MaaFX\agent-venv\Scripts\python.exe" "E:\DSH\MaaFX\tmp\agent_e2e_client.py"
+
+# 题库：改完 docs/quiz-bank.md 重新生成 agent/quiz_bank.py
+python tools/gen_quiz_bank.py
 
 # 跑任务（替代散落的一次性脚本）
 python tools/run_task.py --list
@@ -115,3 +119,6 @@ python tools/failure_ledger.py
 | 入口任务 4 秒内硬失败（如远征点「快速领取」全灭后整任务 FAILED） | **next 列表里的候选节点自己的 `on_error` 不会执行**，候选全失败会冒泡成父节点错误。父节点必须自己写 `on_error`（`ExpOnMain` 就是漏了这个）；需要兜底的分支要塞进父节点 `next` 列表 |
 | 「工作完成」快速领取抽屉盖住主界面，点不到「快速领取」 | 抽屉打开时底部导航条仍可见，`ui_main` 照样命中，视觉判定不出。共享节点 `NaviDrawerClose`（`navi.json`）用 OCR 判 `.*(炼油厂|便利店).*` ROI `[570,55,220,150]` → 点 (300,400) 关抽屉；已接入 `NaviOnMain.next` / `ExpOnMain.next` / `BeachOnMain.next` |
 | 直连 OCR 只吐一条垃圾文本（整个 ROI 一个框、低分） | `JOCR(only_rec=True)` 不是「返回全部结果」，而是「跳过文字检测，把整块 ROI 当一行文本硬识别」。要正常识别多行文字必须 `only_rec=False`（默认），再用 `expected` 正则筛 |
+| maa-tools 报「重复路由」 | 同一个节点里 `next` 和 `on_error` 指向同一个目标（`consult.json` 的 `QuizResultCheck` 踩过）。让两条路径目标不同，或直接删掉冗余的 `on_error`——子节点失败本来就冒泡到父节点 `on_error` |
+| check_assets 报「未被引用」（如 `quiz/quiz_mark.png`） | 该模板只在 agent python 代码的 `custom_recognition_param` 里引用，`check_assets` 只扫 pipeline 的 `template` 字段 → 属预期的假阳性，不要为消除它硬塞一个 pipeline 引用 |
+| 自定义识别器在「非目标界面」乱点 | `QuizAnswer` 的选项 ROI 在房间里会抓好感标签。两道护栏：①状态机 next 顺序（`QuizOnRoom` 排在 `QuizAnswer` 前）②识别器内部数量护栏（选项条必须 2~4 条，否则返回未命中） |

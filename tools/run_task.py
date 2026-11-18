@@ -162,9 +162,12 @@ def main() -> int:
     # MFAAvalonia 生产环境走 agent 子进程，不经此路径）
     try:
         sys.path.insert(0, str(PROJECT / "agent"))
+        from quiz import QuizAnswer, QuizGirl  # noqa: E402
         from recognizers import ExpIsNightWindow, ExpTimeCheck  # noqa: E402
         res.register_custom_recognition("ExpTimeCheck", ExpTimeCheck())
         res.register_custom_recognition("ExpIsNightWindow", ExpIsNightWindow())
+        res.register_custom_recognition("QuizAnswer", QuizAnswer())
+        res.register_custom_recognition("QuizGirl", QuizGirl())
     except Exception as e:
         print(f"[!] 自定义识别器注册失败（Custom 节点将不可用）：{e}")
 

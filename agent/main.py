@@ -13,6 +13,7 @@ import sys
 
 from maa.agent.agent_server import AgentServer
 
+from quiz import QuizAnswer, QuizGirl
 from recognizers import ExpIsNightWindow, ExpTimeCheck
 
 
@@ -23,6 +24,8 @@ def main():
     socket_id = sys.argv[-1]
     AgentServer.register_custom_recognition("ExpTimeCheck", ExpTimeCheck())
     AgentServer.register_custom_recognition("ExpIsNightWindow", ExpIsNightWindow())
+    AgentServer.register_custom_recognition("QuizAnswer", QuizAnswer())
+    AgentServer.register_custom_recognition("QuizGirl", QuizGirl())
     AgentServer.start_up(socket_id)
     AgentServer.join()
     AgentServer.shut_down()
