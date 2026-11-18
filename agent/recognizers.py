@@ -4,12 +4,15 @@
 由 agent/main.py 通过 AgentServer.register_custom_recognition 注册（agent 进程模式），
 或由 tools/run_task.py 通过 Resource.register_custom_recognition 注册（进程内模式）。
 
-协议版本约束（2026-11-18 实测）：
-- MFAAvalonia v2.16.4 内置 MaaFramework 5.10.0（Agent 协议 v7）。
-- maafw 5.15.0 是协议 v8，5.10 客户端无法与 5.15 服务端握手
-  （AgentClient.connect 报 Protocol version mismatch 7 vs 8）。
-- 因此 agent 进程必须跑 maafw==5.10.0 的专用 venv（E:\\DSH\\MaaFX\\agent-venv），
-  interface.json 的 child_exec 指向该 venv 的 python.exe。
+协议版本约束（2026-11-19 复核，纠正 11-18 的错误结论）：
+- MFAAvalonia v2.16.4 实际加载的原生库是 MaaFramework 5.16.1（Agent 协议 v8），版本串内嵌在
+  E:\\DSH\\MaaFX\\release\\win-x64\\runtimes\\win-x64\\native\\MaaFramework.dll；
+  libs\\MaaFramework.Binding.Native.dll 的 FileVersion 5.10.0.0 只是 C# 绑定层版本，会误导。
+- Agent 协议不跨版本兼容：5.10 的 AgentServer 直接拒掉 5.16 客户端（Protocol version mismatch
+  7 vs 8），表现为 MFAAvalonia 一直显示「Agent 连接重试」。
+- 因此 agent venv（E:\\DSH\\MaaFX\\agent-venv）必须装与客户端同版本的 maafw（现 v5.16.1），
+  interface.json 的 child_exec 指向该 venv 的 python.exe；配对检查跑
+  python tools/check_agent_env.py。
 
 custom_recognition_param 在两种路径下的形态：
 - 进程内：裸 JSON 字符串，如 {"latest_done":"23:00"}

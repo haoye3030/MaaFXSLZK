@@ -118,7 +118,7 @@
 | 逻辑 | 逐个点房间里头顶带好感标签 / 黄色「?」徽章的舰灵 → 确认互动 → VN 开场 → OCR 题干与 3 条选项 → 题库查表点正确选项 → 推进结果 → 回到房间继续，房间空了自动回主界面 |
 | 实现 | `agent/quiz.py` 两个自定义识别器：`QuizAnswer`（题干+选项 OCR → 题库模糊匹配 → 返回选项 box，选项条数量护栏 2~4 条）、`QuizGirl`（好感标签 OCR + `quiz/quiz_mark.png` 徽章模板 → TTL/半径去重）；`pipeline/consult.json` 用状态机根 `QuizRoot`，next 顺序 = 状态优先级 |
 | 题库 | `docs/quiz-bank.md`（唯一真源，100 题）→ `python tools/gen_quiz_bank.py` → `agent/quiz_bank.py`；未收录题兜底选第一条（游戏内答错不扣好感度） |
-| 验证 | 离线：识别器单测 6/6、9 状态矩阵首命中全对、agent 协议 7 子进程 e2e（含模板直连 RPC）通过；静态：validate.py（schema+maa-tools）与 check_assets 全绿 |
+| 验证 | 离线：识别器单测 6/6、9 状态矩阵首命中全对、agent 协议 8 子进程 e2e（含模板直连 RPC）通过；静态：validate.py（schema+maa-tools）与 check_assets 全绿 |
 | 待办 | ① 12:00 答题机会刷新后实机跑 `python tools/run_task.py ConsultStart`；② 机会每 0/12/18 点各 +1（最多存 2 次）；③ 设计文档见 `docs/decisions-quiz-automation.md` |
 
 ### 8. 在沙滩训练舰灵等级 ⭐⭐ 🟢 ✅ 已实现并实机验证

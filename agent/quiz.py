@@ -5,9 +5,9 @@ r"""咨询中心答题识别器（纯逻辑，不注册）。
 或由 tools/run_task.py 通过 Resource.register_custom_recognition 注册（进程内模式）。
 题库数据在 agent/quiz_bank.py（由 tools/gen_quiz_bank.py 从 docs/quiz-bank.md 生成）。
 
-协议约束（与 recognizers.py 相同，2026-11-18 实测）：
-- MFAAvalonia v2.16.4 内置 MaaFramework 5.10.0（Agent 协议 v7），agent 进程必须跑
-  maafw==5.10.0 的 venv（E:\DSH\MaaFX\agent-venv）。
+协议约束（与 recognizers.py 相同，2026-11-19 复核）：
+- 客户端原生库是 MaaFramework 5.16.1（Agent 协议 v8），agent venv
+  E:\DSH\MaaFX\agent-venv 必须装同版本 maafw；配对检查 python tools/check_agent_env.py。
 - custom_recognition_param 在 agent 路径下可能是多层 JSON 包裹的字符串，_parse_param 容忍 1~3 层。
 - analyze 内任何异常都会被 ctypes 回调吞掉且默认按「识别成功」处理，因此 analyze 永不抛异常，
   异常路径显式返回 box=None（走 on_error）。

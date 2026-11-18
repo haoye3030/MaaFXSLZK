@@ -13,7 +13,7 @@ MaaFXSLZK —— 《拂晓：胜利之刻》MaaFramework 自动化助手。pipel
 | pipeline | `assets/resource/pipeline/*.json`（14 个文件，**全局节点空间共用**） |
 | agent 扩展 | `agent/recognizers.py`（远征时间识别器）、`agent/quiz.py`（答题识别器 + 题库匹配）、`agent/main.py`（AgentServer 入口），由 `interface.json` 的 `agent` 字段拉起 |
 | 答题题库 | `docs/quiz-bank.md`（人工维护的唯一真源）→ `python tools/gen_quiz_bank.py` → `agent/quiz_bank.py`（生成物，勿手改） |
-| agent venv | `E:\DSH\MaaFX\agent-venv`（**maafw==5.10.0 协议 7，不可升级**，仓库/release 之外） |
+| agent venv | `E:\DSH\MaaFX\agent-venv`（**maafw 必须与 MFAAvalonia 内置原生库同版本，现 v5.16.1 / 协议 8**；仓库/release 之外；配对检查 `python tools/check_agent_env.py`） |
 | 素材 | `assets/resource/image/<功能>/`，共 104 张 |
 | 任务入口 | `assets/interface.json`（**JSONC，允许 `//` 注释**，标准 `json.loads` 会失败） |
 | 模拟器 | MuMu，adb `C:/Program Files/Netease/MuMu/nx_main/adb.exe`，设备 `127.0.0.1:16384` |
@@ -30,7 +30,7 @@ MaaFXSLZK —— 《拂晓：胜利之刻》MaaFramework 自动化助手。pipel
 7. **新增功能必须过素材三项校验**：非纯色（标准差 > 15）、目标位 NCC ≥ 0.9、干扰位 NCC 明显更低。
 8. **不可逆操作**（合成 / 购买 / 退役 / 建造 / 钻石刷新）必须在 `interface.json` 的 `description` 里标 ⚠️，并保留消耗前后校验。
 9. **只改仓库根，不要改 `release/`。** 改完用 `sync_resource.bat` 同步。
-10. **agent 扩展铁律**：Agent 协议不跨版本兼容（5.10 客户端只能连 5.10 服务端），agent-venv 锁定 maafw==5.10.0；识别器 analyze 永不抛异常（异常被 ctypes 吞掉且默认按成功处理）；predicate 类 Custom 节点给短 timeout（失败会按节点 timeout 反复重试）；改 `agent/` 或 `interface.json` 后需**重启 MFAAvalonia** 才生效。
+10. **agent 扩展铁律**：Agent 协议不跨版本兼容，agent-venv 的 maafw 必须与客户端**原生库**同版本（现 v5.16.1 / 协议 8）。客户端版本只看 `release\win-x64\runtimes\win-x64\native\MaaFramework.dll` 内嵌版本串；`libs\MaaFramework.Binding.Native.dll` 的 FileVersion（5.10.0.0）是 C# 绑定层版本，会误导（曾据此误判为协议 7，导致「Agent 连接重试」）。升级 MFAAvalonia 后先跑 `python tools/check_agent_env.py`。识别器 analyze 永不抛异常（异常被 ctypes 吞掉且默认按成功处理）；predicate 类 Custom 节点给短 timeout（失败会按节点 timeout 反复重试）；改 `agent/` 或 `interface.json` 后需**重启 MFAAvalonia** 才生效。
 11. **时间类逻辑走 agent 识别器**（`ExpTimeCheck`/`ExpIsNightWindow` 直接读系统时钟），不要 OCR 游戏内时钟。
 
 ## 三、常用命令
@@ -47,8 +47,11 @@ python tools/validate.py --fast       # 不联网时跳过 maa-tools
 python tools/check_assets.py            # 静态 + 读日志真实得分
 python tools/check_assets.py --static    # 只做静态检查
 
-# agent 扩展 e2e（协议 7 生产配对：5.10 客户端 + 5.10 子进程）
-& "E:\DSH\MaaFX\agent-venv\Scripts\python.exe" "E:\DSH\MaaFX\tmp\agent_e2e_client.py"
+# agent 运行时配对检查（升级 MFAAvalonia / 改 agent venv 后必跑）
+python tools/check_agent_env.py
+
+# agent 扩展 e2e（生产配对：agent-venv 同时当客户端与子进程，跑 release/agent/main.py）
+& "E:\DSH\MaaFX\agent-venv\Scripts\python.exe" "E:\DSH\MaaFX\tmp\agent_prod_e2e.py"
 
 # 题库：改完 docs/quiz-bank.md 重新生成 agent/quiz_bank.py
 python tools/gen_quiz_bank.py
@@ -101,6 +104,7 @@ python tools/failure_ledger.py
 | [素材制作规范](docs/zh_cn/develop/asset_guideline.md) | 截素材、调阈值、处理假阳性、查 pipeline 语法坑清单 |
 | [待完成功能清单](docs/zh_cn/develop/todo.md) | 看还剩什么、风险分级、历史踩坑记录 |
 | [日常扫荡实现规格](docs/zh_cn/develop/daily_sweep_spec.md) | 动扫荡功能前必读 |
+| `docs/decisions-agent-runtime.md` | 改 agent 运行时 / 升级 MFAAvalonia / 排查「Agent 连接重试」 |
 
 ## 六、已知易错点（历史 fix 都出在这里）
 
