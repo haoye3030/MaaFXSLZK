@@ -105,6 +105,13 @@
         "next": [
             "QuizOnConfirm",
             "QuizOnRoom",
+            "QuizPickAny",
+            "QuizPickMo",
+            "QuizPickShi",
+            "QuizPickQin",
+            "QuizPickYi",
+            "QuizPickYue",
+            "QuizPickYong",
             "QuizAnswer",
             "QuizAdvance"
         ],
@@ -146,30 +153,111 @@
         ],
         "threshold": 0.7,
         "action": "DoNothing",
-        "timeout": 8000,
-        "rate_limit": 500,
-        "max_hit": 20,
+        "timeout": 2500,
+        "rate_limit": 400,
+        "max_hit": 60,
         "next": [
-            "QuizFindGirl"
+            "QuizPickAny",
+            "QuizPickMo",
+            "QuizPickShi",
+            "QuizPickQin",
+            "QuizPickYi",
+            "QuizPickYue",
+            "QuizPickYong"
         ],
         "on_error": [
             "ConsultExit"
         ]
     },
-    "QuizFindGirl": {
+    "QuizPickAny": {
         "recognition": "Custom",
         "custom_recognition": "QuizGirl",
-        "custom_recognition_param": "{\"room_roi\": [20, 100, 1240, 520], \"badge_template\": \"quiz/quiz_mark.png\"}",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\"}",
         "action": "Click",
         "post_delay": 1300,
         "timeout": 5000,
         "rate_limit": 500,
-        "max_hit": 8,
+        "max_hit": 12,
         "next": [
             "QuizRoot"
-        ],
-        "on_error": [
-            "ConsultExit"
+        ]
+    },
+    "QuizPickMo": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
+        ]
+    },
+    "QuizPickShi": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
+        ]
+    },
+    "QuizPickQin": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
+        ]
+    },
+    "QuizPickYi": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
+        ]
+    },
+    "QuizPickYue": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
+        ]
+    },
+    "QuizPickYong": {
+        "recognition": "Custom",
+        "custom_recognition": "QuizGirl",
+        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\",\"labels\":[],\"badge\":false}",
+        "action": "Click",
+        "post_delay": 1300,
+        "timeout": 5000,
+        "rate_limit": 500,
+        "max_hit": 12,
+        "next": [
+            "QuizRoot"
         ]
     },
     "QuizAnswer": {

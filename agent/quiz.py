@@ -52,7 +52,9 @@ OPTION_GAP_MAX = 130.0
 DEFAULT_ROOM_ROI = (20, 100, 1240, 520)
 
 # 好感标签（咨询中心舰灵头顶浮标）。匹配用「归一化后包含」以容忍 OCR 多字/少字。
-LOVE_LABELS = ("陌生", "相识", "亲近", "依偎", "誓约", "恋慕", "挚爱", "亲密", "爱慕")
+# 好感阶段阶梯（赠礼页/房间里显示的 6 级，从低到高）
+STAGES = ("陌生", "相识", "亲近", "依偎", "誓约", "永恒")
+LOVE_LABELS = STAGES + ("恋慕", "挚爱", "亲密", "爱慕")
 LOVE_LABEL_RE = ".*(" + "|".join(LOVE_LABELS) + ").*"
 
 _NORM_RE = re.compile(r"[^0-9a-z\u4e00-\u9fff]+")
@@ -311,9 +313,13 @@ class QuizGirl(CustomRecognition):
           "badge_template": "quiz/quiz_mark.png",
           "badge_threshold": 0.8,
           "dedupe_radius": 70,
-          "state_ttl_sec": 900
+          "state_ttl_sec": 900,
+          "labels": null,      # null=任意阶段（含「?」徽章）；[]=本节点关闭；
+                               # 或 ["誓约"] 只挑该阶段的舰灵
+          "badge": null        # labels 缺省时默认 true（纳入「?」徽章舰灵）
         }
     返回：点击点的小 box（命中）；None（房间里没有可交互舰灵）。
+    多个 pipeline 节点共用同一个 QuizGirl 实例，_used 去重是跨节点共享的。
     """
 
     def __init__(self):
@@ -338,6 +344,14 @@ class QuizGirl(CustomRecognition):
     def _candidates(self, context, argv, param, room_roi, ttl):
         points = []
 
+        # 按好感阶段过滤：labels 缺省 = 全部阶段；labels=[] = 一个都不要（节点关闭）
+        raw_labels = param.get("labels", None)
+        allowed = LOVE_LABELS if raw_labels is None else tuple(str(x) for x in raw_labels)
+        # 「?」徽章（看不到好感标签的舰灵）只在 labels 缺省时默认纳入
+        want_badge = bool(param.get("badge", raw_labels is None))
+        if not allowed:
+            return points
+
         # 1) 好感标签
         items = _ocr(
             context, argv.image, room_roi, threshold=0.3, expected=[LOVE_LABEL_RE]
@@ -346,12 +360,15 @@ class QuizGirl(CustomRecognition):
         dy = float(param.get("click_dy", 95))
         for it in _sorted_items(items, 0.6):
             text = norm(it.text)
-            if not any(norm(lab) in text for lab in LOVE_LABELS):
+            if not any(norm(lab) in text for lab in allowed):
                 continue
             cx, cy = _box_center(it.box)
             points.append((cx + dx, cy + dy, f"label:{it.text}"))
 
         # 2) 「?」徽章（无好感标签的舰灵就靠它）
+        if not want_badge:
+            points.sort(key=lambda p: (p[1], p[0]))
+            return points
         tpl = param.get("badge_template") or "quiz/quiz_mark.png"
         try:
             tpl_param = JTemplateMatch(
@@ -396,8 +413,9 @@ class QuizGirl(CustomRecognition):
 
         points = self._candidates(context, argv, param, room_roi, ttl)
         if not points:
-            # 房间空 → 清状态（下次任务从头开始）
-            self._used = []
+            # 注意：这里不清 _used —— 多阶段节点共用同一实例，
+            # 某个阶段节点找不到人会误导「房间空」的判定，清空会破坏去重。
+            # 状态靠 state_ttl_sec 自然过期。
             print(
                 f"[CUSTOM-RECO] name={argv.custom_recognition_name} no_girl",
                 flush=True,
