@@ -39,6 +39,15 @@ FULL_SCREEN = (0, 0, 1280, 720)
 DEFAULT_QUESTION_ROI = (200, 630, 900, 90)
 # 选项是 3 条横向按钮（x 265..1015），文字居中 x~637，实测 3 条时 y 中心 208/305/403
 DEFAULT_OPTION_ROI = (240, 120, 820, 420)
+# 选项条几何（结构校验）：3~4 条按钮的文字框中心 x≈637、y 中心 208/305/403（第 4 条 ~501），
+# 相邻条间距 ~98px。用它把「VN 对话/房间好感标签/帮助页说明」这类被 option_roi 顺带抓到的
+# 零散文字挡掉——否则自定义识别器会在对话页凑出 2 条噪声“选项”并兜底乱点。
+OPTION_CENTER_X = 637.0
+OPTION_CX_TOL = 80.0
+OPTION_CY_MIN = 150.0
+OPTION_CY_MAX = 560.0
+OPTION_GAP_MIN = 70.0
+OPTION_GAP_MAX = 130.0
 # 房间内舰灵/标签区域：避开顶部按钮栏(y<=80)与右下角刷新面板(y>=565)
 DEFAULT_ROOM_ROI = (20, 100, 1240, 520)
 
@@ -161,6 +170,38 @@ def _box_center(box):
     return x + w / 2.0, y + h / 2.0
 
 
+def _looks_like_option_rows(options):
+    """校验 OCR 结果是否构成题目界面的那 2~4 条横向选项按钮。
+
+    返回 (bool, reason)。判定条件（全部来自实机截图 42_tap_640_600.png）：
+      * 条数 2~4；
+      * 每条文字框中心 x 落在 637±80、y 落在 [150, 560]；
+      * 按 y 排序后相邻间距在 [70, 130]。
+    不满足即认为当前不是题目界面（VN 对话页/房间/帮助页都会失败），
+    让 pipeline 落到 QuizAdvance 继续推进，而不是乱点选项。
+    """
+    n = len(options)
+    if not 2 <= n <= 4:
+        return False, f"count={n}"
+    centers = []
+    for it in options:
+        box = getattr(it, "box", None)
+        if not box:
+            return False, "no_box"
+        centers.append(_box_center(box))
+    for cx, cy in centers:
+        if abs(cx - OPTION_CENTER_X) > OPTION_CX_TOL:
+            return False, f"cx={cx:.0f} off"
+        if not OPTION_CY_MIN <= cy <= OPTION_CY_MAX:
+            return False, f"cy={cy:.0f} off"
+    ys = sorted(cy for _, cy in centers)
+    gaps = [ys[i + 1] - ys[i] for i in range(len(ys) - 1)]
+    for g in gaps:
+        if not OPTION_GAP_MIN <= g <= OPTION_GAP_MAX:
+            return False, f"gap={g:.0f}"
+    return True, "ok"
+
+
 class QuizAnswer(CustomRecognition):
     """题目界面识别 + 选答案。
 
@@ -200,17 +241,24 @@ class QuizAnswer(CustomRecognition):
 
         question = _join_items(_sorted_items(_ocr(context, argv.image, q_roi), 0.5))
         options = _sorted_items(_ocr(context, argv.image, o_roi), 0.6)
-        # 真题目界面固定有 3 条选项条；多到四五条以上说明当前不是题目界面
-        # （例如帮助页/房间里的好感标签被 option_roi 抓进来），宁可不作答也不要乱点。
-        if not 2 <= len(options) <= 4:
+        # 真题目界面固定是 3~4 条等距横向按钮；条数不对或几何不像（VN 对话页、
+        # 房间好感标签、帮助页说明等等被 option_roi 顺带抓进来）一律不作答，
+        # 宁可不作答也不要乱点——失败会落到 QuizAdvance 推进对话。
+        ok, why = _looks_like_option_rows(options)
+        if not ok:
             print(
                 f"[CUSTOM-RECO] name={argv.custom_recognition_name} "
-                f"bad_options question={question!r} n={len(options)}",
+                f"bad_options question={question!r} n={len(options)} why={why}",
                 flush=True,
             )
             return CustomRecognition.AnalyzeResult(
                 box=None,
-                detail={"reason": "bad_options", "question": question, "n": len(options)},
+                detail={
+                    "reason": "bad_options",
+                    "question": question,
+                    "n": len(options),
+                    "why": why,
+                },
             )
 
         cands = match_question(question, limit=3, min_score=q_thr)

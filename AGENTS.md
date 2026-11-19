@@ -125,4 +125,4 @@ python tools/failure_ledger.py
 | 直连 OCR 只吐一条垃圾文本（整个 ROI 一个框、低分） | `JOCR(only_rec=True)` 不是「返回全部结果」，而是「跳过文字检测，把整块 ROI 当一行文本硬识别」。要正常识别多行文字必须 `only_rec=False`（默认），再用 `expected` 正则筛 |
 | maa-tools 报「重复路由」 | 同一个节点里 `next` 和 `on_error` 指向同一个目标（`consult.json` 的 `QuizResultCheck` 踩过）。让两条路径目标不同，或直接删掉冗余的 `on_error`——子节点失败本来就冒泡到父节点 `on_error` |
 | check_assets 报「未被引用」（如 `quiz/quiz_mark.png`） | 该模板只在 agent python 代码的 `custom_recognition_param` 里引用，`check_assets` 只扫 pipeline 的 `template` 字段 → 属预期的假阳性，不要为消除它硬塞一个 pipeline 引用 |
-| 自定义识别器在「非目标界面」乱点 | `QuizAnswer` 的选项 ROI 在房间里会抓好感标签。两道护栏：①状态机 next 顺序（`QuizOnRoom` 排在 `QuizAnswer` 前）②识别器内部数量护栏（选项条必须 2~4 条，否则返回未命中） |
+| 自定义识别器在「非目标界面」乱点 | `QuizAnswer` 的选项 ROI 在房间里会抓好感标签、在 VN 对话页会抓出 2 条噪声文字（实测 `opts=['2','G']` 并兜底乱点）。三道护栏：①状态机 next 顺序（`QuizOnRoom` 排在 `QuizAnswer` 前）②数量护栏（选项条 2~4 条）③**几何结构校验** `_looks_like_option_rows()`（文字框中心 x 在 637±80、y 在 [150,560]，相邻间距 70~130px；不满足即判「不是题目界面」→ 落到 `QuizAdvance` 推进对白） |

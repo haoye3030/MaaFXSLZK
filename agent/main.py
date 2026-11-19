@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""MaaFXSLZK 自定义识别扩展（AgentServer 入口）。
+r"""MaaFXSLZK 自定义识别扩展（AgentServer 入口）。
 
 由 interface.json 的 agent 字段拉起：
     child_exec = E:\DSH\MaaFX\agent-venv\Scripts\python.exe（maafw 必须与客户端同版本）
