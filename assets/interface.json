@@ -2102,6 +2102,112 @@
                 }
             }
         ]
+    },
+        "QuizAffection": {
+        "type": "checkbox",
+        "label": "答题：选择要互动的好感阶段",
+        "description": "只作用于「咨询中心每日答题」：勾中哪个好感阶段，就只找该阶段的舰灵答题。\n\n阶段共 6 级：陌生 → 相识 → 亲近 → 依偎 → 誓约 → 永恒（舰灵当前阶段可在 船坞 → 舰灵 → 档案 → 赠礼 右上横幅看到）。\n\n什么都不勾 = 保持「任意阶段」（含头顶黄色「?」徽章、看不到好感标签的改造/满好感舰灵，答对给恒温货箱）。勾了具体阶段后「任意」会被自动关闭；勾多个阶段则都答。\n\n注意：勾选的阶段当天房间里没出现时不会误点别的舰灵，会直接安全退出。",
+        "cases": [
+            {
+                "name": "any",
+                "label": "任意阶段（含头顶「?」徽章的舰灵）",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"badge_template\":\"quiz/quiz_mark.png\"}"
+                    },
+                    "QuizPickMo": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickShi": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickQin": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYi": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYue": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYong": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "mo",
+                "label": "陌生",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickMo": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"陌生\"],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "shi",
+                "label": "相识",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickShi": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"相识\"],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "qin",
+                "label": "亲近",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickQin": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"亲近\"],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "yi",
+                "label": "依偎",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYi": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"依偎\"],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "yue",
+                "label": "誓约",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYue": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"誓约\"],\"badge\":false}"
+                    }
+                }
+            },
+            {
+                "name": "yong",
+                "label": "永恒",
+                "pipeline_override": {
+                    "QuizPickAny": {
+                        "custom_recognition_param": "{\"labels\":[],\"badge\":false}"
+                    },
+                    "QuizPickYong": {
+                        "custom_recognition_param": "{\"room_roi\":[20,100,1240,520],\"labels\":[\"永恒\"],\"badge\":false}"
+                    }
+                }
+            }
+        ]
     }
     },
     "task": [
@@ -2123,7 +2229,16 @@
             "name": "咨询中心每日答题",
             "label": "咨询中心每日答题",
             "entry": "ConsultStart",
-            "description": "自动从主界面进入 港区 → 咨询中心，逐个点击房间里头顶带好感标签（陌生/相识/亲近/偎依/誓约…）或黄色「?」徽章的舰灵，确认互动后按内置题库作答，答完自动返回主界面。\n\n题目与选项都靠 OCR 识别，题库覆盖 docs/quiz-bank.md 里的 100 道题；题库未收录的题目会兜底选第一个选项（答错不扣好感度）。\n\n答题机会每天 0 点 / 12 点 / 18 点各 +1（最多存 2 次），没有可互动舰灵时会自动安全退出，不会空转。\n\n启动前请先回到主界面。"
+            "option": [
+                "QuizAffection"
+            ],
+            "description": "自动从主界面进入 港区 → 咨询中心，逐个点击房间里头顶带好感标签（陌生/相识/亲近/依偎/誓约/永恒）或黄色「?」徽章的舰灵，确认互动后按内置题库作答，答完自动返回主界面。\n\n可用下方选项按好感阶段筛选：不勾 = 任意阶段（含「?」徽章舰灵）；勾选具体阶段后只找该阶段，勾多个则都答。\n\n题目与选项都靠 OCR 识别，题库覆盖 docs/quiz-bank.md 里的 100 道题；题库未收录的题目会兜底选第一个选项（答错不扣好感度）。\n\n答题机会每天 0 点 / 12 点 / 18 点各 +1（最多存 2 次），没有可互动舰灵时会自动安全退出，不会空转。\n\n启动前请先回到主界面。"
+        },
+        {
+            "name": "仓库开箱",
+            "label": "仓库开箱",
+            "entry": "ChestStart",
+            "description": "自动从主界面进入 仓库 → 宝箱，按内置图标模板逐类开箱：III级部件箱、各档训练合集（初级/高级/初级拓展/中级拓展/高级拓展/特级拓展）、普通货箱、奸商的货箱、高阶装备箱、各武器种类高级箱（重型炮/鱼雷/舰载机/防空炮/设备）。\n\n每类点开信息面板 → 按 MAX 全开 → 自动关闭「获得奖励」翻牌弹窗 → 回列表继续下一类，最后返回主界面。只点识别到的目标箱子，不碰其它箱。\n\n「拓展训练合集」这类需要自选内容的箱子会自动勾选第一个内容条再开（自选型开箱会多弹一个「确定要选择⋯吗」确认框，脚本会自动点确定）。\n\n注意：装备箱受装备库容量限制，容量满时「打开」会失败，此时会自动关闭面板并结束本次任务，不会空转。\n\n⚠️ 会真实消耗箱子且不可撤销。启动前请先回到主界面。"
         },
         {
             "name": "领取免费礼包",

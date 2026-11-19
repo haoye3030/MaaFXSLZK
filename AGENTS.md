@@ -10,11 +10,11 @@ MaaFXSLZK —— 《拂晓：胜利之刻》MaaFramework 自动化助手。pipel
 |---|---|
 | 仓库根（**只改这里**） | `E:\DSH\MaaFX\MaaFXSLZK` |
 | 运行副本（同步产物，不要手改） | `E:\DSH\MaaFX\release\win-x64` |
-| pipeline | `assets/resource/pipeline/*.json`（14 个文件，**全局节点空间共用**） |
+| pipeline | `assets/resource/pipeline/*.json`（15 个文件，**全局节点空间共用**） |
 | agent 扩展 | `agent/recognizers.py`（远征时间识别器）、`agent/quiz.py`（答题识别器 + 题库匹配）、`agent/main.py`（AgentServer 入口），由 `interface.json` 的 `agent` 字段拉起 |
 | 答题题库 | `docs/quiz-bank.md`（人工维护的唯一真源）→ `python tools/gen_quiz_bank.py` → `agent/quiz_bank.py`（生成物，勿手改） |
 | agent venv | `E:\DSH\MaaFX\agent-venv`（**maafw 必须与 MFAAvalonia 内置原生库同版本，现 v5.16.1 / 协议 8**；仓库/release 之外；配对检查 `python tools/check_agent_env.py`） |
-| 素材 | `assets/resource/image/<功能>/`，共 104 张 |
+| 素材 | `assets/resource/image/<功能>/`，共 119 张 |
 | 任务入口 | `assets/interface.json`（**JSONC，允许 `//` 注释**，标准 `json.loads` 会失败） |
 | 模拟器 | MuMu，adb `C:/Program Files/Netease/MuMu/nx_main/adb.exe`，设备 `127.0.0.1:16384` |
 | 失败截图 | `debug/on_error/`（`save_on_error` 自动产出，文件名 = 时间戳\_节点名） |
@@ -105,6 +105,7 @@ python tools/failure_ledger.py
 | [待完成功能清单](docs/zh_cn/develop/todo.md) | 看还剩什么、风险分级、历史踩坑记录 |
 | [日常扫荡实现规格](docs/zh_cn/develop/daily_sweep_spec.md) | 动扫荡功能前必读 |
 | `docs/decisions-agent-runtime.md` | 改 agent 运行时 / 升级 MFAAvalonia / 排查「Agent 连接重试」 |
+| `docs/decisions-chest-automation.md` | 改仓库开箱（`pipeline/chest.json`）/ 补箱型模板 / 排查开箱卡住 |
 
 ## 六、已知易错点（历史 fix 都出在这里）
 
@@ -125,4 +126,9 @@ python tools/failure_ledger.py
 | 直连 OCR 只吐一条垃圾文本（整个 ROI 一个框、低分） | `JOCR(only_rec=True)` 不是「返回全部结果」，而是「跳过文字检测，把整块 ROI 当一行文本硬识别」。要正常识别多行文字必须 `only_rec=False`（默认），再用 `expected` 正则筛 |
 | maa-tools 报「重复路由」 | 同一个节点里 `next` 和 `on_error` 指向同一个目标（`consult.json` 的 `QuizResultCheck` 踩过）。让两条路径目标不同，或直接删掉冗余的 `on_error`——子节点失败本来就冒泡到父节点 `on_error` |
 | check_assets 报「未被引用」（如 `quiz/quiz_mark.png`） | 该模板只在 agent python 代码的 `custom_recognition_param` 里引用，`check_assets` 只扫 pipeline 的 `template` 字段 → 属预期的假阳性，不要为消除它硬塞一个 pipeline 引用 |
+| 多阶段选人时「房间空」被误判 / 去重失效 | 多个 Custom 节点（`QuizPickAny/Mo/…`）共用**同一个**识别器实例，`_used` 是共享状态。某个阶段节点找不到人**不能**清空 `_used`（会破坏跨节点去重、同一个人被点两次），状态靠 `state_ttl_sec`(900s) 过期；`labels: []` 表示"本节点关闭"，要在 OCR 之前就返回，关闭态零开销 |
 | 自定义识别器在「非目标界面」乱点 | `QuizAnswer` 的选项 ROI 在房间里会抓好感标签、在 VN 对话页会抓出 2 条噪声文字（实测 `opts=['2','G']` 并兜底乱点）。三道护栏：①状态机 next 顺序（`QuizOnRoom` 排在 `QuizAnswer` 前）②数量护栏（选项条 2~4 条）③**几何结构校验** `_looks_like_option_rows()`（文字框中心 x 在 637±80、y 在 [150,560]，相邻间距 70~130px；不满足即判「不是题目界面」→ 落到 `QuizAdvance` 推进对白） |
+| `DirectHit` 节点写了 `on_error` 但永不触发 | `DirectHit` 识别恒成功、它的动作（Click/Swipe）也基本恒成功，`on_error` 实际不可达（`ChestOpen` 点「打开」失败时踩过）。失败兜底必须写成 `next` 里的候选节点（如 `ChestOpenFail` 用 OCR 判「面板还在」） |
+| 点「打开」没反应、面板一直留着 | 该箱是**自选内容型**（拓展训练合集等）：「请自选内容 已选择:0」时「打开」是灰的，点不动。必须先在内容条里勾一项（点第一个内容条 (355,285)），勾选后点击「打开」还会多弹一个「确定要选择「X」×N 吗？」确认框，需再点确定 (838,461) |
+| 模板类 pick 节点只开了一部分就不动了 | pick 的 `max_hit` 太小：装备库容满时一次 MAX 只能吃掉容量允许的数量（20~30 个），箱子还有剩余但节点已触顶被跳过。开箱 pick 用 `max_hit: 12`（`ChestPick_*`） |
+| 开箱时箱子图标互相误匹配 | 同美术家族（5 个武器高级箱只差中央徽记、4 个拓展训练合集只差配色、两货箱同箱体）滑动 NCC 互相 0.95~0.99，阈值分不开。若都在白名单内则无害（只影响开箱顺序）；要精确区分得用「含名称文字条的卡片模板」或叠加 OCR |

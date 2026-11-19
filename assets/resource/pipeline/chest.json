@@ -1,0 +1,648 @@
+{
+    "ChestStart": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 600000,
+        "anchor": {
+            "Resume": "ChestResume"
+        },
+        "next": [
+            "ChestOnMain",
+            "NaviCommon"
+        ]
+    },
+    "ChestResume": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "next": [
+            "ChestOnMain"
+        ]
+    },
+    "ChestOnMain": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 2500,
+        "next": [
+            "NaviDrawerClose",
+            "ChestClickDepot"
+        ],
+        "on_error": [
+            "NaviCommon"
+        ]
+    },
+    "ChestClickDepot": {
+        "recognition": "TemplateMatch",
+        "template": "common/nav_depot.png",
+        "roi": [
+            333,
+            651,
+            149,
+            51
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 3500,
+        "max_hit": 1,
+        "next": [
+            "ChestClickTab"
+        ]
+    },
+    "ChestClickTab": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            100,
+            300
+        ],
+        "post_delay": 2000,
+        "next": [
+            "ChestOnTab"
+        ]
+    },
+    "ChestOnTab": {
+        "recognition": "OCR",
+        "expected": [
+            ".*宝箱.*"
+        ],
+        "roi": [
+            45,
+            260,
+            130,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "ChestRoot"
+        ],
+        "on_error": [
+            "ChestClickTabRetry"
+        ]
+    },
+    "ChestClickTabRetry": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            100,
+            300
+        ],
+        "post_delay": 2500,
+        "next": [
+            "ChestOnTabRetry"
+        ]
+    },
+    "ChestOnTabRetry": {
+        "recognition": "OCR",
+        "expected": [
+            ".*宝箱.*"
+        ],
+        "roi": [
+            45,
+            260,
+            130,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "next": [
+            "ChestRoot"
+        ],
+        "on_error": [
+            "ChestExit"
+        ]
+    },
+    "ChestRoot": {
+        "recognition": "DirectHit",
+        "action": "DoNothing",
+        "timeout": 6000,
+        "rate_limit": 300,
+        "max_hit": 300,
+        "next": [
+            "ChestReward",
+            "ChestInfo",
+            "ChestPick_Part3",
+            "ChestPick_TrainBegin",
+            "ChestPick_TrainHigh",
+            "ChestPick_TrainExBegin",
+            "ChestPick_TrainExMid",
+            "ChestPick_TrainExHigh",
+            "ChestPick_TrainExTop",
+            "ChestPick_CommonBox",
+            "ChestPick_SmuggleBox",
+            "ChestPick_GearHigh",
+            "ChestPick_GunHigh",
+            "ChestPick_TorpedoHigh",
+            "ChestPick_PlaneHigh",
+            "ChestPick_AaHigh",
+            "ChestPick_DeviceHigh"
+        ],
+        "on_error": [
+            "ChestScroll",
+            "ChestExit"
+        ]
+    },
+    "ChestReward": {
+        "recognition": "OCR",
+        "expected": [
+            ".*点击继续.*"
+        ],
+        "roi": [
+            500,
+            570,
+            240,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 1200,
+        "timeout": 2500,
+        "rate_limit": 300,
+        "max_hit": 80,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestInfo": {
+        "recognition": "OCR",
+        "expected": [
+            ".*使用数量.*"
+        ],
+        "roi": [
+            340,
+            360,
+            400,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 1200,
+        "rate_limit": 300,
+        "max_hit": 80,
+        "next": [
+            "ChestSelfSelect",
+            "ChestMax"
+        ]
+    },
+    "ChestSelfSelect": {
+        "recognition": "OCR",
+        "expected": [
+            ".*请自选内容.*"
+        ],
+        "roi": [
+            340,
+            210,
+            480,
+            45
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            355,
+            285
+        ],
+        "post_delay": 900,
+        "timeout": 1500,
+        "next": [
+            "ChestMax"
+        ]
+    },
+    "ChestMax": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            927,
+            396
+        ],
+        "post_delay": 600,
+        "next": [
+            "ChestOpen"
+        ]
+    },
+    "ChestOpen": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [
+            904,
+            649
+        ],
+        "post_delay": 2000,
+        "timeout": 5000,
+        "next": [
+            "ChestReward",
+            "ChestConfirm",
+            "ChestOpenFail",
+            "ChestFull"
+        ],
+        "on_error": [
+            "ChestRoot"
+        ]
+    },
+    "ChestConfirm": {
+        "recognition": "OCR",
+        "expected": [
+            ".*确定要选择.*"
+        ],
+        "roi": [
+            400,
+            300,
+            600,
+            80
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            838,
+            461
+        ],
+        "post_delay": 2500,
+        "timeout": 2500,
+        "next": [
+            "ChestReward"
+        ]
+    },
+    "ChestOpenFail": {
+        "recognition": "OCR",
+        "expected": [
+            ".*使用数量.*"
+        ],
+        "roi": [
+            340,
+            360,
+            400,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            993,
+            23
+        ],
+        "post_delay": 1200,
+        "timeout": 2000,
+        "next": [
+            "ChestExit"
+        ]
+    },
+    "ChestFull": {
+        "recognition": "OCR",
+        "expected": [
+            ".*(已满|容量不足|仓库已满).*"
+        ],
+        "roi": [
+            380,
+            280,
+            520,
+            180
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "target": [
+            840,
+            462
+        ],
+        "post_delay": 1200,
+        "timeout": 2000,
+        "next": [
+            "ChestExit"
+        ]
+    },
+    "ChestScroll": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            900,
+            560
+        ],
+        "end": [
+            900,
+            220
+        ],
+        "duration": 400,
+        "post_delay": 1500,
+        "timeout": 4000,
+        "max_hit": 4,
+        "next": [
+            "ChestRoot"
+        ],
+        "on_error": [
+            "ChestExit"
+        ]
+    },
+    "ChestExit": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_subpage_home.png",
+        "roi": [
+            185,
+            10,
+            110,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "Click",
+        "post_delay": 2500,
+        "timeout": 3000,
+        "max_hit": 6,
+        "next": [
+            "ChestExit"
+        ],
+        "on_error": [
+            "ChestDone"
+        ]
+    },
+    "ChestDone": {
+        "recognition": "TemplateMatch",
+        "template": "common/ui_main.png",
+        "roi": [
+            10,
+            650,
+            90,
+            60
+        ],
+        "threshold": 0.7,
+        "action": "DoNothing",
+        "timeout": 3000,
+        "focus": {
+            "success": "仓库开箱完成，已返回主界面"
+        }
+    },
+    "ChestPick_Part3": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_part3.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.97,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainBegin": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_begin.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.85,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.88,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainExBegin": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_ex_begin.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainExMid": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_ex_mid.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainExHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_ex_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TrainExTop": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_train_ex_top.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_CommonBox": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_common_box.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_SmuggleBox": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_smuggle_box.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_GearHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_gear_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.88,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_GunHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_gun_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_TorpedoHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_torpedo_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_PlaneHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_plane_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_AaHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_aa_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    },
+    "ChestPick_DeviceHigh": {
+        "recognition": "TemplateMatch",
+        "template": "warehouse/chest_device_high.png",
+        "roi": [
+            180,
+            90,
+            1090,
+            630
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 1500,
+        "timeout": 1200,
+        "max_hit": 12,
+        "next": [
+            "ChestRoot"
+        ]
+    }
+}
